@@ -1,0 +1,10 @@
+1 Mario,Rossi,25,349112233,m.rossi@homail.com
+2 Marco,Bianchi,338,348998877,m.bianchi@homail.com
+3 Anna,Verdi,32,345445566,a.verdi@homail.com
+4 Lucia`@€àòè,Arancio,18,339123456,l.arancio@homail.comMario,Rossi,25,349112233,m.rossi@homail.com
+5 Marco,Bianchi,338,348998877,m.bianchi@homail.com
+6 Anna,Verdi,32,345445566,a.verdi@homail.com
+7 Lucia`@€àòè,Arancio,18,339123456,l.arancio@homail.comMario,Rossi,25,349112233,m.rossi@homail.com
+8 Marco,Bianchi,338,348998877,m.bianchi@homail.com
+9 Anna,Verdi,32,345445566,a.verdi@homail.com
+10 Lucia`@€àòè,Arancio,18,339123456,l.arancio@homail.com

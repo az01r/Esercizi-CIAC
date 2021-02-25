@@ -1,0 +1,9 @@
+it/tss/demofx/gui/MainController.class
+it/tss/demofx/gui/ListSongController.class
+it/tss/demofx/business/SongsStoreException.class
+it/tss/demofx/business/DbStore.class
+it/tss/demofx/App.class
+it/tss/demofx/gui/Messages.class
+it/tss/demofx/gui/NewSongController.class
+it/tss/demofx/business/Song.class
+it/tss/demofx/gui/UpdateSongController.class

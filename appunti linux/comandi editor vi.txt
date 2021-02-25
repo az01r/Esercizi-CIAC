@@ -1,0 +1,15 @@
+escape entra in stato comandi
+i	inserisci
+a	append
+A	va a fine riga in scrittura
+x	cancella
+hjkl	sx down up dx
+dd 	cancella riga
+o	aggiunge riga sotto
+O 	aggiunge riga sopra
+u 	undo
+escape:w	salva
+escape:wq	salva ed esci
+escape:q	esci 
+escape:q!	esci senza salvare
+vi prog apre editor

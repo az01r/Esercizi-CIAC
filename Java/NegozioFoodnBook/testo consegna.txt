@@ -1,0 +1,72 @@
+-----Esercizio BooknFood---------------------------------
+Creare progetto java in visual studio code o netbeans 
+simulare la creazione di prodotti di un negozio di tipo bar/libreria
+e la gestione di una cassa virtuale dove poter caricare un carrello per un cliente
+
+Classe BooknFood (concetto tipo Agenzia dell'esercizio)
+attrributi Listino e Carrello arraylist di tipo prodotto
+I prodotti sono di tipo food o di tipo book (sottoclassi extends Prodotto  a piacere non 
+fare sottoclassi ed usare solo Prodotto invece che Food e Book)
+Creare la classe generica Prodotto con nome e prezzo e getinfo
+Opzionale---- Creare classe Food con getinfo
+e atrtirbuti aggiuntivi peso e durata
+Opzionale---- Creare classe Book con getinfo
+e attrributi aggiuntivi Autore e numpag
+
+BooknFood deve avere un arraylist Listino di tipo Prodotto.
+BooknFood deve avere un arraylist Carrello di tipo Prodotto per contenere un elenco di singoli prodotti.
+
+Ogni classe deve avere attributi e metodi pirvate o public per soddisfare i criteri di visibilita' e sicurezza
+delle informazioni, utilizzare concetto di getter e setter per attibuti; ogni classe deve avere un costruttore
+come da indicazioni date a lezione; ognuno faccia le proprie scelte oppure lasciate tutto public e niente costruttori...
+
+Creare metodi per leggere e scrivere gli attributi dei prodotti.
+Creare metodo in BooknFood per creare ed aggiungere prodotto al Listino.
+Creare metodo in BooknFood per stampare in console il Listino.
+Creare metodo in BooknFood per aggiungere un singolo prodotto al Carrello, scelto dal Listino tramite sua posizione.
+Creare metodo in BooknFood per svuotare il Carrello.
+Creare metodo in BooknFood per togliere l'ultimo prodotto dal Carrello.
+Creare metodo in BooknFood per togliere un i-esimo prodotto dal Carrello.
+Creare metodo in BooknFood per per avere il totale del Carrello.  - getTotaleCarrello.
+Creare metodo in BooknFood per stampare in console i prodotti del Carrello con Totale costo dei prodotti.
+
+Utilizzare i metodi nel main per testare le funzionalita'.
+Nella prova simulare la creazione di 2 food ed 1 book e inserirli nel Listino, stampare il listino, 
+aggiungere un book e un food al carrello, stampare il carrello/scontrino, svuotare il carrello
+il tutto con sequenza di comandi in main()
+
+----------------------------------------- interfaccia a console per testare l'applicazione---------------------------------------------
+A seguire provare a creare una interfaccia da console per chiedere i dati all'utente invece che i dati di prova usati prima nel main
+ad esempio: per inserimento di Book e Food creare una interfaccia da console
+es. console aggiungi book ( se usate solo Prodotto togliere ins autore etc...)
+---inserisci prodotto-----
+ins nome prodotto: cuore
+ins prezzo prodotto: 10
+ins autore: de amicis
+ins numero pagine: 250
+(al termine stampare info del prodotto)
+--- nuovo prodotto inserito---
+nome prodotto: cuore
+prezzo prodotto: 10
+autore: de amicis
+numero pagine: 250
+--- fine nuovo prodotto ---
+
+
+A piacere costruire una interfaccia da console per eseguire i vari metodi
+
+Ad esempio 
+Elenco comandi tipo int e metodi da chiamare:
+0 : quit: uscire App
+1: addBook: aggiunge libro a listino
+2: addFood: aggiunge  cibo a listino
+3: printListino: stampa il listino tramite i getinfo degli oggetti utile per sapere quale oggetto aggiungere al carrello tramite posizione in listino
+4: clearCarrello: svuota carrello
+5: addProductCarrello(indexProductListino): aggiunge un prodotto al carrello passando la posizione del prodotto nel listino
+6: printCarrello: stampa gli oggetti nel Carrello con totale in fondo,  elenco utile anche  per sapere la posizione dell'oggetto eventualmente da rimuovere da carrello
+7: ...
+comandi a piacere
+
+----------------------extra-----------------
+a piacere salvare i carrelli/scontrini in un elenco carrelli/scontrini e ricavare informazioni 
+ad esempio il totale fatturato dal negozio o altro a piacere

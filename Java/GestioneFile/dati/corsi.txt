@@ -1,0 +1,4 @@
+Java:Luca Guerrini
+Sistemi operativi:Alfonso Domenici
+Fondamenti di informatica:Claudio Bovo
+OOP:Luca Guerrini

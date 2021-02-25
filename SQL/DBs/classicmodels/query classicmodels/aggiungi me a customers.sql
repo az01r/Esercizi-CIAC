@@ -1,0 +1,3 @@
+-- insert into customers (customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,city,country,salesRepEmployeeNumber) values (497,"Paolo Antonio Grosso","Grosso","Paolo Antonio","+39 3457340295","Via Bertolotti 10","Rivarolo Canavese","Italy",1002);
+update customers set salesRepEmployeeNumber = 1501 where customerNumber=497;
+-- delete from customers where customerNumber=497;

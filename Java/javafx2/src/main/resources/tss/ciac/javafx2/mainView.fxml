@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<!-- VBox = vertical box -->
+<!-- HBox = orizzontal box -->
+<HBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tss.ciac.javafx2.MainViewController">
+   <children>
+       <Button text="incr" onAction="#onIncrementa" /> <!-- onAction = click, se prima si creano i metodi dai file di java (MainViewController) annotandoli con @FXML il complilatore li vede e li suggerisce -->
+       <Button text="decr" onAction="#onDecrementa" />
+       <Label fx:id="result" text="0" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</HBox>

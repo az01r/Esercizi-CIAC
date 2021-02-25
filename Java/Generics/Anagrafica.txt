@@ -1,0 +1,4 @@
+Mario,Rossi,25,349112233,m.rossi@homail.com
+Marco,Bianchi,338,348998877,m.bianchi@homail.com
+Anna,Verdi,32,345445566,a.verdi@homail.com
+Lucia`@€àòè,Arancio,18,339123456,l.arancio@homail.com

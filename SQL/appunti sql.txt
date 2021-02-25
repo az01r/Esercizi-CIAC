@@ -1,0 +1,5 @@
+consiglio: 	aggiungere una sede standard "anonima" con id 0
+		in corsi settare il default di id_corsi a 0
+Per collegare due tabelle:	creare una foreign key
+Per cercare velocemente da campi che non sono primary key:
+		creare indici per i singoli campi

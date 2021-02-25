@@ -1,0 +1,1879 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: http://www.beginwithjava.com/java/inheritance/calling-the-superclass-constructor.html
+Subject: Calling the Super class Constructor | Inheritace in Java
+Date: Mon, 7 Dec 2020 17:57:16 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----"
+
+
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: text/html
+Content-ID: <frame-4F0CB87EB5DF407B6EE68DC9B2A08853@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.beginwithjava.com/java/inheritance/calling-the-superclass-constructor.html
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3.=
+org/1999/xhtml"><head><meta http-equiv=3D"Content-Type" content=3D"text/htm=
+l; charset=3Dwindows-1252">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+>
+
+
+    <link rel=3D"shortcut icon" href=3D"http://www.beginwithjava.com/java/f=
+avicon.gif">
+
+   <meta name=3D"Description" content=3D"To call a superclass constructor t=
+he super keyword is used. The following example programs demonstrate use of=
+ super keyword.">
+   <meta name=3D"Keywords" content=3D"box, width, public, double">
+  =20
+   <meta name=3D"Distribution" content=3D"Global">
+   <meta name=3D"Author" content=3D"drsingh008@gmail.com">
+
+  <link rel=3D"stylesheet" href=3D"http://www.beginwithjava.com/css/style.c=
+ss" type=3D"text/css">
+
+  <title>Calling the Super class Constructor | Inheritace in Java
+</title>
+
+ =20
+
+  <link href=3D"http://www.beginwithjava.com/src/styles/vs.css" rel=3D"styl=
+esheet" type=3D"text/css">
+
+=20
+<link rel=3D"stylesheet" href=3D"http://www.beginwithjava.com/css/menustyle=
+.css">
+  =20
+  =20
+
+</head>
+
+  <body>
+
+    <!-- BEGIN wrapper -->
+    <div id=3D"wrapper">
+      <!-- BEGIN header -->
+      <!-- navigation -->
+			<nav id=3D"navigation">
+				<a href=3D"http://www.beginwithjava.com/java/inheritance/calling-the-su=
+perclass-constructor.html#" class=3D"nav-btn">MENU<span></span></a>
+				<ul>
+					<li><a href=3D"http://www.beginwithjava.com/index.html">home</a></li>
+					<li class=3D"active"><a href=3D"http://www.beginwithjava.com/java/inde=
+x.html">java programming</a></li>
+					<li><a href=3D"http://www.beginwithjava.com/servlet-jsp/index.html">we=
+b programming</a></li>
+				</ul>
+				<div class=3D"cl">&nbsp;</div>
+			</nav>
+		<!-- end of navigation -->
+
+<div id=3D"header">           =20
+
+
+
+
+
+        <!-- BEGIN logo -->
+        <div class=3D"fl_left">
+          <h1><a href=3D"http://www.beginwithjava.com/" id=3D"logo"><img sr=
+c=3D"http://www.beginwithjava.com/images/logo.png" width=3D"250" height=3D"=
+36" alt=3D"java logo"></a></h1>
+
+        </div>
+        <!-- end logo -->
+
+        <!-- begin banner ad -->
+       =20
+<div class=3D"box">
+
+<!-- responsive -->
+<ins class=3D"adsbygoogle" style=3D"display:block" data-ad-client=3D"ca-pub=
+-8001115649311088" data-ad-slot=3D"5611622215" data-ad-format=3D"auto"></in=
+s>
+
+</div>
+
+
+        <!-- end banner ad -->
+  </div>
+  <!-- END header -->
+
+
+
+
+
+  <div id=3D"content">
+  <div class=3D"navigation">
+  <p><a href=3D"http://www.beginwithjava.com/java/inheritance/what-is-inher=
+itance.html">Previous Section</a> | <a href=3D"http://www.beginwithjava.com=
+/java/inheritance/overriding-superclass-methods.html">Next Section </a>| <a=
+ href=3D"http://www.beginwithjava.com/java/inheritance/index.html">Chapter =
+Index </a>| <a href=3D"http://www.beginwithjava.com/java/index.html">Main I=
+ndex </a></p>
+  </div>
+
+    <!-- BEGIN latest -->
+      <div class=3D"latest">
+        <!-- begin post -->
+        <div class=3D"post">
+
+          <h3 class=3D"hline">9.2 Calling the Superclass Constructor </h3>
+          <p>A subclass can have its own private data members, so a subclas=
+s can also have its own constructors. </p>
+          <p>The constructors of the subclass can initialize only the insta=
+nce variables of the subclass. Thus, when a subclass object is instantiated=
+ the subclass object must also automatically execute one of the constructor=
+s of the superclass.</p>
+          <p> To call a superclass constructor  the <strong>super</strong> =
+keyword is used. The following example programs demonstrate use of super ke=
+yword.<br>
+          </p>
+          <p class=3D"aligncenter"><img src=3D"http://www.beginwithjava.com=
+/java/images/inheritance-constructor.png" width=3D"356" height=3D"440" alt=
+=3D"inheritance-constructor"></p>
+          <p>(Rectangle.java)          </p>
+          <pre><code class=3D"hljs java"><span class=3D"hljs-javadoc">/**
+ *  This class holds data of a Rectangle.
+ */</span>
+
+<span class=3D"hljs-keyword">public</span> <span class=3D"hljs-class"><span=
+ class=3D"hljs-keyword">class</span> <span class=3D"hljs-title">Rectangle</=
+span>
+</span>{
+   <span class=3D"hljs-keyword">private</span> <span class=3D"hljs-keyword"=
+>double</span> length;  <span class=3D"hljs-comment">// To hold length of r=
+ectangle</span>
+   <span class=3D"hljs-keyword">private</span> <span class=3D"hljs-keyword"=
+>double</span> width;  <span class=3D"hljs-comment">// To hold width of rec=
+tangle</span>
+
+   <span class=3D"hljs-javadoc">/**
+    *  The constructor initialize rectangle's=20
+    *  length and width with default value   =20
+    */</span>
+
+   <span class=3D"hljs-function"><span class=3D"hljs-keyword">public</span>=
+ <span class=3D"hljs-title">Rectangle</span><span class=3D"hljs-params">()<=
+/span>
+   </span>{
+      length =3D <span class=3D"hljs-number">0</span>;
+      width =3D <span class=3D"hljs-number">0</span>;
+   }
+
+   <span class=3D"hljs-javadoc">/**
+    *  The constructor accepts the rectangle's =20
+    *  length and width.  =20
+    */</span>
+
+   <span class=3D"hljs-function"><span class=3D"hljs-keyword">public</span>=
+ <span class=3D"hljs-title">Rectangle</span><span class=3D"hljs-params">(<s=
+pan class=3D"hljs-keyword">double</span> length, <span class=3D"hljs-keywor=
+d">double</span> width)</span>
+   </span>{
+      <span class=3D"hljs-keyword">this</span>.length =3D length;
+      <span class=3D"hljs-keyword">this</span>.width =3D width;
+   }
+
+   <span class=3D"hljs-javadoc">/**
+    *  The getArea method returns the area of=20
+    *  the rectangle.
+    */</span>
+
+   <span class=3D"hljs-function"><span class=3D"hljs-keyword">public</span>=
+ <span class=3D"hljs-keyword">double</span> <span class=3D"hljs-title">getA=
+rea</span><span class=3D"hljs-params">()</span>
+   </span>{
+      <span class=3D"hljs-keyword">return</span> length * width;
+   }
+}</code></pre>
+          <p>(Box.java)</p>
+<pre><code class=3D"hljs java"><span class=3D"hljs-javadoc">/**
+ *  This class holds data of a Box.
+ */</span>
+
+<span class=3D"hljs-keyword">public</span> <span class=3D"hljs-class"><span=
+ class=3D"hljs-keyword">class</span> <span class=3D"hljs-title">Box</span> =
+<span class=3D"hljs-keyword">extends</span> <span class=3D"hljs-title">Rect=
+angle</span>
+</span>{
+   <span class=3D"hljs-keyword">private</span> <span class=3D"hljs-keyword"=
+>double</span> height;  <span class=3D"hljs-comment">// To hold height of t=
+he box</span>
+
+   <span class=3D"hljs-javadoc">/**
+    *  The constructor initialize box's=20
+    *  length, width and height with default value. =20
+    */</span>
+
+   <span class=3D"hljs-function"><span class=3D"hljs-keyword">public</span>=
+ <span class=3D"hljs-title">Box</span><span class=3D"hljs-params">()</span>
+   </span>{
+      <span class=3D"hljs-comment">// Call the superclass default construct=
+or to</span>
+      <span class=3D"hljs-comment">// initialize length and width.</span>
+      <span class=3D"hljs-keyword">super</span>();
+      <span class=3D"hljs-comment">//Initialize height.</span>
+      height =3D <span class=3D"hljs-number">0</span>;
+   }
+
+   <span class=3D"hljs-javadoc">/**
+    *  The constructor accepts the box's =20
+    *  length, width and height.  =20
+    */</span>
+
+    <span class=3D"hljs-function"><span class=3D"hljs-keyword">public</span=
+> <span class=3D"hljs-title">Box</span><span class=3D"hljs-params">(<span c=
+lass=3D"hljs-keyword">double</span> length, <span class=3D"hljs-keyword">do=
+uble</span> width, <span class=3D"hljs-keyword">double</span> height)</span=
+>
+    </span>{
+      <span class=3D"hljs-comment">// Call the superclass constructor to</s=
+pan>
+      <span class=3D"hljs-comment">// initialize length and width.</span>
+      <span class=3D"hljs-keyword">super</span>(length, width);
+     =20
+      <span class=3D"hljs-comment">// Initialize height.</span>
+      <span class=3D"hljs-keyword">this</span>.height =3D height;
+   }
+
+   <span class=3D"hljs-javadoc">/**
+    *  The getVolume method returns the volume of=20
+    *  the box.
+    */</span>
+
+   <span class=3D"hljs-function"><span class=3D"hljs-keyword">public</span>=
+ <span class=3D"hljs-keyword">double</span> <span class=3D"hljs-title">getV=
+olume</span><span class=3D"hljs-params">()</span>
+   </span>{
+      <span class=3D"hljs-keyword">return</span> getArea() * height;
+   }
+}</code></pre>
+<p>(BoxDemo.java)</p>
+<pre><code class=3D"hljs java"><span class=3D"hljs-javadoc">/**
+ * This program demonstrates calling
+ * of superclass constructor.
+ */</span>
+
+<span class=3D"hljs-keyword">public</span> <span class=3D"hljs-class"><span=
+ class=3D"hljs-keyword">class</span> <span class=3D"hljs-title">BoxDemo</sp=
+an>
+</span>{
+   <span class=3D"hljs-function"><span class=3D"hljs-keyword">public</span>=
+ <span class=3D"hljs-keyword">static</span> <span class=3D"hljs-keyword">vo=
+id</span> <span class=3D"hljs-title">main</span><span class=3D"hljs-params"=
+>(String[] args)</span>
+   </span>{
+      <span class=3D"hljs-comment">// Create a box object.</span>
+      Box myBox1 =3D <span class=3D"hljs-keyword">new</span> Box();
+
+      <span class=3D"hljs-comment">// Display the volume of myBox1.</span>
+      System.out.println(<span class=3D"hljs-string">"Volume: "</span> + my=
+Box1.getVolume());
+
+      <span class=3D"hljs-comment">// Create a box object.</span>
+      Box myBox2 =3D <span class=3D"hljs-keyword">new</span> Box(<span clas=
+s=3D"hljs-number">12.2</span>, <span class=3D"hljs-number">3.5</span>, <spa=
+n class=3D"hljs-number">2.0</span>);
+
+      <span class=3D"hljs-comment">// Display the volume of myBox2.</span>
+      System.out.println(<span class=3D"hljs-string">"Volume: "</span> + my=
+Box1.getVolume());
+   }
+}</code></pre>
+        </div>
+      </div>
+      <div class=3D"navigation">
+  <p><a href=3D"http://www.beginwithjava.com/java/inheritance/what-is-inher=
+itance.html">Previous Section</a> | <a href=3D"http://www.beginwithjava.com=
+/java/inheritance/overriding-superclass-methods.html">Next Section </a>| <a=
+ href=3D"http://www.beginwithjava.com/java/inheritance/index.html">Chapter =
+Index </a>| <a href=3D"http://www.beginwithjava.com/java/index.html">Main I=
+ndex </a></p>
+  </div>
+ =20
+<!-- responsive -->
+<ins class=3D"adsbygoogle" style=3D"display:block" data-ad-client=3D"ca-pub=
+-8001115649311088" data-ad-slot=3D"5611622215" data-ad-format=3D"auto"></in=
+s>
+
+
+</div>
+  <!-- BEGIN sidebar -->
+  <div id=3D"sidebar">
+
+    <div class=3D"linksidebar">
+ =20
+<!-- javalink200 -->
+<ins class=3D"adsbygoogle" style=3D"display:inline-block;width:200px;height=
+:90px" data-ad-client=3D"ca-pub-8001115649311088" data-ad-slot=3D"637077341=
+4"></ins>
+
+  </div><div id=3D"cssmenu">
+<ul>
+   <li>Menu</li>
+   <li class=3D"has-sub"><a href=3D"http://www.beginwithjava.com/java/inher=
+itance/calling-the-superclass-constructor.html#"><span>Java Fundamentals</s=
+pan></a>
+      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/fundamentals/java=
+-technology.html"><span>1.1 Getting Started</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/fundamentals/first-appl=
+ication.html"><span>1.2 Creating Your First Application</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/fundamentals/part-of-pr=
+ogram.html"><span>1.3 Parts of a Java Program</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/fundamentals/variables-a=
+nd-literals.html"><span>1.4 Variables and Literals</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/fundamentals/primitive-d=
+ata-type.html"><span>1.5 Primitive Data Types</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/fundamentals/arithmetic-=
+operator.html"><span>1.6 Arithmetic Operators</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/fundamentals/operator-pr=
+ecedence.html"><span>1.7 Operator Precedence</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/fundamentals/type-conver=
+sion-and-casting.html"><span>1.8 Type Conversion and Casting</span></a></li=
+>
+		<li><a href=3D"http://www.beginwithjava.com/java/fundamentals/questions.h=
+tml"><span>Questions and Exercises</span></a></li>=20
+      </ul>
+   </li>
+   <li class=3D"has-sub"><a href=3D"http://www.beginwithjava.com/java/inher=
+itance/calling-the-superclass-constructor.html#"><span>Objects and Input/Ou=
+tput</span></a>
+      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/inputoutput/class=
+-string.html"><span>2.1 Class String</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/inputoutput/reference-v=
+ariable.html"><span>2.2 Objects and Reference Variables</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/inputoutput/class-math.=
+html"><span>2.3 Class Math Methods</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/inputoutput/string-meth=
+od.html"><span>2.4 String Methods</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/inputoutput/reading-key=
+board-input.html"><span>2.5 Reading Keyboard Input</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/inputoutput/dialog-boxe=
+s.html"><span>2.6 Dialog Boxes for Input/Output</span></a></li>
+      </ul>
+   </li>
+   <li class=3D"has-sub"><a href=3D"http://www.beginwithjava.com/java/inher=
+itance/calling-the-superclass-constructor.html#"><span>Decision Structures<=
+/span></a>
+      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/decisions/if-else=
+-statement.html"><span>3.1 The if-else Statement</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/decisions/if-else-if-st=
+atement.html"><span>3.2 The if-else-if Statement</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/decisions/nested-if-sta=
+tement.html"><span>3.3 Nested if Statement</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/decisions/logical-opera=
+tors.html"><span>3.4 Logical Operators</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/decisions/comparing-str=
+ing-objects.html"><span>3.5 Comparing String Objects</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/decisions/switch-statem=
+ent.html"><span>3.6 The switch Statement</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/decisions/conditional-o=
+perator.html"><span>3.7 Conditional Operator</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/decisions/questions.htm=
+l"><span>Questions and Exercises</span></a></li>
+      </ul>
+   </li>
+   <li class=3D"has-sub active"><a href=3D"http://www.beginwithjava.com/jav=
+a/inheritance/calling-the-superclass-constructor.html#"><span>Loops</span><=
+/a>      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/loops/increment-d=
+ecrement-operators.html"><span>4.1 The Increment and Decrement Operators</s=
+pan></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/loops/while-loop.html">=
+<span>4.2 The while Loop</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/loops/do-while-loop.html=
+"><span>4.3 The do-while Loop</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/loops/for-loop.html"><sp=
+an>4.4 The for Loop</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/loops/nested-loop.html">=
+<span>4.5 Nested Loops</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/loops/break-continue-sta=
+tement.html"><span>4.6 The break and continue Statements</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/loops/questions.html"><s=
+pan>Questions and Exercises</span></a></li>
+      </ul>
+   </li>
+   <li class=3D"has-sub"><a href=3D"http://www.beginwithjava.com/java/inher=
+itance/calling-the-superclass-constructor.html#"><span>Methods</span></a>
+      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/methods/introduct=
+ion-to-methods.html"><span>5.1 Introduction to Methods</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/methods/void-methods.htm=
+l"><span>5.2 void Methods</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/methods/passing-argument=
+s-to-a-method.html"><span>5.3 Passing Arguments to a Method</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/methods/local-variables.=
+html"><span>5.4 Local Variables</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/methods/returning-value-=
+from-a-method.html"><span>5.5 Returning a Value from a Method</span></a></l=
+i>
+		<li><a href=3D"http://www.beginwithjava.com/java/methods/questions.html">=
+<span>Questions and Exercises</span></a></li>
+      </ul>
+   </li>
+   <li class=3D"has-sub"><a href=3D"http://www.beginwithjava.com/java/inher=
+itance/calling-the-superclass-constructor.html#"><span>Introducing Classes<=
+/span></a>
+      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/classes-i/objects=
+-classes.html"><span>6.1 Objects and Classes</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-i/simple-class.h=
+tml"><span>6.2 Designing a Class</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-i/constructors.h=
+tml"><span>6.3 Constructors</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-i/overloading-me=
+thods.html"><span>6.4 Overloading Methods</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-i/uml-diagram.ht=
+ml"><span>6.5 UML Diagram</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-i/questions.html=
+"><span>Questions and Exercises</span></a></li>
+      </ul>
+   </li>
+   <li class=3D"has-sub"><a href=3D"http://www.beginwithjava.com/java/inher=
+itance/calling-the-superclass-constructor.html#"><span>Arrays and the Array=
+List Class</span></a>
+      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/=
+introduction-to-arrays.html"><span>7.1 Introduction to Arrays</span></a></l=
+i>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/process=
+ing-array-elements.html"><span>7.2 Processing Array Elements</span></a></li=
+>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/passing=
+-arrays-as-arguments-to-methods.html"><span>7.3 Passing Arrays as Arguments=
+ to Methods</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/common-=
+array-operations.html"><span>7.4 Common Array Operations</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/returni=
+ng-arrays-from-methods.html"><span>7.5 Returning Arrays from Methods</span>=
+</a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/string-=
+arrays.html"><span>7.6 String Arrays</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/arrays-=
+of-objects.html"><span>7.7 Arrays of Objects</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/two-dim=
+ensional-arrays.html"><span>7.8 Two-Dimensional Arrays</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/variabl=
+e-length-argument-lists.html"><span>7.9 Variable-Length Argument Lists</spa=
+n></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/the-arr=
+ay-list-class.html"><span>7.10 The ArrayList Class</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/arrays-arraylist/questio=
+ns.html"><span>Questions and Exercises</span></a></li>
+      </ul>
+   </li>
+   <li class=3D"has-sub"><a href=3D"http://www.beginwithjava.com/java/inher=
+itance/calling-the-superclass-constructor.html#"><span>A Closer Look at Cla=
+sses and Methods</span></a>
+      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/classes-ii/static=
+-class-members.html"><span>8.1 Static Class Members</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-ii/passing-objec=
+ts-as-arguments-to-methods.html"><span>8.2 Passing Objects as Arguments to =
+Methods</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-ii/returning-obj=
+ects-from-methods.html"><span>8.3 Returning Objects from Methods</span></a>=
+</li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-ii/the-to-string=
+-method.html"><span>8.4 The toString Method</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-ii/the-this-refe=
+rence-variable.html"><span>8.5 The this Reference Variable</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-ii/aggregation.h=
+tml"><span>8.6 Aggregation</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-ii/garbage-colle=
+ction.html"><span>8.7 Garbage Collection</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/classes-ii/questions.htm=
+l"><span>Questions and Exercises</span></a></li>
+      </ul>
+   </li>
+   <li class=3D"has-sub active"><a href=3D"http://www.beginwithjava.com/jav=
+a/inheritance/calling-the-superclass-constructor.html#"><span>Inheritance a=
+nd Polymorphism</span></a>       <ul>
+         <li><a href=3D"http://www.beginwithjava.com/java/inheritance/what-=
+is-inheritance.html"><span>9.1 What Is Inheritance?</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/inheritance/calling-the-=
+superclass-constructor.html" class=3D"current"><span>9.2 Calling the Superc=
+lass Constructor</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/inheritance/overriding-s=
+uperclass-methods.html"><span>9.3 Overriding Superclass Methods</span></a><=
+/li>
+		<li><a href=3D"http://www.beginwithjava.com/java/inheritance/protected-me=
+mber.html"><span>9.4 Protected Member</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/inheritance/multilevel-i=
+nheritance.html"><span>9.5 Multilevel Inheritance</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/inheritance/object-class=
+.html"><span>9.6 The object Class</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/inheritance/polymorphism=
+.html"><span>9.7 Polymorphism</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/inheritance/abstract-cla=
+sses-abstract-method.html"><span>9.8 Abstract Classes and Abstract Method</=
+span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/inheritance/interfaces.h=
+tml"><span>9.9 Interfaces</span></a></li>
+      </ul>
+   </li>
+  =20
+   <li class=3D"has-sub"><a href=3D"http://www.beginwithjava.com/java/inher=
+itance/calling-the-superclass-constructor.html#"><span>File Input and Outpu=
+t</span></a>
+      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/file-input-output=
+/introduction-file-input-output.html"><span>10.1 Introduction to File Input=
+ and Output</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/file-input-output/writi=
+ng-text-file.html"><span>10.2 Writing Data to Text File</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/file-input-output/readin=
+g-text-file.html"><span>10.3 Reading Data from Text File</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/file-input-output/readin=
+g-writing-premitive-data-text-file.html"><span>10.4 Reading and Writing Pre=
+mitive Data</span></a></li>
+      </ul>
+   </li>
+  =20
+   <li class=3D"has-sub"><a href=3D"http://www.beginwithjava.com/java/inher=
+itance/calling-the-superclass-constructor.html#"><span>Exception Handling</=
+span></a>
+      <ul class=3D"hd">
+         <li><a href=3D"http://www.beginwithjava.com/java/exception/handlin=
+g-exception.html"><span>11.1 Handling Exception</span></a></li>
+		 <li><a href=3D"http://www.beginwithjava.com/java/exception/try-catch-mul=
+ticatch.html"><span>11.2 Try Catch Block and Multi Catch</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/exception/finally-block.=
+html"><span>11.3 Finally Block</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/exception/try-with-resou=
+rces.html"><span>11.4 Try with Resources</span></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/exception/checked-unchec=
+ked-exceptions.html"><span>11.5 Checked and Unchecked Exceptions</span></a>=
+</li>
+		<li><a href=3D"http://www.beginwithjava.com/java/exception/rethrowing-thr=
+owing-an-exception.html"><span>11.6 Rethrowing and Throwing an Exception</s=
+pan></a></li>
+		<li><a href=3D"http://www.beginwithjava.com/java/exception/creating-your-=
+own-exception-classes.html"><span>11.7 Creating Your Own Exception Classes<=
+/span></a></li>
+      </ul>
+   </li>  =20
+</ul>
+<div class=3D"linksidebar">
+ =20
+<!-- javalink200 -->
+<ins class=3D"adsbygoogle" style=3D"display:inline-block;width:200px;height=
+:90px" data-ad-client=3D"ca-pub-8001115649311088" data-ad-slot=3D"637077341=
+4"></ins>
+
+  </div>
+=20
+ <div class=3D"linksidebar">
+ =20
+<!-- javalink200 -->
+<ins class=3D"adsbygoogle" style=3D"display:inline-block;width:200px;height=
+:90px" data-ad-client=3D"ca-pub-8001115649311088" data-ad-slot=3D"637077341=
+4"></ins>
+
+  </div>
+ =20
+</div>
+
+</div>
+  <!-- end sidebar -->
+
+
+
+
+  <!-- BEGIN footer -->
+  <div id=3D"footer">
+    <p>
+      <a href=3D"http://www.beginwithjava.com/">
+        Home
+      </a>
+     =20
+      |
+      <a href=3D"http://www.beginwithjava.com/contactus.html">
+        Contact us
+      </a>
+      |
+      <a href=3D"http://www.beginwithjava.com/aboutus.html">
+        About us
+      </a>
+  </p>
+  </div>
+  <!-- END footer -->
+
+  </div>
+  <!-- wrap ends here -->
+ =20
+
+
+
+</body></html>
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.beginwithjava.com/css/style.css
+
+@charset "windows-1252";
+
+* { margin: 0px; padding: 0px; }
+
+body { text-align: center; font: 95% Verdana, Arial, Helvetica, sans-serif;=
+ color: rgb(0, 0, 0); background: url("../images/sitebk.gif") rgb(204, 204,=
+ 204); }
+
+a { text-decoration: none; color: rgb(48, 129, 200); }
+
+a:hover { text-decoration: underline; }
+
+img { border: 0px; }
+
+.break { font-size: 0px; width: 0px; height: 0px; clear: both; }
+
+.gap { padding-bottom: 15px; width: 100%; text-align: center; }
+
+.alignleft { float: left; margin: 4px 10px 5px 0px; }
+
+.alignright { float: right; margin: 4px 0px 5px 10px; }
+
+.aligncenter { text-align: center; }
+
+.alignlft { text-align: left; }
+
+.alignrght { text-align: right; }
+
+.hline { background: url("../images/horizontal.gif") left bottom repeat-x; =
+padding-bottom: 15px; }
+
+.hidden { display: none; }
+
+.toc { margin-left: 50px; }
+
+.toc p { padding-top: 20px; }
+
+.toc ul li { list-style: none; margin-left: 97px; }
+
+.post img { max-width: 100%; }
+
+#wrapper { max-width: 970px; margin: 0px auto; text-align: left; background=
+: rgb(255, 255, 255); }
+
+#header { height: 172px; overflow: hidden; background: url("../images/tile.=
+jpg") rgb(255, 255, 215); }
+
+#header h1 a { text-decoration: none; }
+
+#header h2#slogan { position: absolute; margin: 0px; padding: 0px; color: r=
+gb(102, 204, 255); font: bold 14px Arial, Tahoma, sans-serif; text-transfor=
+m: none; top: 32px; left: 100px; }
+
+#header .fl_left { position: relative; clear: both; float: left; margin: 20=
+px 0px 10px 20px; height: 40px; width: 100%; }
+
+#header .box { float: left; text-align: center; width: 100%; height: 90px; =
+padding: 0px 10px 0px 0px; background: rgb(255, 255, 255); }
+
+#navigation { padding: 5px 21px; margin-bottom: 10px; }
+
+#navigation ul { list-style: outside none; }
+
+#navigation ul li { padding: 0px 10px; float: left; font-family: Raleway, s=
+ans-serif; font-size: 15px; font-weight: 500; }
+
+#navigation ul li:first-child { padding-left: 0px; }
+
+#navigation ul li a { color: rgb(74, 74, 74); padding: 0px 7px; display: bl=
+ock; height: 21px; line-height: 21px; border: 2px solid transparent; border=
+-radius: 3px; }
+
+#navigation ul li.active a, #navigation ul li a:hover { border: 2px solid r=
+gb(2, 156, 219); background: url("images/nav-btn.png") 0px 0px repeat-x; co=
+lor: rgb(255, 255, 255); text-decoration: none; }
+
+#navigation a.nav-btn { display: none; }
+
+#fullcontent { float: left; max-width: 960px; background: rgb(253, 253, 253=
+); margin-bottom: 16px; padding: 15px 0px 20px 10px; }
+
+#content { max-width: 636px; min-width: 636px; float: left; padding: 15px 0=
+px 20px 10px; }
+
+#content .latest { }
+
+#content .latest .post h2 { font-size: 1.4em; padding-bottom: 15px; }
+
+#content .latest .post .details2 { clear: both; height: 20px; padding-top: =
+10px; border-top: 1px solid rgb(174, 174, 174); font-family: Georgia; color=
+: rgb(174, 174, 174); }
+
+#content .latest .post .details2 a { color: rgb(174, 174, 174); }
+
+#content .latest .post .details2 a:hover { color: rgb(70, 70, 70); }
+
+#content .l { float: left; }
+
+#content .r { float: right; }
+
+#content .division { max-width: 307px; }
+
+#content .division .post img { float: left; margin: 2px 10px 5px 0px; width=
+: 100px; }
+
+#content .post { background: rgb(253, 253, 253); border: 1px solid rgb(255,=
+ 204, 153); margin-bottom: 16px; padding: 10px; }
+
+#content .post h2 { font-family: Verdana; font-size: 1.4em; margin-bottom: =
+5px; color: rgb(240, 158, 47); }
+
+#content .post h2 a { color: rgb(98, 38, 19); }
+
+#content .post h2 a:hover { color: rgb(70, 70, 70); }
+
+#content .post .details { font-family: Georgia; color: rgb(174, 174, 174); =
+margin-bottom: 15px; }
+
+#content .post .details a { color: rgb(174, 174, 174); }
+
+#content .post .details a:hover { color: rgb(70, 70, 70); }
+
+#content .post h3, h4, h5, h6 { margin-bottom: 5px; font-size: 1.2em; font-=
+family: Verdana; font-weight: bold; color: rgb(240, 158, 47); }
+
+#content .post p { line-height: 1.4em; margin-bottom: 10px; }
+
+#content .post ol, #content .post ul { margin-bottom: 10px; margin-left: 20=
+px; }
+
+#content .post blockquote { padding: 10px 10px 5px; margin-bottom: 10px; bo=
+rder-top: 1px solid rgb(205, 205, 205); border-bottom: 1px solid rgb(205, 2=
+05, 205); font-style: italic; }
+
+#content .post li { line-height: 1.4em; padding: 2px 0px; }
+
+#sidebar { width: 300px; float: right; margin: 40px 5px 0px; }
+
+#sidebar .video { padding: 10px; background: url("../images/horizontal.gif"=
+) left bottom repeat-x; text-align: center; }
+
+#sidebar .tags { margin-top: 1px; padding-left: 30px; padding-bottom: 20px;=
+ }
+
+#sidebar h2 { font-size: 0.9em; font-weight: bold; text-transform: uppercas=
+e; color: rgb(98, 38, 19); padding: 5px; }
+
+#sidebar ul { list-style-type: none; padding: 5px 10px 10px; background: ur=
+l("../images/horizontal.gif") left bottom repeat-x; }
+
+#sidebar ul li { padding: 4px 0px; line-height: 1.4em; }
+
+#sidebar ul li a { color: rgb(104, 100, 90); }
+
+#sidebar ul li a:hover, #sidebar ul li strong { color: rgb(70, 70, 70); }
+
+#sidebar .l { float: left; width: 145px; padding-top: 5px; }
+
+#sidebar .r { float: right; width: 145px; padding-top: 5px; }
+
+#sidebar .l ul, #sidebar .r ul { background: none; padding-bottom: 20px; }
+
+#sidebar .l h2, #sidebar .r h2 { padding: 5px 10px; }
+
+#footer { clear: both; background: rgb(241, 241, 241); text-align: right; p=
+adding: 10px; color: rgb(204, 204, 204); height: 40px; }
+
+#footer p { line-height: 2em; }
+
+#footer a { text-decoration: none; color: rgb(102, 102, 102); }
+
+#footer a:hover { text-decoration: underline; }
+
+h2.title { font-size: 0.9em; text-transform: uppercase; padding-bottom: 10p=
+x; }
+
+.postnav { clear: both; padding-top: 20px; font-size: 0.8em; text-transform=
+: uppercase; letter-spacing: 1px; }
+
+.rightalign { float: right; }
+
+.float-left { float: left; }
+
+.post .meta { height: 30px; border-bottom: 1px solid rgb(233, 227, 203); ma=
+rgin: 0px; padding: 0px; text-align: left; font-family: Arial, Helvetica, s=
+ans-serif; font-size: 13px; font-weight: bold; }
+
+.post .meta .date { float: left; height: 24px; padding: 3px 0px; color: rgb=
+(70, 64, 50); }
+
+.post .meta .posted { float: right; height: 24px; padding: 5px 15px 0px; ba=
+ckground: rgb(245, 245, 245); color: rgb(70, 64, 50); }
+
+.post .meta a { color: rgb(70, 64, 50); }
+
+.post p a { font-family: Verdana, Geneva, sans-serif; }
+
+.post .meta .posted a { text-decoration: underline; }
+
+.post .meta .posted a:hover { text-decoration: none; }
+
+.post .entry { padding: 0px 0px 20px; text-align: justify; }
+
+.post .entryad { padding: 0px 0px 20px 10px; float: right; }
+
+.links { padding-top: 20px; font-weight: bold; }
+
+.links a { color: rgb(255, 128, 128); }
+
+#division .advt { margin: 0px; padding-bottom: 0px; background: url("../ima=
+ges/horizontal.gif") left bottom repeat-x rgb(236, 234, 225); }
+
+#wrapper .navigation { position: relative; clear: both; text-align: right; =
+padding: 0px 8px 10px 30px; }
+
+#wrapper .chapternav { position: relative; clear: both; padding: 0px 0px 10=
+px 20px; }
+
+.saffron { color: rgb(240, 158, 47); font-weight: bold; }
+
+pre { border: 1px dashed rgb(153, 153, 153); font-size: 110%; background: r=
+gb(254, 244, 237); margin-bottom: 10px; padding: 10px; line-height: 20px; }
+
+.output { font-family: Georgia, "Times New Roman", Times, serif; background=
+-color: rgb(254, 247, 241); padding: 10px; }
+
+.inputdata { color: rgb(153, 0, 0); }
+
+.imageborder { border: 1px dashed rgb(204, 204, 204); }
+
+@media screen and (max-width: 320px) {
+  #header { clear: both; }
+  #wrapper { max-width: 420px; min-width: 292px; }
+  #content { max-width: 420px; min-width: 292px; }
+  #sidebar { float: left; margin: 10px 5px; }
+  pre { white-space: pre-wrap; overflow-wrap: break-word; }
+}
+
+@media screen and (max-width: 600px) and (min-width: 321px) {
+  #header { clear: both; }
+  #wrapper { max-width: 480px; min-width: 480px; }
+  #content { max-width: 480px; min-width: 480px; }
+  #sidebar { float: left; margin: 10px 5px; }
+}
+
+@media screen and (max-width: 800px) and (min-width: 601px) {
+}
+
+@media screen and (max-width: 1024px) and (min-width: 801px) {
+}
+
+@media screen and (max-width: 1220px) and (min-width: 1025px) {
+}
+
+@media screen and (max-device-width: 480px), screen and (-webkit-min-device=
+-pixel-ratio: 2) {
+  #cssmenu { display: none; }
+}
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.beginwithjava.com/images/sitebk.gif
+
+R0lGODlhgACAAPcAAP//////zP//mf//Zv//M///AP/M///MzP/Mmf/MZv/MM//MAP+Z//+ZzP+Z
+mf+ZZv+ZM/+ZAP9m//9mzP9mmf9mZv9mM/9mAP8z//8zzP8zmf8zZv8zM/8zAP8A//8AzP8Amf8A
+Zv8AM/8AAMz//8z/zMz/mcz/Zsz/M8z/AMzM/8zMzMzMmczMZszMM8zMAMyZ/8yZzMyZmcyZZsyZ
+M8yZAMxm/8xmzMxmmcxmZsxmM8xmAMwz/8wzzMwzmcwzZswzM8wzAMwA/8wAzMwAmcwAZswAM8wA
+AJn//5n/zJn/mZn/Zpn/M5n/AJnM/5nMzJnMmZnMZpnMM5nMAJmZ/5mZzJmZmZmZZpmZM5mZAJlm
+/5lmzJlmmZlmZplmM5lmAJkz/5kzzJkzmZkzZpkzM5kzAJkA/5kAzJkAmZkAZpkAM5kAAGb//2b/
+zGb/mWb/Zmb/M2b/AGbM/2bMzGbMmWbMZmbMM2bMAGaZ/2aZzGaZmWaZZmaZM2aZAGZm/2ZmzGZm
+mWZmZmZmM2ZmAGYz/2YzzGYzmWYzZmYzM2YzAGYA/2YAzGYAmWYAZmYAM2YAADP//zP/zDP/mTP/
+ZjP/MzP/ADPM/zPMzDPMmTPMZjPMMzPMADOZ/zOZzDOZmTOZZjOZMzOZADNm/zNmzDNmmTNmZjNm
+MzNmADMz/zMzzDMzmTMzZjMzMzMzADMA/zMAzDMAmTMAZjMAMzMAAAD//wD/zAD/mQD/ZgD/MwD/
+AADM/wDMzADMmQDMZgDMMwDMAACZ/wCZzACZmQCZZgCZMwCZAABm/wBmzABmmQBmZgBmMwBmAAAz
+/wAzzAAzmQAzZgAzMwAzAAAA/wAAzAAAmQAAZgAAMwAAAK+wsqanqaWnqa+xsv///wAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAANwALAAAAACAAIAA
+AAj/ALUJHEiwYMFs2LIZXHgwIcOH2hAqhLhQIsWKDi8azLZNI8aJHgVaDCkyI8mRJ02e7EhyIMqQ
+Lz3G1DjzYk2bLFtGVCmTJ02fNoFSvDk0Z0uiD5EyVPpRJ9OKRlOChCkU4tOGU3tmlRmV6tagX4dW
+TTp2admlXbU6PbuRLda1YYvqLBmXbF2zd5sedXsw7c+8bQG/3SuY4NW+c3cWdsmX8WK6cOdyTHzY
+cWTCl4/6BZvZa2e1TjeLfaz481/TNEVbbQwZs2upklXbRT2a9mrSEWXjtT37tefQlFmX9g0aNnDJ
+wiu3Ns58ZXDSyoc3L+4cOfTk2K/j5pitu/fv4MNv/wtPnvz48ui7n09ffj178e/Rb8NGv779+/e3
+6cfPP//+/gDqNx+A/QlIYIH/HYiffvG11yB8D37nXoQTPlihhc/xthtxpx2noV7TdRhiahlyyJmJ
+tXmI4m0fBtbiRrqB+NuIKdIol3UvGpZdjobF6OKKvdkYZHU8LjfjkdTB5ONgQm7YpIxKlvjkj1My
+SSSQTiIpopYk4ogllFsmyZWUXNZYJosqVqmjdkVKd6Waln1J5ZlWLblmm9HlKVxuZIp5IpxGRukl
+oG76aaaSEYJ3YXyLvtcoe4+mF6mkCiI4YKX1GYhppgluqumm2HwKKoOJejepg6Vyl+qp5qWqXp9h
+xv/6J51J2RknoXqymSatYM5qKJqaweqrrIcSeyOeO8pppaDI6orrnpMNyuucvw7JrLJ3YnvrtDAK
+W+yw4H6Lk7fAcpstoXxKW22W6/Y6rrrGWhsvu2PCG2657VJbb7P8auuSrYHO6y6+AkNFrrz3Iizu
+sf4WWvCyDyNm78IKE5xwra6qWiqrEG7sKsfigWqfqJiSXKnJCqJ8oMorg6zoxzCvGvOqB9N78cAV
+11kzzjZT3DPDzzpr7rbXBt0vutEePXTANxs8scU+8yy100rnC3HT3T6d889bT5111RETHfa/O+uL
+9blLiwSww2eL3TbT74L9NttRU91wrnLHfXeyRu//ajXaf7td99d7Cx043ECnjXfhsZV99eCAj612
+xi6bOnOilatHucicXupppyWDfrLoKZNeOuWXU5i6hZQ7HvnciwerNde0e/263n3nnna6eUPte9d2
+63443b/X6rrgxduOvM6zK4848I8nPnzsikO7NvXT8/1m9YZLHh3vjIeP9PXaZ999l71Df3vywXOf
+fu3tm/++82of/zz80avfo/3E638//eATnvfKxxXUyeyAHkPgxjhHH5YFyHQEcqClOCdBBBkwgRjE
+3Oow1DyzQW55+JPY/DzIvvwZr4MmpB/29iU+9zUsgC4U4NxgKL8WDo+GAzzfB/8XvxyOMIU9hB0B
+XoW4HfLpsITr81/9UJjEEIIQgEmzoQ9fGEUZ7rB/TiQbE59IQiV+r4oxDOMNwVhDKyJxf1vkIRDX
+2ES08G+FRIzNBTWoQNXVkUICyqMe98jHPvrxj4AMpCAHSUhABgQAOw==
+
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.beginwithjava.com/images/horizontal.gif
+
+R0lGODlhAQACAIAAANnUxfPx6iH5BAAAAAAALAAAAAABAAIAAAICRAoAOw==
+
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: image/jpeg
+Content-Transfer-Encoding: base64
+Content-Location: http://www.beginwithjava.com/images/tile.jpg
+
+/9j/4AAQSkZJRgABAgEASABIAAD/4QcyRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUA
+AAABAAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAIAAAExAAIAAAAcAAAAcgEyAAIAAAAUAAAAjodp
+AAQAAAABAAAApAAAANAACvyAAAAnEAAK/IAAACcQQWRvYmUgUGhvdG9zaG9wIENTMyBXaW5kb3dz
+ADIwMTQ6MTE6MjMgMTA6NDk6MjYAAAAAA6ABAAMAAAAB//8AAKACAAQAAAABAAAAzKADAAQAAAAB
+AAAAzAAAAAAAAAAGAQMAAwAAAAEABgAAARoABQAAAAEAAAEeARsABQAAAAEAAAEmASgAAwAAAAEA
+AgAAAgEABAAAAAEAAAEuAgIABAAAAAEAAAX8AAAAAAAAAEgAAAABAAAASAAAAAH/2P/gABBKRklG
+AAECAABIAEgAAP/tAAxBZG9iZV9DTQAC/+4ADkFkb2JlAGSAAAAAAf/bAIQADAgICAkIDAkJDBEL
+CgsRFQ8MDA8VGBMTFRMTGBEMDAwMDAwRDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAENCwsN
+Dg0QDg4QFA4ODhQUDg4ODhQRDAwMDAwREQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
+DAwM/8AAEQgAoACgAwEiAAIRAQMRAf/dAAQACv/EAT8AAAEFAQEBAQEBAAAAAAAAAAMAAQIEBQYH
+CAkKCwEAAQUBAQEBAQEAAAAAAAAAAQACAwQFBgcICQoLEAABBAEDAgQCBQcGCAUDDDMBAAIRAwQh
+EjEFQVFhEyJxgTIGFJGhsUIjJBVSwWIzNHKC0UMHJZJT8OHxY3M1FqKygyZEk1RkRcKjdDYX0lXi
+ZfKzhMPTdePzRieUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9jdHV2d3h5ent8fX5/cRAAICAQIE
+BAMEBQYHBwYFNQEAAhEDITESBEFRYXEiEwUygZEUobFCI8FS0fAzJGLhcoKSQ1MVY3M08SUGFqKy
+gwcmNcLSRJNUoxdkRVU2dGXi8rOEw9N14/NGlKSFtJXE1OT0pbXF1eX1VmZ2hpamtsbW5vYnN0dX
+Z3eHl6e3x//aAAwDAQACEQMRAD8A9RkzKUJdvnonCapSZIpdklKSJ7d0u6UapKUnhJKQkpSbghOo
+jUkIqX7J0yQ8EFLpJku6SlJCUtOfuSjzhJShymPiPFOO6R0RUrUTPCUpdvim10/FJT//0PUI8B3U
+goj4J2xHEeSapRTpvimCKl4TazA1T/FJBSgQeE+gTcfPlOkpZNCcJTCSlfinCZOkpR4UImJ57nsp
+JRCSlhIOikU0p0VMQRx3Tpo1JCfRBSu0FLhOmdPb5pKf/9H1JRdoJHZOExGkfj2TQpTdWyee6lwm
+48k0zCSmSYSEkgkpfRNzxokQD80uBCSlD4pJk/kipZwAIjgp+wUST4T5KQ4AHCClpnjVPPjz4JgO
+RKfkoqUkAnKbsgpeUx8uU3uGvMlOPvRUumJ7J0x58klP/9L1FMTrxICfzSTVLHWRrKcCBHdNA7kz
+/ekdB+RFS8pQE33/AHJ5SUukm3BOBqkpSZKNZToKUkeEk3l96SlifLzKbdJ8lIJhqdPvRUvKdJJB
+SlHiSPFSJhMElLQQddQeE/IS5TTB8kVP/9P1GO3A7paAJTCUBNUoA90o7J5TBJShA/uS1hMeZTgo
+qWgknWEiDETonOmv4pcoKUNeeAmHPkpJilal0w80gUtOySlaHzhNon1OvZNCSl9wnwTpoHKSSlFM
+NJTyl/FFSgnKYJEoKf/U9Q1nRPwUoB7JQfHnlNUpLjjulAGgShJSwPblP5Jd9E6SmMQIThJImElL
+pjPZJJJSxB7aJNhSS+SKlk6ZOgpSSZKQkpR10THTXv4eKfslykpUpaHhLRMRqT4pKf/V9RCSYeJ5
+TlNUpOmCSSlhyVJR1k+fdPCSlSmJAOvfsn3D5pAJKUDoUh4pcJJKUTCQOnmkRokB5pKVCb8ieSly
+J8ElMZkqQEfBNE6xATyAYlFSo1lOkmlBSwEFKU8DmE6Sn//W9STHROkmqWTqInspJKYu0MpETrOi
+cpIqUkZHHCRE6pRCClQZlMD2TzrBSjRJSjwmBHHdICDHYqSKmOqXbTTy5UkkFLQBwEiJ1SKdJS0n
+hNPhKkmASUoJ00f7k0pKf//X9RB1hOoAHjjuPml5Hk8IKZBOmhP+VBSyRiNeEkklKGo0SKQCX+uq
+KlidfJOoka+SkB2+5KlLRJlPKSUcoKUEoTpklKSCdMeUlKTqIPgn17pKXTJ5THy1SU//0PUdOEu8
+JjzPKU901S6Yz8U6SSlDhNuM6DRP2SjSEVLc+acT93CUJIKVPdLQ6j5FNrolpEoqX7pymCZ0yAgp
+fUpcDzSbKUJKWBOiePFKOyWqKlEkGUpJ4CXx4S40+5JSpSSSCSn/2f/tDHhQaG90b3Nob3AgMy4w
+ADhCSU0EBAAAAAAABxwCAAAC1P4AOEJJTQQlAAAAAAAQG3JYov/n3dYSdNJx+mDfMDhCSU0ELwAA
+AAAASvEBAQBIAAAASAAAAAAAAAAAAAAA0AIAAEACAAAAAAAAAAAAABgDAABkAgAAAAHAAwAAsAQA
+AAEADycBAGoAcABnAAAAAAAAAAAAOEJJTQPtAAAAAAAQAEgAAAABAAIASAAAAAEAAjhCSU0EJgAA
+AAAADgAAAAAAAAAAAAA/gAAAOEJJTQQNAAAAAAAEAAAAHjhCSU0EGQAAAAAABAAAAB44QklNA/MA
+AAAAAAkAAAAAAAAAAAEAOEJJTQQKAAAAAAABAAA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1
+AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAA
+AAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////
+A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D
+6AAAAAD/////////////////////////////A+gAADhCSU0EAAAAAAAAAgAAOEJJTQQCAAAAAAAC
+AAA4QklNBDAAAAAAAAEBADhCSU0ELQAAAAAABgABAAAAAjhCSU0ECAAAAAAAEAAAAAEAAAJAAAAC
+QAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAzAAAAMwAAAAE
+AHQAaQBsAGUAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAMwAAADMAAAAAAAAAAAA
+AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNP
+YmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAA
+QnRvbWxvbmcAAADMAAAAAFJnaHRsb25nAAAAzAAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAA
+AAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3Jp
+Z2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApF
+U2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3Ag
+bG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAAzAAAAABSZ2h0bG9uZwAAAMwA
+AAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZh
+bHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1MYm9vbAEAAAAIY2VsbFRleHRURVhUAAAA
+AQAAAAAACWhvcnpBbGlnbmVudW0AAAAPRVNsaWNlSG9yekFsaWduAAAAB2RlZmF1bHQAAAAJdmVy
+dEFsaWduZW51bQAAAA9FU2xpY2VWZXJ0QWxpZ24AAAAHZGVmYXVsdAAAAAtiZ0NvbG9yVHlwZWVu
+dW0AAAARRVNsaWNlQkdDb2xvclR5cGUAAAAATm9uZQAAAAl0b3BPdXRzZXRsb25nAAAAAAAAAAps
+ZWZ0T3V0c2V0bG9uZwAAAAAAAAAMYm90dG9tT3V0c2V0bG9uZwAAAAAAAAALcmlnaHRPdXRzZXRs
+b25nAAAAAAA4QklNBCgAAAAAAAwAAAABP/AAAAAAAAA4QklNBBEAAAAAAAEBADhCSU0EFAAAAAAA
+BAAAAAI4QklNBAwAAAAABhgAAAABAAAAoAAAAKAAAAHgAAEsAAAABfwAGAAB/9j/4AAQSkZJRgAB
+AgAASABIAAD/7QAMQWRvYmVfQ00AAv/uAA5BZG9iZQBkgAAAAAH/2wCEAAwICAgJCAwJCQwRCwoL
+ERUPDAwPFRgTExUTExgRDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwBDQsLDQ4N
+EA4OEBQODg4UFA4ODg4UEQwMDAwMEREMDAwMDAwRDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
+DP/AABEIAKAAoAMBIgACEQEDEQH/3QAEAAr/xAE/AAABBQEBAQEBAQAAAAAAAAADAAECBAUGBwgJ
+CgsBAAEFAQEBAQEBAAAAAAAAAAEAAgMEBQYHCAkKCxAAAQQBAwIEAgUHBggFAwwzAQACEQMEIRIx
+BUFRYRMicYEyBhSRobFCIyQVUsFiMzRygtFDByWSU/Dh8WNzNRaisoMmRJNUZEXCo3Q2F9JV4mXy
+s4TD03Xj80YnlKSFtJXE1OT0pbXF1eX1VmZ2hpamtsbW5vY3R1dnd4eXp7fH1+f3EQACAgECBAQD
+BAUGBwcGBTUBAAIRAyExEgRBUWFxIhMFMoGRFKGxQiPBUtHwMyRi4XKCkkNTFWNzNPElBhaisoMH
+JjXC0kSTVKMXZEVVNnRl4vKzhMPTdePzRpSkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2JzdHV2d3
+h5ent8f/2gAMAwEAAhEDEQA/APUZMylCXb56JwmqUmSKXZJSkie3dLulGqSlJ4SSkJKUm4ITqI1J
+CKl+ydMkPBBS6SZLukpSQlLTn7ko84SUocpj4jxTjukdEVK1EzwlKXb4ptdPxSU//9D1CPAd1IKI
++CdsRxHkmqUU6b4pgipeE2swNU/xSQUoEHhPoE3Hz5TpKWTQnCUwkpX4pwmTpKUeFCJiee57KSUQ
+kpYSDopFNKdFTEEcd06aNSQn0QUrtBS4TpnT2+aSn//R9SUXaCR2ThMRpH49k0KU3VsnnupcJuPJ
+NMwkpkmEhJIJKX0Tc8aJEA/NLgQkpQ+KSZP5IqWcACI4KfsFEk+E+SkOABwgpaZ41Tz48+CYDkSn
+5KKlJAJym7IKXlMfLlN7hrzJTj70VLpieydMefJJT//S9RTE68SAn80k1Sx1kaynAgR3TQO5M/3p
+HQfkRUvKUBN9/wByeUlLpJtwTgapKUmSjWU6ClJHhJN5fekpYny8ym3SfJSCYanT70VLynSSQUpR
+4kjxUiYTBJS0EHXUHhPyEuU0wfJFT//T9RjtwO6WgCUwlATVKAPdKOyeUwSUoQP7ktYTHmU4KKlo
+JJ1hIgxE6Jzpr+KXKClDXngJhz5KSYpWpdMPNIFLTskpWh84TaJ9Tr2TQkpfcJ8E6aBykkpRTDSU
+8pfxRUoJymCRKCn/1PUNZ0T8FKAeyUHx55TVKS447pQBoEoSUsD25T+SXfROkpjECE4SSJhJS6Yz
+2SSSUsQe2iTYUkvkipZOmToKUkmSkJKUddEx017+Hin7JcpKVKWh4S0TEak+KSn/1fUQkmHieU5T
+VKTpgkkpYclSUdZPn3TwkpUpiQDr37J9w+aQCSlA6FIeKXCSSlEwkDp5pEaJAeaSlQm/InkpcifB
+JTGZKkBHwTROsQE8gGJRUqNZTpJpQUsBBSlPA5hOkp//1vUkx0TpJqlk6iJ7KSSmLtDKRE6zonKS
+KlJGRxwkROqUQgpUGZTA9k86wUo0SUo8JgRx3SAgx2Kkipjql2008uVJJBS0AcBIidUinSUtJ4TT
+4SpJgElKCdNH+5NKSn//1/UQdYTqAB447j5peR5PCCmQTpoT/lQUskYjXhJJJShqNEikAl/rqipY
+nXyTqJGvkpAdvuSpS0SZTyklHKClBKE6ZJSkgnTHlJSk6iD4J9e6Sl0yeUx8tUlP/9D1HThLvCY8
+zylPdNUumM/FOkkpQ4TbjOg0T9ko0hFS3PmnE/dwlCSClT3S0Oo+RTa6JaRKKl+6cpgmdMgIKX1K
+XA80mylCSlgTonjxSjslqipRJBlKSeAl8eEuNPuSUqUkkgkp/9k4QklNBCEAAAAAAFUAAAABAQAA
+AA8AQQBkAG8AYgBlACAAUABoAG8AdABvAHMAaABvAHAAAAATAEEAZABvAGIAZQAgAFAAaABvAHQA
+bwBzAGgAbwBwACAAQwBTADMAAAABADhCSU0EBgAAAAAABwAIAAEAAQEA/+EOl2h0dHA6Ly9ucy5h
+ZG9iZS5jb20veGFwLzEuMC8APD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpy
+ZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0
+az0iQWRvYmUgWE1QIENvcmUgNC4xLWMwMzYgNDYuMjc2NzIwLCBNb24gRmViIDE5IDIwMDcgMjI6
+NDA6MDggICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5
+OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHht
+bG5zOnhhcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6ZGM9Imh0dHA6Ly9w
+dXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9i
+ZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOnhhcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hh
+cC8xLjAvbW0vIiB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIgeG1s
+bnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iIHhhcDpDcmVhdGVEYXRlPSIy
+MDE0LTExLTIzVDEwOjQwOjI3KzA1OjMwIiB4YXA6TW9kaWZ5RGF0ZT0iMjAxNC0xMS0yM1QxMDo0
+OToyNiswNTozMCIgeGFwOk1ldGFkYXRhRGF0ZT0iMjAxNC0xMS0yM1QxMDo0OToyNiswNTozMCIg
+eGFwOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1MzIFdpbmRvd3MiIGRjOmZvcm1hdD0i
+aW1hZ2UvanBlZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOkhpc3Rvcnk9IiIg
+eGFwTU06SW5zdGFuY2VJRD0idXVpZDpBRURDNkFFN0NGNzJFNDExOTE2REFGRTYzRjE1OTBFNiIg
+dGlmZjpPcmllbnRhdGlvbj0iMSIgdGlmZjpYUmVzb2x1dGlvbj0iNzIwMDAwLzEwMDAwIiB0aWZm
+OllSZXNvbHV0aW9uPSI3MjAwMDAvMTAwMDAiIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiIHRpZmY6
+TmF0aXZlRGlnZXN0PSIyNTYsMjU3LDI1OCwyNTksMjYyLDI3NCwyNzcsMjg0LDUzMCw1MzEsMjgy
+LDI4MywyOTYsMzAxLDMxOCwzMTksNTI5LDUzMiwzMDYsMjcwLDI3MSwyNzIsMzA1LDMxNSwzMzQz
+MjsyOENDRUZEREFCODU5NjZGRkE2Q0RFNUFFRTQ2N0NCNiIgZXhpZjpQaXhlbFhEaW1lbnNpb249
+IjIwNCIgZXhpZjpQaXhlbFlEaW1lbnNpb249IjIwNCIgZXhpZjpDb2xvclNwYWNlPSItMSIgZXhp
+ZjpOYXRpdmVEaWdlc3Q9IjM2ODY0LDQwOTYwLDQwOTYxLDM3MTIxLDM3MTIyLDQwOTYyLDQwOTYz
+LDM3NTEwLDQwOTY0LDM2ODY3LDM2ODY4LDMzNDM0LDMzNDM3LDM0ODUwLDM0ODUyLDM0ODU1LDM0
+ODU2LDM3Mzc3LDM3Mzc4LDM3Mzc5LDM3MzgwLDM3MzgxLDM3MzgyLDM3MzgzLDM3Mzg0LDM3Mzg1
+LDM3Mzg2LDM3Mzk2LDQxNDgzLDQxNDg0LDQxNDg2LDQxNDg3LDQxNDg4LDQxNDkyLDQxNDkzLDQx
+NDk1LDQxNzI4LDQxNzI5LDQxNzMwLDQxOTg1LDQxOTg2LDQxOTg3LDQxOTg4LDQxOTg5LDQxOTkw
+LDQxOTkxLDQxOTkyLDQxOTkzLDQxOTk0LDQxOTk1LDQxOTk2LDQyMDE2LDAsMiw0LDUsNiw3LDgs
+OSwxMCwxMSwxMiwxMywxNCwxNSwxNiwxNywxOCwyMCwyMiwyMywyNCwyNSwyNiwyNywyOCwzMDs2
+RTM0QTUzQjU4NUUwRTdCNjEwMDc2RUVEMUJDNzYzMiIvPiA8L3JkZjpSREY+IDwveDp4bXBtZXRh
+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw/
+eHBhY2tldCBlbmQ9InciPz7/7gAOQWRvYmUAZEAAAAAB/9sAhAABAQEBAQEBAQEBAQEBAQEBAQEB
+AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAgICAgICAgIDAwMDAwMDAwMDAQEBAQEBAQEBAQEC
+AgECAgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwP/wAAR
+CADMAMwDAREAAhEBAxEB/90ABAAa/8QArgAAAgMBAQEAAAAAAAAAAAAAAwQAAgUBCgYBAQADAQEA
+AAAAAAAAAAAAAAABAgMEBRAAAAMDBQsIBgYJAwUBAAAAAAIDARME8BExIxQhQVFhcYGRscESM6HR
+4UMkNERU8TJTY3SEInODZJQFQoKTw6S0xOT0o7PUYnKi0+MVEQEAAQMDAwMEAQMDBQAAAAAAAREC
+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
+8Dfo/rbBjys//9k=
+
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://www.beginwithjava.com/css/images/nav-btn.png
+
+iVBORw0KGgoAAAANSUhEUgAAAAIAAAAVCAMAAABbu881AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+bWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp
+bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6
+eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0
+MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJo
+dHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlw
+dGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEu
+MC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVz
+b3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1N
+Ok9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0MkVBOENEM0Y2NEJFMTExOTI1RThFRDIxRkRD
+NTg2QiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxNzY1QkY3OTIyNkMxMUUyOTI3QkE2QTM0
+N0VGMzU5OCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxNzY1QkY3ODIyNkMxMUUyOTI3QkE2
+QTM0N0VGMzU5OCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93
+cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjI0RThFNDJF
+RUFGMUUxMTFBQ0IwRDNGOENCQTQ5OEM1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQyRUE4
+Q0QzRjY0QkUxMTE5MjVFOEVEMjFGREM1ODZCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpS
+REY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+QOktzgAAAD9QTFRFAJDJAKDfAJvY
+AJTOAJfSAJnVAJXPAJ/dAJ/eAJ7cAJLLAJjTAJHKAJrWAJ3aAJPMAI/HAKHfAJDIAJzZAJbRv7Y9
+GQAAADhJREFUeNoMwYUBACAMwLDCsOH2/62QsBbGkBIxokrvnIO1tIb3lIJz3EsIiDAGOVMr397M
++QQYADHpAaUkfmtHAAAAAElFTkSuQmCC
+
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.beginwithjava.com/src/styles/vs.css
+
+@charset "windows-1252";
+
+.hljs { display: block; overflow-x: auto; color: black; text-size-adjust: n=
+one; }
+
+.hljs-comment, .hljs-annotation, .diff .hljs-header, .hljs-chunk, .apache .=
+hljs-cbracket { color: rgb(0, 128, 0); }
+
+.hljs-keyword, .hljs-id, .hljs-built_in, .css .smalltalk .hljs-class, .hljs=
+-winutils, .bash .hljs-variable, .tex .hljs-command, .hljs-request, .hljs-s=
+tatus, .nginx .hljs-title, .xml .hljs-tag, .xml .hljs-tag .hljs-value { col=
+or: rgb(0, 0, 255); }
+
+.hljs-string, .hljs-title, .hljs-parent, .hljs-tag .hljs-value, .hljs-rules=
+ .hljs-value, .ruby .hljs-symbol, .ruby .hljs-symbol .hljs-string, .hljs-te=
+mplate_tag, .django .hljs-variable, .hljs-addition, .hljs-flow, .hljs-strea=
+m, .apache .hljs-tag, .hljs-date, .tex .hljs-formula, .coffeescript .hljs-a=
+ttribute { color: rgb(163, 21, 21); }
+
+.ruby .hljs-string, .hljs-decorator, .hljs-filter .hljs-argument, .hljs-loc=
+alvars, .hljs-array, .hljs-attr_selector, .hljs-pseudo, .hljs-pi, .hljs-doc=
+type, .hljs-deletion, .hljs-envvar, .hljs-shebang, .hljs-preprocessor, .hlj=
+s-pragma, .userType, .apache .hljs-sqbracket, .nginx .hljs-built_in, .tex .=
+hljs-special, .hljs-prompt { color: rgb(43, 145, 175); }
+
+.hljs-phpdoc, .hljs-dartdoc, .hljs-javadoc, .hljs-xmlDocTag { color: rgb(12=
+8, 128, 128); }
+
+.hljs-type, .hljs-typename { font-weight: bold; }
+
+.vhdl .hljs-string { color: rgb(102, 102, 102); }
+
+.vhdl .hljs-literal { color: rgb(163, 21, 21); }
+
+.vhdl .hljs-attribute { color: rgb(0, 176, 232); }
+
+.xml .hljs-attribute { color: rgb(255, 0, 0); }
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.beginwithjava.com/css/menustyle.css
+
+@charset "windows-1252";
+
+@import url("http://fonts.googleapis.com/css?family=3DUbuntu:300,400,500,70=
+0");
+
+@import url("http://fonts.googleapis.com/css?family=3DOpen+Sans:400,600,300=
+");
+
+#cssmenu, #cssmenu ul, #cssmenu li, #cssmenu a { margin: 0px; padding: 0px;=
+ border: 0px; list-style: none; font-weight: normal; text-decoration: none;=
+ line-height: 1; font-family: verdana; font-size: 14px; position: relative;=
+ }
+
+#cssmenu { width: 250px; padding-bottom: 5px; }
+
+#cssmenu a { line-height: 1.3; }
+
+#cssmenu > ul > li:first-child { border-bottom: 1px solid rgb(204, 204, 204=
+); }
+
+#cssmenu > ul > li:first-child > a { padding: 5px 10px; border: none; font-=
+family: verdana; font-size: 18px; font-weight: 300; }
+
+#cssmenu > ul > li:first-child > a > span { padding: 0px; }
+
+#cssmenu > ul > li:first-child:hover { background: rgb(251, 187, 185); }
+
+#cssmenu > ul > li { }
+
+#cssmenu > ul > li:hover { color: rgb(233, 79, 49); }
+
+#cssmenu > ul > li > a { font-size: 14px; display: block; color: rgb(0, 0, =
+0); }
+
+#cssmenu > ul > li > a > span { display: block; text-decoration: underline;=
+ padding: 5px 2px 0px 25px; }
+
+#cssmenu > ul > li > a:hover { text-decoration: none; }
+
+#cssmenu > ul > li.active { border-bottom: none; }
+
+#cssmenu > ul > li.has-sub > a span { background: url("images/arrowr.gif") =
+2% center no-repeat; }
+
+#cssmenu > ul > li.has-sub.active > a span { background: url("images/arrowd=
+.gif") 2% center no-repeat; }
+
+#cssmenu ul ul { background: rgb(255, 255, 255); }
+
+#cssmenu .hd { display: none; }
+
+#cssmenu ul ul li { padding: 0px; border-top: none; }
+
+#cssmenu ul ul li:last-child { border-bottom: none; }
+
+#cssmenu ul ul a { padding: 10px 10px 10px 25px; display: block; color: rgb=
+(103, 103, 103); font-size: 12px; font-weight: normal; }
+
+#cssmenu ul ul a:hover { color: rgb(233, 79, 49); }
+
+#cssmenu .current { background: rgb(204, 204, 204); color: rgb(255, 255, 25=
+5); }
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700
+
+@charset "utf-8";
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 300; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoC1CzjvWyNL4U.w=
+off2") format("woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2D=
+E0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 300; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoC1CzjtGyNL4U.w=
+off2") format("woff2"); unicode-range: U+400-45F, U+490-491, U+4B0-4B1, U+2=
+116; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 300; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoC1CzjvGyNL4U.w=
+off2") format("woff2"); unicode-range: U+1F00-1FFF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 300; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoC1Czjs2yNL4U.w=
+off2") format("woff2"); unicode-range: U+370-3FF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 300; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoC1CzjvmyNL4U.w=
+off2") format("woff2"); unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+202=
+0, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 300; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoC1CzjsGyN.woff=
+2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+=
+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2=
+212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 400; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKcg72j00.woff2=
+") format("woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2=
+DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 400; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKew72j00.woff2=
+") format("woff2"); unicode-range: U+400-45F, U+490-491, U+4B0-4B1, U+2116;=
+ }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 400; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKcw72j00.woff2=
+") format("woff2"); unicode-range: U+1F00-1FFF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 400; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKfA72j00.woff2=
+") format("woff2"); unicode-range: U+370-3FF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 400; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKcQ72j00.woff2=
+") format("woff2"); unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+2020, U=
++20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 400; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKfw72.woff2") =
+format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6,=
+ U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,=
+ U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 500; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCjC3jvWyNL4U.w=
+off2") format("woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2D=
+E0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 500; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCjC3jtGyNL4U.w=
+off2") format("woff2"); unicode-range: U+400-45F, U+490-491, U+4B0-4B1, U+2=
+116; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 500; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCjC3jvGyNL4U.w=
+off2") format("woff2"); unicode-range: U+1F00-1FFF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 500; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCjC3js2yNL4U.w=
+off2") format("woff2"); unicode-range: U+370-3FF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 500; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCjC3jvmyNL4U.w=
+off2") format("woff2"); unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+202=
+0, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 500; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCjC3jsGyN.woff=
+2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+=
+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2=
+212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 700; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvjvWyNL4U.w=
+off2") format("woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2D=
+E0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 700; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvjtGyNL4U.w=
+off2") format("woff2"); unicode-range: U+400-45F, U+490-491, U+4B0-4B1, U+2=
+116; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 700; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvjvGyNL4U.w=
+off2") format("woff2"); unicode-range: U+1F00-1FFF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 700; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvjs2yNL4U.w=
+off2") format("woff2"); unicode-range: U+370-3FF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 700; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvjvmyNL4U.w=
+off2") format("woff2"); unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+202=
+0, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: Ubuntu; font-style: normal; font-weight: 700; src=
+: url("https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvjsGyN.woff=
+2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+=
+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2=
+212, U+2215, U+FEFF, U+FFFD; }
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://fonts.googleapis.com/css?family=Open+Sans:400,600,300
+
+@charset "utf-8";
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 300=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r=
+8OX-hpOqc.woff2") format("woff2"); unicode-range: U+460-52F, U+1C80-1C88, U=
++20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 300=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r=
+8OVuhpOqc.woff2") format("woff2"); unicode-range: U+400-45F, U+490-491, U+4=
+B0-4B1, U+2116; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 300=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r=
+8OXuhpOqc.woff2") format("woff2"); unicode-range: U+1F00-1FFF; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 300=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r=
+8OUehpOqc.woff2") format("woff2"); unicode-range: U+370-3FF; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 300=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r=
+8OXehpOqc.woff2") format("woff2"); unicode-range: U+102-103, U+110-111, U+1=
+28-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 300=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r=
+8OXOhpOqc.woff2") format("woff2"); unicode-range: U+100-24F, U+259, U+1E00-=
+1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 300=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UN_r=
+8OUuhp.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+=
+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, =
+U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ=
+0bbck.woff2") format("woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B=
+4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFUZ=
+0bbck.woff2") format("woff2"); unicode-range: U+400-45F, U+490-491, U+4B0-4=
+B1, U+2116; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWZ=
+0bbck.woff2") format("woff2"); unicode-range: U+1F00-1FFF; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVp=
+0bbck.woff2") format("woff2"); unicode-range: U+370-3FF; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWp=
+0bbck.woff2") format("woff2"); unicode-range: U+102-103, U+110-111, U+128-1=
+29, U+168-169, U+1A0-1A1, U+1AF-1B0, U+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFW5=
+0bbck.woff2") format("woff2"); unicode-range: U+100-24F, U+259, U+1E00-1EFF=
+, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ=
+0b.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-=
+2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+21=
+93, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 600=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNir=
+kOX-hpOqc.woff2") format("woff2"); unicode-range: U+460-52F, U+1C80-1C88, U=
++20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 600=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNir=
+kOVuhpOqc.woff2") format("woff2"); unicode-range: U+400-45F, U+490-491, U+4=
+B0-4B1, U+2116; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 600=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNir=
+kOXuhpOqc.woff2") format("woff2"); unicode-range: U+1F00-1FFF; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 600=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNir=
+kOUehpOqc.woff2") format("woff2"); unicode-range: U+370-3FF; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 600=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNir=
+kOXehpOqc.woff2") format("woff2"); unicode-range: U+102-103, U+110-111, U+1=
+28-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+1EA0-1EF9, U+20AB; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 600=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNir=
+kOXOhpOqc.woff2") format("woff2"); unicode-range: U+100-24F, U+259, U+1E00-=
+1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 600=
+; src: url("https://fonts.gstatic.com/s/opensans/v18/mem5YaGs126MiZpBA-UNir=
+kOUuhp.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+=
+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, =
+U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.beginwithjava.com/css/images/arrowr.gif
+
+R0lGODlhCQAJAKIAAAAAAP////SEWpSUlP///wAAAAAAAAAAACH5BAEAAAQALAAAAAAJAAkAQAMZ
+SLM8pG2pIGoNi1qBh7ZdII7hxmVmSIpDAgA7
+
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.beginwithjava.com/css/images/arrowd.gif
+
+R0lGODlhCQAJAKIAAAAAAP////SEWpSUlP///wAAAAAAAAAAACH5BAEAAAQALAAAAAAJAAkAQAMR
+KLpL/pAw8aaCrVqdeXTUkwAAOw==
+
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://www.beginwithjava.com/images/logo.png
+
+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
+AAAAAElFTkSuQmCC
+
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://www.beginwithjava.com/java/images/inheritance-constructor.png
+
+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
+gRAy6N9//w9J8beBCzdSvQAAAABJRU5ErkJggg==
+
+------MultipartBoundary--O2yNVTA4AgIcPjRJhhmgOrbem318YdtX2fkajZE2HV------

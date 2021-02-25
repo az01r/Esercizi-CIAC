@@ -1,0 +1,43 @@
+mkdir 	crea una cartella
+. 	è un puntatore alla cartella corrente
+.. 	è un puntatore alla cartella superiore		NB . e .. sono presenti in tutte le cartelle
+cd 	change directory
+pwd 	print working directory
+cat 	mostra il contenuto di un file
+ls 	mostra file nella cartella corrente
+	-l mostra gli attributi dei file, il primo carattere indica il tipo di file, gli altri 9 sono per i permessi
+dir 	mostra file nella cartella corrente // non Unix standard command
+touch 	crea file vuoto
+echo stringaqualcosa > nomeFile crea un file e gli scrive dentro stringaqualcosa
+file	ritorna il tipo di un file
+rm	cancella un file
+mv	move rinomina un file (dal punto di vista del sistema operativo il file è stato spostato
+ch mode cambia i permessi
+	7 = 1*2^0+1*2^1+1*2^2 = 111 in binario = rwx
+	4 = 0*2^0+0*2^1+1*2^2 = 100 = r--
+	6 = 0*2^0+1*2^1+1*2^2 = 110 = rw-
+	777 da' read write execute a tutti
+	740 da' read write execute per il proprietario, read per il gruppo, nulla per gli altri
+	esempio: file.txt -rwxrwxrwx
+	read write execute per proprietario del file
+esempio: chmod 777 nomeFile nomeFile2 nomeFile3
+oppure	 chmod 777 * seleziona tutti i file e ne consente tutti i permessi
+	 chmod 666 f? seleziona tutti i file che iniziano per f e poi qualsiasi cosa
+	 chmod 777 [b-g] tutti i file che iniziano per caratteri tra b e g
+REDIREZIONI
+> nomeFile   scrive nel file nomeFile 
+	     NB se un file con lo stesso nome esiste già, lo sovrascrive 
+	     esempio ls > nomeFile scrive in nomeFile la lista dei file nella cartella corrente
+ls >> nomeFile scrive in append, non sostituisce il file se esiste già
+
+Lo shell da i messaggi di errore in un file standarderror,
+ls 2> errormessage 
+wc nomeFile
+| collega output comando a sinistra con input comando a destra
+
+Esempio:
+	ls > nomeFile 		scrive in nomeFile l'elenco dei file nella cartella corrente
+	wc -l < nomeFile	legge da nomeFile il numero di linee e restituisce quante sono
+	
+	equivale a  
+	ls | wc -l
