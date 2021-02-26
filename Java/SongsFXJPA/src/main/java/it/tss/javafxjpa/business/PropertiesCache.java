@@ -64,6 +64,7 @@ public class PropertiesCache {
     public void flush() throws FileNotFoundException, IOException, URISyntaxException {
         System.out.println("flush..");
         URL resourceUrl = this.getClass().getResource("application.properties");
+        System.out.println(resourceUrl.toURI());
         File file = new File(resourceUrl.toURI());
         try (OutputStream outputstream = new FileOutputStream(file);) {
             configProp.store(outputstream, "File Updated");

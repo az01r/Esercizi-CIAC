@@ -19,8 +19,9 @@ import javafx.scene.control.Alert;
 public class DbManager {
 
     public static void check() {
+
         try (
-            Connection cn = DriverManager.getConnection(url(), usr(),pwd());) {
+            Connection cn = DriverManager.getConnection(urlDefault());) {
             Statement cmd = cn.createStatement();
             cmd.executeUpdate("create database if not exists " + dbname() + " character set UTF8");
             System.out.println("configuration ok...");
@@ -30,56 +31,75 @@ public class DbManager {
 
     }
 
-    public static String url() {
+    public static String urlDefault() {
         return new StringBuilder("jdbc:")
-                .append(PropertiesCache.getInstance().getProperty("db.type"))
+                .append(PropertiesCache.getInstance().getProperty("db.type").trim())
                 .append("://")
-                .append(PropertiesCache.getInstance().getProperty("db.server"))
+                .append(PropertiesCache.getInstance().getProperty("db.server").trim())
                 .append(":")
-                .append(PropertiesCache.getInstance().getProperty("db.port"))
+                .append(PropertiesCache.getInstance().getProperty("db.port").trim())
+                .append("/mysql")
+                .append(urlParams())
                 .toString();
     }
 
     public static String urlWithDb() {
-        return new StringBuilder(url())
+        return new StringBuilder("jdbc:")
+                .append(PropertiesCache.getInstance().getProperty("db.type").trim())
+                .append("://")
+                .append(PropertiesCache.getInstance().getProperty("db.server").trim())
+                .append(":")
+                .append(PropertiesCache.getInstance().getProperty("db.port").trim())
                 .append("/")
                 .append(dbname())
+                .append(urlParams())
                 .toString();
     }
-    
+
+    public static String urlParams() {
+        return new StringBuilder()
+                .append("?user=").append(usr())
+                .append("&password=").append(pwd())
+                .append(options().isEmpty() ? "" : options())
+                .toString();
+    }
+
     public static String usr() {
-        return PropertiesCache.getInstance().getProperty("db.usr");
+        return PropertiesCache.getInstance().getProperty("db.usr").trim();
     }
-    
+
     public static String pwd() {
-        return PropertiesCache.getInstance().getProperty("db.pwd");
+        return PropertiesCache.getInstance().getProperty("db.pwd").trim();
     }
-    
+
     public static String dbname() {
-        return PropertiesCache.getInstance().getProperty("db.name");
+        return PropertiesCache.getInstance().getProperty("db.name").trim();
     }
-    
-    public static String driver(){
-        switch(PropertiesCache.getInstance().getProperty("db.type")){
+
+    public static String driver() {
+        switch (PropertiesCache.getInstance().getProperty("db.type").trim()) {
             case "mariadb":
                 return "org.mariadb.jdbc.Driver";
             case "mysql":
-                return "org.mariadb.jdbc.Driver";
-             default:
-                 return "";
+                return "com.mysql.jdbc.Driver"; //per la 8..  com.mysql.cj.jdbc.Driver
+            default:
+                return "";
         }
     }
-    
-    public static String dialect(){
-        switch(PropertiesCache.getInstance().getProperty("db.type")){
+
+    public static String dialect() {
+        switch (PropertiesCache.getInstance().getProperty("db.type").trim()) {
             case "mariadb":
                 return "org.hibernate.dialect.MariaDB103Dialect";
             case "mysql":
-                return "org.hibernate.dialect.MySQL8Dialect";
-             default:
-                 return "";
+                return "org.hibernate.dialect.MySQLDialect";
+            default:
+                return "";
         }
     }
-    
-    
+
+    public static String options() {
+        return PropertiesCache.getInstance().getProperty("db.options").trim();
+    }
+
 }

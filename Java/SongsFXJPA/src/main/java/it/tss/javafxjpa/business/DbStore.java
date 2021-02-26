@@ -25,8 +25,6 @@ public class DbStore {
     static {
         Map<String, String> map = new HashMap();
         map.put("javax.persistence.jdbc.url", DbManager.urlWithDb());
-        map.put("javax.persistence.jdbc.user", DbManager.usr());
-        map.put("javax.persistence.jdbc.password", DbManager.pwd());
         map.put("javax.persistence.jdbc.driver", DbManager.driver());
         map.put("javax.persistence.schema-generation.database.action", "create");
         map.put("hibernate.dialect", DbManager.dialect());
