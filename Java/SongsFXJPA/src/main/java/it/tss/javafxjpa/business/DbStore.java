@@ -19,10 +19,14 @@ import javax.persistence.Persistence;
  */
 public class DbStore {
 
-    private final static EntityManager em;
-    private final static EntityManagerFactory emf;
+    private static EntityManager em;
+    private static EntityManagerFactory emf;
 
     static {
+        init();
+    }
+
+    public static void init() {
         Map<String, String> map = new HashMap();
         map.put("javax.persistence.jdbc.url", DbManager.urlWithDb());
         map.put("javax.persistence.jdbc.driver", DbManager.driver());
@@ -30,10 +34,6 @@ public class DbStore {
         map.put("hibernate.dialect", DbManager.dialect());
         emf = Persistence.createEntityManagerFactory("songs", map);
         em = emf.createEntityManager();
-    }
-
-    public static void init() {
-        System.out.println("init db se necessario..");
     }
 
     public static List<Song> all() {

@@ -10,10 +10,12 @@ import it.tss.javafxjpa.business.DbManager;
 import it.tss.javafxjpa.business.DbStore;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -34,8 +36,13 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DbManager.check();
-        DbStore.init();
+        try {
+            DbManager.check();
+            DbStore.init();
+        }catch(SQLException ex){
+            Messages.showMessage("Errore nell'apertura del database. verifica la configurazione", "", Alert.AlertType.ERROR);
+        }
+
     }
 
     @FXML

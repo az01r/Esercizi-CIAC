@@ -18,17 +18,11 @@ import javafx.scene.control.Alert;
  */
 public class DbManager {
 
-    public static void check() {
-
-        try (
-            Connection cn = DriverManager.getConnection(urlDefault());) {
+    public static void check() throws SQLException {
+            Connection cn = DriverManager.getConnection(urlDefault());
             Statement cmd = cn.createStatement();
             cmd.executeUpdate("create database if not exists " + dbname() + " character set UTF8");
             System.out.println("configuration ok...");
-        } catch (SQLException e) {
-            Messages.showMessage("DBError", "Impossibile connettersi al DB. Verificare la configurazione", Alert.AlertType.ERROR);
-        }
-
     }
 
     public static String urlDefault() {
@@ -92,7 +86,7 @@ public class DbManager {
             case "mariadb":
                 return "org.hibernate.dialect.MariaDB103Dialect";
             case "mysql":
-                return "org.hibernate.dialect.MySQLDialect";
+                return "org.hibernate.dialect.MySQL8Dialect";
             default:
                 return "";
         }
