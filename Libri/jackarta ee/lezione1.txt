@@ -1,0 +1,5 @@
+Application server: server che fanno girare applicazioni web (anche scritte in java)
+Vanno scaricati sulla macchina (si possono anche installare in docker), noi usiamo 
+	WildFly 
+	Payara	(Payara ha anche una image ufficiale di docker)
+	Open Liberty

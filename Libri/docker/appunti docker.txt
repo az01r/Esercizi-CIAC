@@ -1,0 +1,67 @@
+---------------------------------------------------------------------
+----------------------------- GENERALI ------------------------------
+---------------------------------------------------------------------
+docker image --help 		gestisce immagini
+docker network --help		gestisce sottoreti
+docker volume 			gestisce i volumi ovvero cartelle dove i container possono rendere persistenti
+decker pull			docker hub è un cloud per immagini
+
+---------------------------------------------------------------------
+------------------------ SCARICARE IMMAGINI -------------------------
+---------------------------------------------------------------------
+ho bisogno di un web server interno a docker, uno dei più famosi è nginx 
+docker pull nginx (e volendo il tag per la versione)
+docker image inspect nginx 	info su un immagine
+path dove scarica le immagini:
+"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.19.7",
+                "NJS_VERSION=0.5.1",
+                "PKG_RELEASE=1~buster"
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.19.7",
+                "NJS_VERSION=0.5.1",
+                "PKG_RELEASE=1~buster
+
+---------------------------------------------------------------------
+-------------------- CREARE E GESTIRE CONTAINERS --------------------
+---------------------------------------------------------------------
+docker run -d nginx 				crea un container usando l'immagine nginx e gli da lui un nome a caso
+docker run -d --name [nome container] nginx	lo crea dandogli un nome
+docker ps 					mostra i container in run
+docker stop [nome container]			ferma un container
+docker start [nome container]			fa partire un container
+docker rm [nome container]			cancella un container
+docker exec [nome container] /bin/bash		cambia terminale ed entra in quello del sistema operativo del container (di solito linux)
+
+NB lo stato di un container viene perso quando viene rimosso (docker rm [nome container])
+
+
+---------------------------------------------------------------------
+------------------------------ Mapping ------------------------------
+---------------------------------------------------------------------
+Docker permette di mappare una porta di un container a una porta dell'host (il pc vero e proprio)
+docker run -d --name [nome container] -p9001:80 nginx 			collega la porta 9001 dell'host alla porta 80 del container
+docker run -d -v [path cartella host]:[path cartella container] --name [nome container] -p9001:80 nginx 	collega due path
+NB: su windows per vedere le porte libere: netstat -a 
+
+
+---------------------------------------------------------------------
+------------------------ CREARE UN'IMMAGINE -------------------------
+---------------------------------------------------------------------
+FROM nginx
+COPY public_html /usr/share/nginx/html		cartella locale cartella in container
+
+cd \Users\Paolo\Desktop\Esercizi-CIAC\HTML\HTML5lezione1
+docker build -t custom-nginx .
+docker run --name mio-container -d -p9002:80 nginx
+
+
+---------------------------------------------------------------------
+---------------------- PUBBLICARE UN'IMMAGINE -----------------------
+---------------------------------------------------------------------
+
+docker login				usr:dhtssdev pwd:tssdev2021
+docker push [imagename]:tag		:dhtssdev/[solonomeimmagine]
+NB il nome dell'immagine DEVE essere [repository/username/solonomeimmagine]
+
+per scaricarla docker pull [username/solonomeimmagine]
