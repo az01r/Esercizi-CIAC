@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registrati</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <p:growl id="growl" showDetail="true"/>
+            <fieldset >
+                <legend>Dati Anagrafici</legend>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-2">
+                        <p:outputLabel value="Nome" for="txtnome" />
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p:inputText id="txtnome" placeholder="inserisci il nome..." style="width: 300px" value="#{regController.nome}" required="true"
+                                     requiredMessage="nome obbligatorio">
+                        </p:inputText>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <p:outputLabel value="Cognome" for="txtcognome" />
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p:inputText id="txtcognome" placeholder="inserisci il cognome..." style="width: 300px" value="#{regController.cognome}"
+                                     required="true" requiredMessage="cognome obbligatorio"/>
+                    </div>
+                    <div class="ui-g-12">
+                        <p:commandButton value="Invia" 
+                                         actionListener="#{regController.onSave()}" 
+                                         process="@form" 
+                                         update="@form"/>
+                    </div>
+                </div>     
+
+            </fieldset>
+        </h:form>
+    </h:body>
+</html>
+
