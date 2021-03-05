@@ -1,0 +1,4 @@
+.jsp
+sono pagine che usano html
+quando vengono chiamate dall'application server questo le trasforma in servlet
+NB scrivere codice java in una pagina .jsp è deprecato e quindi da evitare

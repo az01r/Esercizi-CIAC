@@ -5,3 +5,11 @@ Vanno scaricati sulla macchina (si possono anche installare in docker), noi usia
 	Open Liberty
 Possiamo creare un collegamento dentro NetBeans per far partire il server direttamente dall'editor:
 	Services->Servers->Add Server->WildFly Application Server
+
+
+
+
+Caricare un .war in un server locale: vedi img 
+Si carica in locale durante lo svilupp dell'app, dopodichè si carica su un server su cui gira
+un application server
+
