@@ -3,3 +3,5 @@ Vanno scaricati sulla macchina (si possono anche installare in docker), noi usia
 	WildFly 
 	Payara	(Payara ha anche una image ufficiale di docker)
 	Open Liberty
+Possiamo creare un collegamento dentro NetBeans per far partire il server direttamente dall'editor:
+	Services->Servers->Add Server->WildFly Application Server
