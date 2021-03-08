@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="link">
+            function valida() {
+                cognome.value=cognome.value.toString().toUpperCase();
+                if(cognome.value=="") cognome.value="non inserito";
+        f.validate();        
+                f.submit();
+            }
+        </script>
+    </head>
+    
+    <body>
+        <h1>Esempio input form</h1>
+        <div id="content">
+            <form id="f" action="forminput.html"> <!-- pagina a cui mandare i dati -->
+                <fieldset>
+                    <label for="cognome">Cognome: </label><br>
+                    <input type="text" id="cognome" name="cognome" placeholder="ins. cognome" size="10" maxlength="40" required><br><br>
+                    <textarea id="msg" name="msg" placeholder="ins. messaggio" rows="5" cols="10"></textarea><br><br>
+                    <select name="pv" size="3" style="
+                            padding: 5px;
+                            border: none;
+                            background-color: #ffcc66
+                            ">
+                        <option value="1">Torino</option>
+                        <option value="24">Ivrea</option>
+                        <option value="53">Cuneo</option>
+                        <option value="15">Alessandria</option>
+                        <option value="62">Rivarolo Canavese</option>
+
+
+                    </select><br><br>
+                    <input id="btninvia" onclick="valida" type="button" value="invia"><br>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
