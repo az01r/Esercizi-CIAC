@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/dati.js"></script>
+        <script src="js/script.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body onload="init()">
+        <header>
+            <h1>Header</h1>
+        </header>
+        <nav></nav>
+        <section id="page">
+            <!-- per gli input si usa sempre un form -->
+            <form id="flogin" name="flogin">
+                <!-- il default degli input è type="text" quindi posso non scriverlo -->
+                <input id="cognome" name="cognome" placeholder="ins. cognome"/> 
+                <input id="nome" name="nome" placeholder="ins. nome"/>
+                <select id="idt" name="idt"></select>
+                <input class="btn" type="button" id="btnlogin" name="btn" value="Login">
+            </form>
+            <div id="msg"></div>
+        </section>
+        <footer>
+            Footer
+        </footer>
+    </body>
+</html>
