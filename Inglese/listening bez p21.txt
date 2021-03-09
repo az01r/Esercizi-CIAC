@@ -1,0 +1,23 @@
+1
+a t
+b f
+c f
+d f
+e f
+f f
+g t
+
+2
+a f
+b f
+c t
+d f
+e f
+f f
+g f
+
+3 
+a f
+b f
+c t
+d f
