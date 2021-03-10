@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://italiancoders.it/introduzione-a-rest/ -->
+<html lang="it-IT" class="no-js no-svg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<meta name="robots" content="max-image-preview:large, index, follow, max-snippet:-1, max-video-preview:-1">
+
+	<!-- This site is optimized with the Yoast SEO plugin v15.9.1 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Introduzione a REST - ItalianCoders</title>
+	<link rel="canonical" href="https://italiancoders.it/introduzione-a-rest/">
+	<meta property="og:locale" content="it_IT">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Introduzione a REST - ItalianCoders">
+	<meta property="og:description" content="introduzione Se sei uno sviluppatore Web avrai sentito sicuramente parlare di Web Service Restful come alternativa ad altre specifiche di computing distribuito, come SOAP. Ma cos’è REST davvero? C’è molta confusione in giro, cerchiamo brevemente di definirlo non focalizzandoci su una sua possibile implementazione ma sui suoi principi. Representational State Transfer (REST) Voglio andare controtendenza e […]">
+	<meta property="og:url" content="https://italiancoders.it/introduzione-a-rest/">
+	<meta property="og:site_name" content="ItalianCoders">
+	<meta property="article:publisher" content="https://www.facebook.com/ItalianCoders-1971215069660744/">
+	<meta property="article:published_time" content="2018-01-06T16:05:57+00:00">
+	<meta property="article:modified_time" content="2018-08-21T19:35:38+00:00">
+	<meta property="og:image" content="https://italiancoders.it/wp-content/uploads/2018/01/rest-sfondo.png">
+	<meta property="og:image:width" content="808">
+	<meta property="og:image:height" content="258">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:label1" content="Scritto da">
+	<meta name="twitter:data1" content="Dario Frongillo">
+	<meta name="twitter:label2" content="Tempo di lettura stimato">
+	<meta name="twitter:data2" content="9 minuti">
+	<script src="./Introduzione a REST - ItalianCoders_files/iubenda.js.download"></script><script type="text/javascript" async="" src="./Introduzione a REST - ItalianCoders_files/analytics.js.download"></script><script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://italiancoders.it/#website","url":"https://italiancoders.it/","name":"ItalianCoders","description":"Nuovo blog di riferimento per sviluppatori italiani. Il blog offre articoli tecnici di forte impatto e a un livello tecnico medio-alto.","potentialAction":[{"@type":"SearchAction","target":"https://italiancoders.it/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"it-IT"},{"@type":"ImageObject","@id":"https://italiancoders.it/introduzione-a-rest/#primaryimage","inLanguage":"it-IT","url":"https://italiancoders.it/wp-content/uploads/2018/01/rest-sfondo.png","width":808,"height":258},{"@type":"WebPage","@id":"https://italiancoders.it/introduzione-a-rest/#webpage","url":"https://italiancoders.it/introduzione-a-rest/","name":"Introduzione a REST - ItalianCoders","isPartOf":{"@id":"https://italiancoders.it/#website"},"primaryImageOfPage":{"@id":"https://italiancoders.it/introduzione-a-rest/#primaryimage"},"datePublished":"2018-01-06T16:05:57+00:00","dateModified":"2018-08-21T19:35:38+00:00","author":{"@id":"https://italiancoders.it/#/schema/person/c168ab4d60c02c2cc8553b1cfbc9d50a"},"breadcrumb":{"@id":"https://italiancoders.it/introduzione-a-rest/#breadcrumb"},"inLanguage":"it-IT","potentialAction":[{"@type":"ReadAction","target":["https://italiancoders.it/introduzione-a-rest/"]}]},{"@type":"BreadcrumbList","@id":"https://italiancoders.it/introduzione-a-rest/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://italiancoders.it/","url":"https://italiancoders.it/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://italiancoders.it/introduzione-a-rest/","url":"https://italiancoders.it/introduzione-a-rest/","name":"Introduzione a REST"}}]},{"@type":"Person","@id":"https://italiancoders.it/#/schema/person/c168ab4d60c02c2cc8553b1cfbc9d50a","name":"Dario Frongillo","image":{"@type":"ImageObject","@id":"https://italiancoders.it/#personlogo","inLanguage":"it-IT","url":"https://secure.gravatar.com/avatar/c05b6b1c63b4f5c76bbc5a861d7d6f59?s=96&d=retro&r=g","caption":"Dario Frongillo"},"description":"Fondatore di Italiancoders e dell iniziativa devtalks. Software architect con un forte background in Java, Architettura REST, framework Spring , Database Design,progettazione e sviluppo di SPA e RIA Web application con framework Javascript. Attualmente mi occupo di sviluppo soluzioni software in ambito Banking e Finance: in particolare progettazione e sviluppo di applicativi web based per la realizzazione di sistemi di trading, interfacce con i mercati finanziari e di servizi real time.","sameAs":["http://dariofrongillo.com/"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="ItalianCoders » Feed" href="https://italiancoders.it/feed/">
+<link rel="alternate" type="application/rss+xml" title="ItalianCoders » Feed dei commenti" href="https://italiancoders.it/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="ItalianCoders » Introduzione a REST Feed dei commenti" href="https://italiancoders.it/introduzione-a-rest/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/italiancoders.it\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Introduzione a REST - ItalianCoders_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./Introduzione a REST - ItalianCoders_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="github-embed-css" href="./Introduzione a REST - ItalianCoders_files/github-embed.css" type="text/css" media="all">
+<link rel="stylesheet" id="mks_shortcodes_simple_line_icons-css" href="./Introduzione a REST - ItalianCoders_files/simple-line-icons.css" type="text/css" media="screen">
+<link rel="stylesheet" id="mks_shortcodes_css-css" href="./Introduzione a REST - ItalianCoders_files/style.css" type="text/css" media="screen">
+<link rel="stylesheet" id="dashicons-css" href="./Introduzione a REST - ItalianCoders_files/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="post-views-counter-frontend-css" href="./Introduzione a REST - ItalianCoders_files/frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="l2h_style-css" href="./Introduzione a REST - ItalianCoders_files/latex.min.css" type="text/css" media="screen, print">
+<link rel="stylesheet" id="l2h_print_style-css" href="./Introduzione a REST - ItalianCoders_files/print.min.css" type="text/css" media="print">
+<link rel="stylesheet" id="typology-fonts-css" href="./Introduzione a REST - ItalianCoders_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="typology-main-css" href="./Introduzione a REST - ItalianCoders_files/min.css" type="text/css" media="all">
+<style id="typology-main-inline-css" type="text/css">
+body,blockquote:before, q:before{font-family: 'Domine';font-weight: 400;}body,.typology-action-button .sub-menu{color:#444444;}body{background:#f8f8f8;font-size: 1.6em;}.typology-fake-bg{background:#f8f8f8;}.typology-sidebar,.typology-section{background:#ffffff;}h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6,.submit,.mks_read_more a,input[type="submit"],a.mks_button,.cover-letter,.post-letter,.woocommerce nav.woocommerce-pagination ul li span,.woocommerce nav.woocommerce-pagination ul li a,.woocommerce div.product .woocommerce-tabs ul.tabs li,.typology-pagination a,.typology-pagination span,.comment-author .fn,.post-date-month,.typology-button-social,.mks_autor_link_wrap a,.entry-pre-title,.typology-button,button{font-family: 'Josefin Sans';font-weight: 700;}.typology-header .typology-nav{font-family: 'Josefin Sans';font-weight: 700;}.typology-cover .entry-title,.typology-cover h1 { font-size: 6.4rem;}h1, .h1 {font-size: 4.8rem;}h2, .h2 {font-size: 3.5rem;}h3, .h3 {font-size: 2.8rem;}h4, .h4 {font-size: 2.3rem;}h5, .h5,.typology-layout-c.post-image-on .entry-title {font-size: 1.8rem;}h6, .h6 {font-size: 1.5rem;}.widget{font-size: 1.4rem;}.typology-header .typology-nav a{font-size: 1.1rem;}.typology-layout-b .post-date-hidden,.meta-item{font-size: 1.3rem;}.post-letter {font-size: 26rem;}.cover-letter {font-size: 60rem;}h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.post-date-month{color:#333333;}.typology-single-sticky a{color:#444444;}.entry-title a:hover,.typology-single-sticky a:hover{color:#1e73be;}.bypostauthor .comment-author:before,#cancel-comment-reply-link:after{background:#1e73be;}a,.widget .textwidget a,.typology-layout-b .post-date-hidden{color: #1e73be;}.typology-header{height:110px;}.typology-header-sticky-on .typology-header{background:#1e73be;}.site-title a,.typology-site-description{color: #ffffff;}.typology-header .typology-nav,.typology-header .typology-nav > li > a{color: #ffffff;}.typology-header .typology-nav .sub-menu a{ color:#444444;}.typology-header .typology-nav .sub-menu a:hover{color: #1e73be;}.typology-action-button .sub-menu ul a:before{background: #1e73be;}.sub-menu .current-menu-item a{color:#1e73be;}.dot,.typology-header .typology-nav .sub-menu{background:#ffffff;}.typology-header .typology-main-navigation .sub-menu .current-menu-ancestor > a,.typology-header .typology-main-navigation .sub-menu .current-menu-item > a{color: #1e73be;}.typology-header-wide .slot-l{left: 35px;}.typology-header-wide .slot-r{right: 20px;}.meta-item,.meta-item span,.meta-item a,.comment-metadata a{color: #888888;}.comment-meta .url,.meta-item a:hover{color:#333333;}.typology-post:after,.section-title:after,.typology-pagination:before{background:rgba(51,51,51,0.2);}.typology-layout-b .post-date-day,.typology-outline-nav li a:hover,.style-timeline .post-date-day{color:#1e73be;}.typology-layout-b .post-date:after,blockquote:before,q:before{background:#1e73be;}.typology-sticky-c,.typology-sticky-to-top span,.sticky-author-date{color: #888888;}.typology-outline-nav li a{color: #444444;}.typology-post.typology-layout-b:before{background:rgba(68,68,68,0.1);}.submit,.mks_read_more a,input[type="submit"],a.mks_button,.typology-button,.submit,.typology-button-social,.widget .mks_autor_link_wrap a,.widget .mks_read_more a,button{color:#ffffff;background: #1e73be;border:1px solid #1e73be;}.button-invert{color:#1e73be;background:transparent;}.widget .mks_autor_link_wrap a:hover,.widget .mks_read_more a:hover{color:#ffffff;}.typology-cover{min-height: 240px;}.typology-cover-empty{height:209px;min-height:209px;}.typology-fake-bg .typology-section:first-child {top: -99px;}.typology-flat .typology-cover-empty{height:110px;}.typology-flat .typology-cover{min-height:110px;}.typology-cover-empty,.typology-cover-item,.typology-header-sticky{background:#1e73be;}.typology-cover-overlay:after{background: rgba(30,115,190,0.6);}.typology-sidebar-header{background:#1e73be;}.typology-cover,.typology-cover .entry-title,.typology-cover .entry-title a,.typology-cover .meta-item,.typology-cover .meta-item span,.typology-cover .meta-item a,.typology-cover h1,.typology-cover h2,.typology-cover h3{color: #ffffff;}.typology-cover .typology-button{color: #1e73be;background:#ffffff;border:1px solid #ffffff;}.typology-cover .button-invert{color: #ffffff;background: transparent;}.typology-cover-slider .owl-dots .owl-dot span{background:#ffffff;}.typology-outline-nav li:before,.widget ul li:before{background:#1e73be;}.widget a{color:#444444;}.widget a:hover,.widget_calendar table tbody td a,.entry-tags a:hover{color:#1e73be;}.widget_calendar table tbody td a:hover,.widget table td,.entry-tags a{color:#444444;}.widget table,.widget table td,.widget_calendar table thead th,table,td, th{border-color: rgba(68,68,68,0.3);}.widget ul li,.widget .recentcomments{color:#444444;}.widget .post-date{color:#888888;}#today{background:rgba(68,68,68,0.1);}.typology-pagination .current, .typology-pagination .infinite-scroll a, .typology-pagination .load-more a, .typology-pagination .nav-links .next, .typology-pagination .nav-links .prev, .typology-pagination .next a, .typology-pagination .prev a{color: #ffffff;background:#333333;}.typology-pagination a, .typology-pagination span{color: #333333;border:1px solid #333333;}.typology-footer{background:#f8f8f8;color:#aaaaaa;}.typology-footer h1,.typology-footer h2,.typology-footer h3,.typology-footer h4,.typology-footer h5,.typology-footer h6,.typology-footer .post-date-month{color:#aaaaaa;}.typology-count{background: #1e73be;}.typology-footer a, .typology-footer .widget .textwidget a{color: #888888;}input[type="text"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"], input[type="date"], input[type="password"], textarea, select{border-color:rgba(68,68,68,0.2);}blockquote:after, blockquote:before, q:after, q:before{-webkit-box-shadow: 0 0 0 10px #ffffff;box-shadow: 0 0 0 10px #ffffff;}body.wp-editor{background:#ffffff;}.site-title{text-transform: uppercase;}.typology-site-description{text-transform: none;}.typology-nav{text-transform: uppercase;}h1, h2, h3, h4, h5, h6{text-transform: uppercase;}.section-title{text-transform: uppercase;}.widget-title{text-transform: uppercase;}.meta-item{text-transform: none;}.typology-button{text-transform: uppercase;}.submit,.mks_read_more a,input[type="submit"],a.mks_button,.typology-button,.widget .mks_autor_link_wrap a,.widget .mks_read_more a,button,.typology-button-social{text-transform: uppercase;}
+</style>
+<link rel="stylesheet" id="cookie-notice-front-css" href="./Introduzione a REST - ItalianCoders_files/front.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="enlighterjs-css" href="./Introduzione a REST - ItalianCoders_files/enlighterjs.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/jquery.min.js.download" id="jquery-core-js"></script>
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/jquery-migrate.min.js.download" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="https://italiancoders.it/wp-json/"><link rel="alternate" type="application/json" href="https://italiancoders.it/wp-json/wp/v2/posts/1587"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://italiancoders.it/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://italiancoders.it/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://italiancoders.it/?p=1587">
+<link rel="alternate" type="application/json+oembed" href="https://italiancoders.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://italiancoders.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F&amp;format=xml">
+<style>
+.latex_thm, .latex_lem, .latex_cor, .latex_defn, .latex_prop, .latex_rem{
+  margin:0;padding:5px;
+  background: lightcyan;
+  border: solid 3px green;
+  -moz-border-radius: 1.0em;
+  -webkit-border-radius: 7px;
+  box-shadow: 0 0 0 green;
+}
+.latex_em{
+  font-style: italic;
+}
+.bibtex_title{
+  font-weight:bold;
+  color: #004b33;
+}
+a.bibtex_title{
+  text-decoration: none;
+}
+</style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://italiancoders.it/wp-content/uploads/2017/10/cropped-favicon-32x32.png" sizes="32x32">
+<link rel="icon" href="https://italiancoders.it/wp-content/uploads/2017/10/cropped-favicon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://italiancoders.it/wp-content/uploads/2017/10/cropped-favicon-180x180.png">
+<meta name="msapplication-TileImage" content="https://italiancoders.it/wp-content/uploads/2017/10/cropped-favicon-270x270.png">
+<style type="text/css">article.typology-layout-c { display:flex; flex-direction:column; } /*Stile per disqus*/ #disqus_thread { max-width: 720px; margin: 0 auto 12rem; } /*Stili per i form*/ .nf-field .nf-field-label { margin-bottom: 0px; } .typology-input { min-height: 32px !important; } .nf-error-msg { font-size: 13px; } .nf-form-fields-required { font-size: 13px; margin-bottom: 20px; } /*Pagina autori e alert*/ img.black-and-white { -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%); } .authors-grid { display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; -webkit-align-content: stretch; -ms-flex-line-pack: stretch; align-content: stretch; -webkit-align-items: flex-start; -ms-flex-align: start; align-items: flex-start; } .authors-grid > .author-card { -webkit-order: 0; -ms-flex-order: 0; order: 0; -webkit-flex: 0 1 45%; -ms-flex: 0 1 45%; flex: 0 1 45%; -webkit-align-self: auto; -ms-flex-item-align: auto; align-self: auto; } @media (max-width: 800px) { .authors-grid > .author-card { -webkit-flex: 0 1 100%; -ms-flex: 0 1 100%; flex: 0 1 100%; } } .authors-grid > .author-card { margin-top: 8px; margin-bottom: 20px; } .authors-grid > .author-card > .author-avatar { width: auto; height: auto; max-width: 100%; } .authors-grid > .author-card > .author-name { margin-bottom: 0px; margin-top: 5px; } .authors-grid > .author-card > .author-bio { text-align:justify; font-size: 14px; margin-bottom: 15px; } .authors-grid > .author-card > .author-links > .typology-button { width: auto; min-width: 30px; } .alert{ padding:15px; margin-bottom:.5rem; border:1px solid transparent; border-radius:.125rem; position: relative; padding-left:54px; } .alert:before { font-family: FontAwesome; font-size: 25px; display: block; position: absolute; left: 17px; top: 17px; line-height: 25px; } .alert-heading{ color:inherit; } .alert-link{ font-weight:700; } .alert-dismissible{ padding-right:35px; } .alert-dismissible .close{ position:relative; top:-2px; right:-21px; color:inherit; } .alert-tooltip:before { content: "\f0eb"; } .alert-tooltip{ border-color:#a555ca; background-color:#a555ca0a; color:#a555ca; } .alert-tooltip hr{ border-top-color:#fff; } .alert-tooltip .alert-link{ color:#e6e6e6; } .alert-success:before { content: "\f087"; } .alert-success{ border-color:#4caf50; background-color: #4caf500a; color:#4caf50; } .alert-success hr{ border-top-color:#fff; } .alert-success .alert-link{ color:#e6e6e6; } .alert-info:before { content: "\f05a"; } .alert-info{ border-color:#1e73be; background-color: #1e73be0a; color:#1e73be; } .alert-info hr{ border-top-color:#fff; } .alert-info .alert-link{ color:#e6e6e6; } .alert-warning:before { content: "\f06a"; } .alert-warning{ border-color:#ff5722; background-color: #ff57220a; color:#ff5722; } .alert-warning hr{ border-top-color:#fff; } .alert-warning .alert-link{ color:#e6e6e6; } .alert-danger:before { content: "\f057"; } .alert-danger{ border-color:#f44336; background-color: #f443360a; color:#f44336; } .alert-danger hr{ border-top-color:#fff; } .alert-danger .alert-link{ color:#e6e6e6; } /*Layout temp fix*/ .typology-header .typology-main-navigation { opacity: 1 !important; } #menu-nav { text-align: right } #typology-header > .container { display: table; width: 100%; } #typology-header .slot-logo { display: table-cell; width: 200px; } #typology-header .slot-menu { display: table-cell; vertical-align: middle; } #typology-header .slot-sidebar { display: table-cell; width: 40px; vertical-align: middle; } @media (max-width: 930px) { #typology-header .slot-menu > ul#menu-nav { display: none; } } .section-content.partner-list { margin-bottom: 0px; } .typology-section.first-section { box-shadow: 0 5px 50px 0 rgba(1,1,1,.15); -webkit-box-shadow: 0 5px 50px 0 rgba(1,1,1,.15); } .partner-list a { text-decoration: none !important; border-bottom-width: 0px !important; } /* modifiche all'header logo - menu centrati */ #typology-header img.typology-logo { max-width: 120px; } #typology-header > .container { display: flex; flex-flow: row nowrap; justify-content: space-around; align-items: center; } #typology-header .typology-action-sidebar { margin-top: -2px; } @media (max-width: 930px) { #typology-header .typology-action-sidebar { margin-top: 0px; } #typology-header .slot-menu { display: none; } #typology-header > .container { padding-left: 10px; padding-right: 10px; justify-content: space-between; } #typology-header .typology-site-branding{ display: inline-flex; } #typology-header .slot-logo { padding: 13px 15px; } } /* fine modifiche all'header logo - menu centrati */ .typology-posts-2 { display: flex; flex-wrap: wrap; -webkit-box-align: center; align-items: center; } #follow-us > a.mks_button_large { width: 100%; font-size: 2rem; padding: 1rem; height: auto; }</style>	<script async="" type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/count.js.download"></script><script type="text/javascript" async="" src="./Introduzione a REST - ItalianCoders_files/embed.js.download"></script><script src="./Introduzione a REST - ItalianCoders_files/count-data.js.download"></script><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.c82b267b396dfbc10ae5113342115da8.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.f485ba8b89bf2153fdb9f493ec342aed.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.54cf549c270b597d5587d24486b38d71.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><script src="./Introduzione a REST - ItalianCoders_files/alfie_v4.63f1ab6d6b9d5807dc0c94ef3fe0b851.js.download" async="" charset="UTF-8"></script><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><style type="text/css"></style></head>
+
+	<body class="post-template-default single single-post postid-1587 single-format-standard typology-header-wide cookies-set cookies-accepted">
+
+		<header id="typology-header" class="typology-header" style="z-index: 1000;">
+			<div class="container">
+					<div class="slot-logo">
+	<div class="typology-site-branding">
+	
+	<span class="site-title h4"><a href="https://italiancoders.it/" rel="home"><img class="typology-logo" src="./Introduzione a REST - ItalianCoders_files/logo.png" alt="ItalianCoders" style="width: 120px;"></a></span>	
+</div>
+	
+</div>
+<div class="slot-menu">
+				<ul id="menu-nav" class="typology-nav typology-main-navigation" style="opacity: 1;"><li id="menu-item-6265" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-6265"><a href="https://italiancoders.it/about/">Chi Siamo</a>
+<ul class="sub-menu">
+	<li id="menu-item-6270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6270"><a href="https://italiancoders.it/about/">Manifesto</a></li>
+	<li id="menu-item-6269" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6269"><a href="https://italiancoders.it/about/contributors/">Contributors</a></li>
+	<li id="menu-item-6268" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6268"><a href="https://italiancoders.it/about/blog/">Iniziativa Blog</a></li>
+	<li id="menu-item-6267" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6267"><a href="https://italiancoders.it/about/devtalks/">Iniziativa  DevTalks</a></li>
+	<li id="menu-item-6266" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6266"><a href="https://italiancoders.it/about/channels/">Follow Us</a></li>
+</ul>
+</li>
+<li id="menu-item-5818" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5818"><a href="https://italiancoders.it/devtalks/">DevTalks</a></li>
+<li id="menu-item-875" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-875"><a href="https://italiancoders.it/c/algoritmi-e-strutture-dati/">Algoritmi e Strutture Dati</a></li>
+<li id="menu-item-1775" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1775"><a href="https://italiancoders.it/c/design-pattern/">Design Pattern</a></li>
+<li id="menu-item-24" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-24"><a href="https://italiancoders.it/c/intelligenza-artificiale/">Intelligenza artificiale</a>
+<ul class="sub-menu">
+	<li id="menu-item-876" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-876"><a href="https://italiancoders.it/c/machine-learning/">Machine Learning</a></li>
+</ul>
+</li>
+<li id="menu-item-1776" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1776"><a href="https://italiancoders.it/c/linguaggitecnologie/">Linguaggi&amp;Tecnologie</a>
+<ul class="sub-menu">
+	<li id="menu-item-735" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-735"><a href="https://italiancoders.it/c/linguaggitecnologie/android/">Android</a></li>
+	<li id="menu-item-77" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-77"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/c-cpp/">C/C++</a></li>
+	<li id="menu-item-2306" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2306"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/csharp/">C#</a></li>
+	<li id="menu-item-842" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-842"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/database/">Database</a>
+	<ul class="sub-menu">
+		<li id="menu-item-843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-843"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/database/oracle/">Oracle</a></li>
+	</ul>
+</li>
+	<li id="menu-item-80" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-80"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/go/">Go</a></li>
+	<li id="menu-item-25" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-25"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/java/">Java</a>
+	<ul class="sub-menu">
+		<li id="menu-item-715" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-715"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/java/spring/">Spring</a></li>
+	</ul>
+</li>
+	<li id="menu-item-720" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-720"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/">Javascript</a>
+	<ul class="sub-menu">
+		<li id="menu-item-721" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-721"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/angular/">Angular</a></li>
+		<li id="menu-item-722" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-722"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/react/">React</a></li>
+		<li id="menu-item-1622" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1622"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/vue-js/">Vue.js</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1849" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1849"><a href="https://italiancoders.it/c/linguaggitecnologie/kotlin/">Kotlin</a></li>
+	<li id="menu-item-729" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-729"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/node-js/">Node.js</a>
+	<ul class="sub-menu">
+		<li id="menu-item-730" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-730"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/node-js/expressjs/">Express.js</a></li>
+	</ul>
+</li>
+	<li id="menu-item-29" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-29"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/php/">Php</a></li>
+	<li id="menu-item-30" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-30"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/python/">Python</a></li>
+</ul>
+</li>
+<li id="menu-item-736" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-736"><a href="https://italiancoders.it/c/extra/">Extra</a></li>
+<li id="menu-item-5543" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5543"><a href="https://italiancoders.it/c/gcp/">Google Cloud Platform</a></li>
+<li id="menu-item-4221" class="menu-item menu-item-type-post_type_archive menu-item-object-partner menu-item-4221"><a href="https://italiancoders.it/partner/">Partner</a></li>
+</ul>			
+</div>
+<div class="slot-sidebar">
+	<ul class="typology-nav ">
+	<li class="typology-action-button">
+		<span class="typology-action-sidebar">
+			<i class="fa fa-bars"></i>
+		</span>
+	</li>
+</ul></div>			</div>
+
+							<div style="display:none;"><!--Global Site Tag (gtag.js) &#8211; Google Analytics--><div class="textwidget custom-html-widget"><script async="" src="./Introduzione a REST - ItalianCoders_files/js"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-107733052-1', { 'anonymize_ip': true });
+</script></div></div>					</header>
+
+
+
+	
+
+	
+		
+
+		
+		<div id="typology-cover" class="typology-cover " style="height: 959px;">
+
+					<div class="typology-cover-item typology-cover-single typology-cover-overlay" style="height: 959px; position: fixed;">
+
+		<div class="cover-item-container" style="opacity: 0.0815433;">
+		    <header class="entry-header">
+		        <h1 class="entry-title">Introduzione a REST</h1>		         
+	                <div class="entry-meta"><div class="meta-item meta-comments"><a href="https://italiancoders.it/introduzione-a-rest/#disqus_thread" data-disqus-identifier="1587 https://italiancoders.it/?p=1587">0 Comments</a></div><div class="meta-item meta-author">Di <span class="vcard author"><span class="fn"><a href="https://italiancoders.it/author/dario-frongillo/">Dario Frongillo</a></span></span></div><div class="meta-item meta-category">In <a href="https://italiancoders.it/c/extra/" rel="category tag">Extra</a></div><div class="meta-item meta-date"><span class="updated">6 Gennaio 2018</span></div></div>
+	            		    </header>
+		    		    	<div class="cover-letter">I</div>
+		    		</div>
+
+					<div class="typology-cover-img">
+				<img src="./Introduzione a REST - ItalianCoders_files/rest-sfondo.png">			</div>
+		
+	</div>
+
+
+		</div>
+
+		<div class="typology-fake-bg">
+
+			<div class="typology-section first-section">
+
+
+
+				<div class="section-content">
+    <article id="post-1587" class="typology-post typology-single-post post-1587 post type-post status-publish format-standard has-post-thumbnail hentry category-extra tag-architetura tag-rest tag-restful tag-web">
+
+                
+        <div class="entry-content clearfix">
+                                        	
+	
+		<div class="typology-social-icons">
+							<a href="javascript:void(0);" class="typology-facebook typology-share-item hover-on" data-url="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F&amp;t=Introduzione+a+REST"><i class="fa fa-facebook"></i></a>							<a href="javascript:void(0);" class="typology-twitter typology-share-item hover-on" data-url="http://twitter.com/intent/tweet?url=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F&amp;text=Introduzione+a+REST"><i class="fa fa-twitter"></i></a>							<a href="javascript:void(0);" class="typology-reddit typology-share-item hover-on" data-url="http://www.reddit.com/submit?url=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F&amp;title=Introduzione+a+REST"><i class="fa fa-reddit-alien"></i></a>							<a href="javascript:void(0);" class="typology-gplus typology-share-item hover-on" data-url="https://plus.google.com/share?url=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F"><i class="fa fa-google-plus"></i></a>							<a href="javascript:void(0);" class="typology-linkedin typology-share-item hover-on" data-url="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://italiancoders.it/introduzione-a-rest/&amp;title=Introduzione a REST"><i class="fa fa-linkedin"></i></a>					</div>
+
+	            
+            
+            <h2>introduzione</h2>
+<p>Se sei uno sviluppatore Web avrai sentito sicuramente parlare di Web Service Restful come alternativa ad altre specifiche di computing distribuito, come&nbsp;<a title="SOAP" href="https://it.wikipedia.org/wiki/SOAP">SOAP</a>. Ma cos’è REST davvero? C’è molta confusione in giro, cerchiamo brevemente di definirlo non focalizzandoci su una sua possibile implementazione ma sui suoi principi.</p>
+<h2 align="center"></h2>
+<h2 style="text-align: left;" align="center">Representational State Transfer (REST)</h2>
+<p>Voglio andare controtendenza e partire da cosa non è Rest, andando a smascherare falsi miti e le false voci che si sentono in giro.</p>
+<h3>NON E’ UN PROTOCOLLO</h3>
+<p>Un protocollo di solito descrive i messaggi esatti (o parti di essi) che i due (o più) attori devono scambiare. Specificare anche la coreografia su come vengono scambiati questi messaggi e cosa significano. Uno stile architetturale (come REST) non descrive affatto i messaggi, ma specifica i requisiti (vincoli architetturali) che i messaggi, la coreografia o parti del sistema devono soddisfare.</p>
+<h3>NON E’ UNa specifica</h3>
+<p>A differenza dei servizi Web basati su SOAP, non esiste uno standard “ufficiale” per le API Web RESTful. Questo perché REST è uno stile architetturale, mentre SOAP è un protocollo. REST non è uno standard in sé, ma le implementazioni REST fanno uso di standard, come HTTP, URI, JSON e XML. Molti sviluppatori descrivono anche le proprie API come RESTful, anche se queste API in realtà non soddisfano tutti i vincoli architetturali previsti da REST.</p>
+<h3><strong>NON E’ PER FORZA LEGATO AD HTTP</strong></h3>
+<p>Una cosa che confonde le persone, è che REST e HTTP sembrano essere la medesima cosa. Dopotutto, il world wide web funziona su HTTP, e ha senso, l’API RESTful fa lo stesso. Tuttavia, non c’è nulla nei vincoli REST che rende obbligatorio l’uso di HTTP come protocollo di trasferimento. È perfettamente possibile utilizzare altri protocolli di trasferimento come SNMP, SMTP e altri.</p>
+<h3>QUINDI CHE COS’E’ ?</h3>
+<p>L’espressione<strong> “representational state transfer”</strong> e il suo acronimo<strong> “REST”</strong> furono introdotti nel 2000&nbsp;nella tesi di dottorato di&nbsp;<a title="Roy Fielding" href="https://it.wikipedia.org/wiki/Roy_Fielding">Roy Fielding</a>,<sup id="cite_ref-1" class="reference"></sup>&nbsp;uno dei principali autori delle specifiche dell’Hypertext Transfer Protocol (<a class="mw-redirect" title="Hyper Text Transfer Protocol" href="https://it.wikipedia.org/wiki/Hyper_Text_Transfer_Protocol">HTTP</a>). Roy Fielding descrive il&nbsp;<b>Representational State Transfer&nbsp;</b>come uno&nbsp;stile architetturale (“architectural style”), ovvero&nbsp;un’astrazione degli elementi di un’architettura all’interno di un sistema hypermedia distribuito. REST ignora i dettagli dell’implementazione dei componenti e della sintassi del protocollo al fine di concentrarsi sui ruoli dei componenti, i vincoli sulla loro interazione con altri componenti e la loro interpretazione. Ci tengo ancora una volta a dire che è molto importante capire la differenza tra un architettura e protocollo:&nbsp;mentre un protocollo potrebbe specificare: “usa JSON nel seguente formato per richiedere un preventivo”. Uno stile architetturale dice semplicemente: “i client possono contattare i server, ma non il contrario”. È un livello di astrazione completamente diverso.</p>
+<p>Basta filosofeggiare! Abbiamo detto tutto quello che non è REST, abbiamo detto che è uno stile architetturale: un’astrazione degli elementi di un’architettura costruita su dei principi descritti a fondo nella tesi di <strong>Roy Fielding</strong>.&nbsp; Ma quali sono questi principi che costituiscono una architettura REST?</p>
+<p>&nbsp;</p>
+<h2>PRINCIPI E VINCOLI DI REST</h2>
+<p>Riassumiamo i principi che deve rispettare una architettura REST.</p>
+<p>&nbsp;</p>
+<h3 id="c78c" class="graf graf--h4 graf-after--p">1. Client-Server</h3>
+<p>Una architettura REST sposa il noto paradigma dell’informatica conosciuto con il termine di <strong>separation of concerns (SoC)</strong>&nbsp;: tradotto in italiano come <em>“separazione delle preoccupazioni o compiti</em>“. <strong>SoC</strong> è un principio di progettazione per separare un sistema in moduli distinti, in modo tale che ogni modulo si preoccupi di un certo compito.</p>
+<p>REST applica il paradigma&nbsp;<strong>SoC </strong>con un architettura Client-Server . Ciò aiuta a stabilire un’architettura distribuita, supportando in tal modo l’evoluzione indipendente della logica lato client e della logica lato server.</p>
+<p>Il vincolo Client-Server richiede che il server offra una o più funzionalità e ascolti le richieste di possibili client. Un client invoca il servizio messo a disposizione dal server inviando il corrispondente messaggio di richiesta e il servizio lato server respinge la richiesta o esegue l’attività richiesta prima di inviare un messaggio di risposta al client. La gestione delle eccezioni è delegata al client.</p>
+<p><img loading="lazy" class="alignnone size-full wp-image-1633 aligncenter" src="./Introduzione a REST - ItalianCoders_files/clise.png" alt="" width="959" height="525" srcset="https://italiancoders.it/wp-content/uploads/2018/01/clise.png 959w, https://italiancoders.it/wp-content/uploads/2018/01/clise-300x164.png 300w, https://italiancoders.it/wp-content/uploads/2018/01/clise-768x420.png 768w, https://italiancoders.it/wp-content/uploads/2018/01/clise-720x394.png 720w, https://italiancoders.it/wp-content/uploads/2018/01/clise-580x318.png 580w, https://italiancoders.it/wp-content/uploads/2018/01/clise-320x175.png 320w" sizes="(max-width: 959px) 100vw, 959px"></p>
+<h3 id="c78c" class="graf graf--h4 graf-after--p">2. stateless</h3>
+<p>La comunicazione tra utente del servizio (client) e servizio (server) deve essere senza stato tra le richieste. Ciò significa che ogni richiesta da parte di un client dovrebbe contenere tutte le informazioni necessarie per il servizio per comprendere il significato della richiesta. Tutti i dati sullo stato della sessione dovrebbero quindi essere restituiti al consumatore del servizio alla fine di ciascuna richiesta. In breve ogni richiesta è come se fosse la prima richiesta e non è correlata ad una precedente richiesta.</p>
+<p>Se il server è senza stato, può scalare molto più facilmente e sicuramente sarà molto più semplice perché elimina alla radice il problema della gestione e sincronizzazione delle sessioni utente in ambienti clusterizzati. Facciamo un esempio: il tuo servizio REST è utilizzato da milioni di persone e non regge il carico? Essendo stateless potrà essere scalato orizzontalmente in maniera semplicissima: basterà tirare su più istanze del tuo servizio&nbsp; bilanciando il carico. Come? Utilizzando un<strong> Load Balancer</strong> che si ponga davanti alle istanze dei nostri server e passi le richieste seguendo delle regole ben precise (ad esempio, con l’algoritmo round robin a turno ogni server riceverà una richiesta, giunti all’ultimo server si riprende l’assegnazione partendo dal primo).</p>
+<h3></h3>
+<h3>3. CACHE</h3>
+<p>Parto a descrivere questa proprietà dei sistemi REST con una citazione molto nota nel WEB</p>
+<blockquote><p>La richiesta di rete più efficiente è quella che non utilizza la rete.</p></blockquote>
+<p>in un Architettura REST i messaggi di risposta dal servizio ai suoi consumatori sono esplicitamente etichettati come cachabili o non. In questo modo, il servizio, il consumatore o uno dei componenti middleware intermediari possono memorizzare nella cache la risposta per il riutilizzo nelle richieste successive.</p>
+<p>Il vincolo Cache si basa su Client-Server e Stateless con il requisito che le risposte siano etichettate implicitamente o esplicitamente come memorizzabili nella cache o non memorizzabili nella cache. Le richieste vengono passate attraverso un componente cache, che può riutilizzare le risposte precedenti per eliminare parzialmente o completamente alcune interazioni sulla rete</p>
+<p><img loading="lazy" class="alignnone size-full wp-image-1634" src="./Introduzione a REST - ItalianCoders_files/proxy-cache.jpg" alt="" width="220" height="337" srcset="https://italiancoders.it/wp-content/uploads/2018/01/proxy-cache.jpg 220w, https://italiancoders.it/wp-content/uploads/2018/01/proxy-cache-196x300.jpg 196w" sizes="(max-width: 220px) 100vw, 220px"></p>
+<p>&nbsp;</p>
+<h3>4. interfaccia uniforme</h3>
+<p>Per avere un caching efficiente in una rete, i componenti devono essere in grado di comunicare tramite un’interfaccia uniforme. Con un’interfaccia uniforme, il carico utile può essere trasferito in un formato standard.</p>
+<h4>4.1. Identificazione delle risorse</h4>
+<p>Una risorsa è&nbsp;un oggetto o la rappresentazione di qualcosa di significativo nel dominio applicativo. È possibile interagire con le risorse attraverso le API. Esempi di entità? Un Libro, un Ordine, un Post e qualsiasi altra entità che si può astrarre da un determinato contesto. Il concetto di risorsa è quindi molto simile a quello di oggetto nel mondo della programmazione ad oggetti.</p>
+<h4>4.2. Manipolazione delle risorse attraverso rappresentazioni</h4>
+<p>Una risorsa può essere rappresentata in molti modi diversi.<br>
+Ad esempio come HTML, XML, JSON o anche come file JPEG.<br>
+Questa regola significa che i clienti interagiscono con le risorse tramite le loro rappresentazioni, il che è un modo potente per mantenere i concetti di risorse astratti dalle loro interazioni. La rappresentazione più famosa utilizzata nelle implementazioni REST è il <a href="https://www.json.org/json-it.html">JSON</a>&nbsp;. Un esempio di rappresentazione di una risorsa con JSON:</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-hover enlighter-linenumbers "><div class="enlighter-toolbar-top enlighter-toolbar"><div class="enlighter-btn enlighter-btn-raw" title="Plain text"></div><div class="enlighter-btn enlighter-btn-copy" title="Copy to clipboard"></div><div class="enlighter-btn enlighter-btn-window" title="Open code in new window"></div><div class="enlighter-btn enlighter-btn-website" title="EnlighterJS 3 Syntax Highlighter"></div></div><div class="enlighter" style=""><div class=""><div><span class="enlighter-g1">{</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text">   </span><span class="enlighter-s0">"name"</span><span class="enlighter-text">: </span><span class="enlighter-s0">"Marco"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text">   </span><span class="enlighter-s0">"surname"</span><span class="enlighter-text">: </span><span class="enlighter-s0">"Rossi"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text">   </span><span class="enlighter-s0">"age"</span><span class="enlighter-text"> </span><span class="enlighter-g0">:</span><span class="enlighter-text"> </span><span class="enlighter-n1">30</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">}</span></div></div></div><div class="enlighter-raw">{
+   "name": "Marco",
+   "surname": "Rossi",
+   "age" : 30
+
+}</div><div class="enlighter-toolbar-bottom enlighter-toolbar"></div></div><pre class="EnlighterJSRAW enlighter-origin" data-enlighter-language="null">{
+   "name": "Marco",
+   "surname": "Rossi",
+   "age" : 30
+
+}</pre>
+<h4>4.3&nbsp; Hypermedia deve essere il motore dello stato dell’applicazione</h4>
+<p>Ciò significa solo che l’applicazione deve essere guidata da collegamenti, consentendo ai clienti di scoprire risorse tramite collegamenti ipertestuali. Come si può notare, molte di queste regole possono essere implementate nel protocollo HTTP. Pertanto, quando un’API utilizza correttamente HTTP, è un enorme passo avanti verso RESTful.</p>
+<h3></h3>
+<h3>5. Sistema stratificato (LAYERED SYSTEM)</h3>
+<p>In un sistema a livelli, componenti intermedi come i proxy possono essere collocati tra client e server utilizzando l’interfaccia uniforme del web.<br>
+Uno dei vantaggi di un sistema a più livelli è che gli intermediari possono intercettare il traffico client-server per scopi specifici; ad esempio il caching o sicurezza.<br>
+Una soluzione basata su REST può essere composta da più livelli architettonici e quest’ultimi sono indipendenti l’uno dall’altro. I livelli possono essere aggiunti, rimossi, modificati o riordinati in risposta a come la soluzione deve evolversi.</p>
+<p><img loading="lazy" class="alignnone size-full wp-image-1635" src="./Introduzione a REST - ItalianCoders_files/lay.jpg" alt="" width="638" height="359" srcset="https://italiancoders.it/wp-content/uploads/2018/01/lay.jpg 638w, https://italiancoders.it/wp-content/uploads/2018/01/lay-300x169.jpg 300w, https://italiancoders.it/wp-content/uploads/2018/01/lay-580x326.jpg 580w, https://italiancoders.it/wp-content/uploads/2018/01/lay-320x180.jpg 320w" sizes="(max-width: 638px) 100vw, 638px"></p>
+<h3></h3>
+<h3 id="69bb" class="graf graf--h4 graf-after--p">6. Code On&nbsp;Demand</h3>
+<p>Questo vincolo facoltativo è inteso principalmente a consentire alla logica all’interno dei client (come i browser Web) di essere aggiornata indipendentemente dalla logica lato server. Al momento della tesi di <strong>Roy Fielding</strong>, il web era per lo più solo documenti statici e l’unico “client web” era il browser stesso. Oggi è normale che le app web basate su JavaScript stiano consumando API REST: le<strong> single page application</strong> rispettano in pieno questo punto.</p>
+<h2></h2>
+<h2>e restFUL che significa?</h2>
+<p>Abbiamo appena descritto i principi di una architettura REST. Spesso però sentiamo parlare dell’acronimo <strong>RESTful&nbsp;</strong>nel contesto di <strong>REST</strong>. Sono sinonimi? No non significano esattemente la solita cosa: mentre REST viene definito con uno “stile architetturale” con delle caratteristiche e principi, <strong>RESTful</strong> viene in genere utilizzato per fare riferimento a servizi Web che implementano l’architettura REST. Un tipico esempio sono le API di sistemi che rispettano i vincoli e principi descritti nel paragrafo precedente.</p>
+<h2></h2>
+<h2>VANTAGGI</h2>
+<p>Sono un estimatore dell’architettura RESTful; da quando adotto questo stile nei miei sistemi ho acquisito innumerevoli vantaggi, tra i quali:</p>
+<div id="gt-res-c" class="g-unit">
+<div id="gt-res-p">
+<div id="gt-res-data">
+<div id="gt-res-wrap">
+<div id="gt-res-content">
+<div id="gt-res-dir-ctr" class="trans-verified-button-small" dir="ltr"><span id="result_box" class="" lang="it"><strong>Separazione tra client e server</strong>: il protocollo REST separa completamente l’interfaccia utente dal server.&nbsp;Questo ha alcuni vantaggi in fase di sviluppo: </span></div>
+<ul>
+<li class="trans-verified-button-small" dir="ltr"><span id="result_box" class="" lang="it">Permette in grossi progetti di separare nel modo migliore il lavoro tra developer;</span></li>
+<li class="trans-verified-button-small" dir="ltr">Consente l’evoluzione indipendente delle diverse componenti degli sviluppi: se ad es. oggi il frontend di una Web Application REST è scritto in Angular e tra due anni esce un fantastico nuovo framework per il frontend, è possibile sostituire il componente frontend senza modificare una riga di codice del backend (è fattibile anche il viceversa)</li>
+<li class="trans-verified-button-small" dir="ltr"><span id="result_box" class="" lang="it">Portabilità dell’interfaccia ad altri tipi di piattaforme: l’interfaccia REST utilizzata da un frontend può essere riutilizzata a costo zero per sviluppare un applicazione Mobile.&nbsp;</span></li>
+</ul>
+<p><strong>Visibilità, affidabilità e scalabilità:&nbsp;</strong>La separazione tra client e server ha un evidente vantaggio: il sistema può essere scalato senza troppi problemi. Client e Server possono risiedere su server differenti e come già spiegato è facilissimo scalare orizzontalmente un componente dell’architettura con pochissima difficoltà e con nessun impatto per l’altro componente.</p>
+<p><strong>Indipendenza da linguaggi e tecnologie specifiche</strong> : L’API REST è sempre indipendente dal tipo di piattaforma o linguaggio: l’API REST si adatta sempre al tipo di linguaggio o piattaforme utilizzate, il che conferisce notevole libertà nella scelta del linguaggio o framework per l’implementazione di un componente. Con un’API REST è possibile avere server PHP, Java, Python o Node.js o qualsiasi linguaggio di programmazione che vi viene in mente. L’unica cosa è che è indispensabile che le risposte alle richieste vengano sempre eseguite nella lingua utilizzata per lo scambio di informazioni, normalmente JSON.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h2></h2>
+<h2>conclusione</h2>
+<p>In questo articolo ho seguito un approccio differente dai migliaia di articoli che tentano di spiegare RestFul andando dritto all’implementazione nel framework figo del momento. È importante capire i principi di questa architettura per riuscire a sviluppare sistemi scalabili e affidabili. Ho tenuto a chiarire che l’implementazione REST che tutti noi conosciamo (vedi Api RestFul) è solo una possibile implementazione di questo stile architetturale. REST non ha solo cambiato il mondo del WEB; la potenza di questa architettura è molto utilizzata in contesti dove la scalabilità è un MUST. Per citarne uno,<span id="result_box" class="" lang="it"><span class=""> <strong>CoAP (Constrained Application Protocol)</strong> è un protocollo RESTful per dispositivi embedded (IOT) ed è stato progettato per utilizzare risorse minime sia sul dispositivo che sulla rete.&nbsp;</span></span></p>
+<p>La serie su REST prosegue nei seguenti articoli:</p>
+<ul>
+<li><a href="https://italiancoders.it/rest-web-api-linee-guida/">Linee guida sul design di api restful</a></li>
+<li><a href="https://italiancoders.it/autenticazione-di-servizi-rest-con-jwt-spring/">Autenticazione di sistemi REST utilizzando JWT</a></li>
+</ul>
+<p>&nbsp;</p>
+<h2>BIBLIOGRAFIA</h2>
+<p><a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures(Roy T. Fielding)</a></p>
+<p>&nbsp;</p>
+
+                        
+                            <div class="entry-tags"><a href="https://italiancoders.it/t/architetura/" rel="tag">ARCHITETURA</a> <a href="https://italiancoders.it/t/rest/" rel="tag">rest</a> <a href="https://italiancoders.it/t/restful/" rel="tag">RESTFUL</a> <a href="https://italiancoders.it/t/web/" rel="tag">web</a></div>
+            
+        </div>
+        
+                     	
+	
+		<div class="typology-social-icons">
+							<a href="javascript:void(0);" class="typology-facebook typology-share-item hover-on" data-url="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F&amp;t=Introduzione+a+REST"><i class="fa fa-facebook"></i></a>							<a href="javascript:void(0);" class="typology-twitter typology-share-item hover-on" data-url="http://twitter.com/intent/tweet?url=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F&amp;text=Introduzione+a+REST"><i class="fa fa-twitter"></i></a>							<a href="javascript:void(0);" class="typology-reddit typology-share-item hover-on" data-url="http://www.reddit.com/submit?url=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F&amp;title=Introduzione+a+REST"><i class="fa fa-reddit-alien"></i></a>							<a href="javascript:void(0);" class="typology-gplus typology-share-item hover-on" data-url="https://plus.google.com/share?url=https%3A%2F%2Fitaliancoders.it%2Fintroduzione-a-rest%2F"><i class="fa fa-google-plus"></i></a>							<a href="javascript:void(0);" class="typology-linkedin typology-share-item hover-on" data-url="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://italiancoders.it/introduzione-a-rest/&amp;title=Introduzione a REST"><i class="fa fa-linkedin"></i></a>					</div>
+
+	        
+    </article>
+</div>
+
+
+				
+	<div class="section-head"><h3 class="section-title h6">A proposito di me</h3></div>		
+	<div class="section-content typology-author">
+			
+		<div class="container">
+
+			<div class="col-lg-2">
+				<img alt="" src="./Introduzione a REST - ItalianCoders_files/c05b6b1c63b4f5c76bbc5a861d7d6f59.jpeg" srcset="https://secure.gravatar.com/avatar/c05b6b1c63b4f5c76bbc5a861d7d6f59?s=200&amp;d=retro&amp;r=g 2x" class="avatar avatar-100 photo" height="100" width="100" loading="lazy">			</div>
+
+			<div class="col-lg-10">
+
+				<h5 class="typology-author-box-title">Dario Frongillo</h5>
+				<div class="typology-author-desc">
+					<p>Fondatore di Italiancoders e dell iniziativa devtalks.<br>
+Software architect con un forte background  in Java, Architettura REST, framework Spring , Database Design,progettazione e sviluppo di SPA e RIA Web application con framework Javascript. Attualmente mi occupo di sviluppo soluzioni software in ambito Banking e Finance: in particolare progettazione e sviluppo di applicativi web based per la realizzazione di sistemi di trading, interfacce con i mercati finanziari e di servizi real time.</p>
+				</div>
+
+				<div class="typology-author-links">
+					<a class="typology-button-social hover-on" href="https://italiancoders.it/author/dario-frongillo/">Altro</a><a href="http://dariofrongillo.com/" target="_blank" class="typology-icon-social hover-on fa fa-link"></a>				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+				
+<div id="disqus_thread"><iframe id="dsq-app9438" name="dsq-app9438" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Introduzione a REST - ItalianCoders_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 390px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+
+
+
+			</div>
+
+
+
+		
+
+
+	
+
+
+
+
+
+	<div id="typology-single-sticky" class="typology-single-sticky typology-single-sticky-show typology-show-meta">
+		
+		<div class="typology-sticky-content meta">
+			
+<div class="typology-flex-center">
+	<div class="typology-sticky-author typology-sticky-l">
+		<img alt="" src="./Introduzione a REST - ItalianCoders_files/c05b6b1c63b4f5c76bbc5a861d7d6f59(1).jpeg" srcset="https://secure.gravatar.com/avatar/c05b6b1c63b4f5c76bbc5a861d7d6f59?s=100&amp;d=retro&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" loading="lazy">		<span class="sticky-author-title">
+			<a href="https://italiancoders.it/author/dario-frongillo/">Di Dario Frongillo</a> 
+			<span class="sticky-author-date">6 Gennaio 2018</span>
+		</span>
+	</div>
+	<div class="typology-sticky-c">
+		
+	</div>
+
+	<div class="typology-sticky-comments typology-sticky-r">
+							<a href="https://italiancoders.it/introduzione-a-rest/#disqus_thread" data-disqus-identifier="1587 https://italiancoders.it/?p=1587">0 Comments</a>			</div>
+
+</div>
+		</div>
+
+		<div class="typology-sticky-content prev-next">
+			<nav class="typology-prev-next-nav typology-flex-center">
+	
+	
+<div class="typology-prev-link typology-sticky-l">	
+				
+			<a href="https://italiancoders.it/introduzione-al-devops/">
+				<span class="typology-pn-ico"><i class="fa fa fa-chevron-left"></i></span>
+				<span class="typology-pn-link">Introduzione al DevOps</span>
+			</a>
+	</div>
+	
+	<a href="javascript: void(0);" class="typology-sticky-to-top typology-sticky-c">
+			<span class="typology-top-ico"><i class="fa fa fa-chevron-up"></i></span>
+			<span class="typology-top-link">Torna su</span>
+	</a>
+
+<div class="typology-next-link typology-sticky-r">	
+		
+			<a href="https://italiancoders.it/freelance-lavoratore-dipendente-video/">
+				<span class="typology-pn-ico"><i class="fa fa fa-chevron-right"></i></span>
+				<span class="typology-pn-link">Freelance o Lavoratore dipendente? [VIDEO]</span>
+			</a>
+			</div>
+</nav>
+
+		</div>
+	</div>
+
+
+
+												<div class="typology-section" style="margin-top: -50px;">
+						<div class="section-head">
+							<h1 class="section-title h6">I nostri Partner</h1>
+							<div class="widget_text section-content section-content-c layout-odd partner-list"><div class="textwidget custom-html-widget"><div class="typology-posts-2">
+	<article class="typology-post typology-layout-c col-lg-6 text-center">
+		<a href="https://italiancoders.it/partner/need-for-nerd/">
+			<img src="./Introduzione a REST - ItalianCoders_files/partner-need4nerd.png" class="img-responsive center-block" alt="Need4Nerd">
+		</a>
+	</article>
+</div></div></div>						</div>
+					</div>
+							
+
+			<footer id="typology-footer" class="typology-footer">
+
+
+
+				<div class="container">
+
+					
+
+
+					
+						<div class="col-lg-4"><div id="custom_html-2" class="widget_text widget clearfix widget_custom_html"><div class="textwidget custom-html-widget"><iframe class="iubenda-ibadge" scrolling="no" frameborder="0" allowtransparency="true" style="width:114px; height:22px;" title="Privacy Policy " src="javascript:window[&quot;contents&quot;]" src="./Introduzione a REST - ItalianCoders_files/saved_resource(1).html"></iframe><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script></div></div></div>
+
+					
+
+
+					
+				</div>
+
+
+
+			</footer>
+
+
+
+		</div>
+
+
+
+		<div class="typology-sidebar">
+	<div class="typology-sidebar-header">
+		<div class="typology-sidebar-header-wrapper">
+			<div class="typology-site-branding">
+	
+	<span class="site-title h4"><a href="https://italiancoders.it/" rel="home"><img class="typology-logo" src="./Introduzione a REST - ItalianCoders_files/logo.png" alt="ItalianCoders" style="width: 200px;"></a></span>	
+</div>
+			<span class="typology-sidebar-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+		</div>
+	</div>
+
+	<div class="widget typology-responsive-menu" style="display: none;">
+					<ul id="menu-nav-1" class="typology-nav typology-main-navigation"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-6265"><a href="https://italiancoders.it/about/">Chi Siamo</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6270"><a href="https://italiancoders.it/about/">Manifesto</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6269"><a href="https://italiancoders.it/about/contributors/">Contributors</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6268"><a href="https://italiancoders.it/about/blog/">Iniziativa Blog</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6267"><a href="https://italiancoders.it/about/devtalks/">Iniziativa  DevTalks</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6266"><a href="https://italiancoders.it/about/channels/">Follow Us</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5818"><a href="https://italiancoders.it/devtalks/">DevTalks</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-875"><a href="https://italiancoders.it/c/algoritmi-e-strutture-dati/">Algoritmi e Strutture Dati</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1775"><a href="https://italiancoders.it/c/design-pattern/">Design Pattern</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-24"><a href="https://italiancoders.it/c/intelligenza-artificiale/">Intelligenza artificiale</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-876"><a href="https://italiancoders.it/c/machine-learning/">Machine Learning</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1776"><a href="https://italiancoders.it/c/linguaggitecnologie/">Linguaggi&amp;Tecnologie</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-735"><a href="https://italiancoders.it/c/linguaggitecnologie/android/">Android</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-77"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/c-cpp/">C/C++</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2306"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/csharp/">C#</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-842"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/database/">Database</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-843"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/database/oracle/">Oracle</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-80"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/go/">Go</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-25"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/java/">Java</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-715"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/java/spring/">Spring</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-720"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/">Javascript</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-721"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/angular/">Angular</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-722"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/react/">React</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1622"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/vue-js/">Vue.js</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1849"><a href="https://italiancoders.it/c/linguaggitecnologie/kotlin/">Kotlin</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-729"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/node-js/">Node.js</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-730"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/node-js/expressjs/">Express.js</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-29"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/php/">Php</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-30"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/python/">Python</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-736"><a href="https://italiancoders.it/c/extra/">Extra</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5543"><a href="https://italiancoders.it/c/gcp/">Google Cloud Platform</a></li>
+<li class="menu-item menu-item-type-post_type_archive menu-item-object-partner menu-item-4221"><a href="https://italiancoders.it/partner/">Partner</a></li>
+</ul>		</div>
+
+					
+								<div id="search-2" class="widget clearfix widget_search"><form class="typology-search-form" action="https://italiancoders.it/" method="get">
+	<input name="s" type="text" value="" placeholder="Scrivi qui per cercare">
+	<button type="submit" class="typology-button typology-button-search typology-icon-button">Cerca</button> 
+	</form></div><div id="post_views_counter_list_widget-2" class="widget clearfix widget_post_views_counter_list_widget"><h4 class="widget-title h5">Gli articoli più letti</h4><ul>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/introduzione-spring-inversion-of-control/">Spring-01 – Introduzione al framework Spring</a> <span class="count">(38.862)</span>
+			</li>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/ordinamento-di-un-array-parte-1/">Ordinamento di un Array – Parte 1</a> <span class="count">(35.974)</span>
+			</li>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/autenticazione-di-servizi-rest-con-jwt-spring/">Autenticazione di servizi REST con JWT [SPRING]</a> <span class="count">(32.461)</span>
+			</li>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/introduzione-a-rest/">Introduzione a REST</a> <span class="count">(30.615)</span>
+			</li>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/rest-web-api-linee-guida/">Linee guida per il design di REST API</a> <span class="count">(27.432)</span>
+			</li></ul></div>
+		<div id="recent-posts-2" class="widget clearfix widget_recent_entries">
+		<h4 class="widget-title h5">Articoli recenti</h4>
+		<ul>
+											<li>
+					<a href="https://italiancoders.it/il-buono-il-brutto-lipc-considerazioni-sulle-prestazioni-della-posix-ipc-pt-3/">Il buono, il brutto, l’IPC – considerazioni sulle prestazioni della POSIX IPC – pt.3</a>
+									</li>
+											<li>
+					<a href="https://italiancoders.it/come-ho-superato-lesame-ckad-certified-kubernetes-application-developer/">Come ho superato l’esame CKAD ( Certified Kubernetes Application Developer)</a>
+									</li>
+											<li>
+					<a href="https://italiancoders.it/sviluppare-in-cobol-puo-essere-divertente/">Sviluppare in COBOL può essere divertente</a>
+									</li>
+											<li>
+					<a href="https://italiancoders.it/svelte-usiamo-i-componenti/">Svelte, usiamo i componenti</a>
+									</li>
+											<li>
+					<a href="https://italiancoders.it/per-qualche-ipc-in-piu-considerazioni-sulle-prestazioni-della-posix-ipc-pt-2/">Per qualche IPC in più – considerazioni sulle prestazioni della POSIX IPC – pt.2</a>
+									</li>
+					</ul>
+
+		</div><div id="recent-comments-2" class="widget clearfix widget_recent_comments"><h4 class="widget-title h5">Commenti recenti</h4><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="https://italiancoders.it/spring-03-introduzione-al-container-ioc-spring/" rel="external nofollow ugc" class="url">Spring-03: Introduzione al Container IoC di Spring - ItalianCoders</a></span> su <a href="https://italiancoders.it/introduzione-spring-inversion-of-control/#comment-51">Spring-01 – Introduzione al framework Spring</a></li><li class="recentcomments"><span class="comment-author-link"><a href="https://italiancoders.it/abstract-factory-design-pattern/" rel="external nofollow ugc" class="url">Abstract Factory Design Pattern - ItalianCoders</a></span> su <a href="https://italiancoders.it/factory-method-design-pattern/#comment-49">Factory Method Design Pattern</a></li><li class="recentcomments"><span class="comment-author-link">Ruggiero Altini</span> su <a href="https://italiancoders.it/kotlin-cose-cosa-serve-sapere-ai-programmatori-java/#comment-45">Kotlin: Che cos’è e cosa serve sapere ai programmatori Java</a></li><li class="recentcomments"><span class="comment-author-link">Luca</span> su <a href="https://italiancoders.it/kotlin-cose-cosa-serve-sapere-ai-programmatori-java/#comment-44">Kotlin: Che cos’è e cosa serve sapere ai programmatori Java</a></li><li class="recentcomments"><span class="comment-author-link">Mattia Marchiani</span> su <a href="https://italiancoders.it/decorator-pattern/#comment-43">DECORATOR PATTERN</a></li></ul></div>				
+</div>
+
+<div class="typology-sidebar-overlay"></div>
+		
+
+		<script type="text/javascript" id="disqus_count-js-extra">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"https-italiancoders-it"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/comment_count.js.download" id="disqus_count-js"></script>
+<script type="text/javascript" id="disqus_embed-js-extra">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.21"},"disqusIdentifier":"1587 https:\/\/italiancoders.it\/?p=1587","disqusShortname":"https-italiancoders-it","disqusTitle":"Introduzione a REST","disqusUrl":"https:\/\/italiancoders.it\/introduzione-a-rest\/","postId":"1587"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/comment_embed.js.download" id="disqus_embed-js"></script>
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/main.js.download" id="mks_shortcodes_js-js"></script>
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/comment-reply.min.js.download" id="comment-reply-js"></script>
+<script type="text/javascript" id="typology-main-js-extra">
+/* <![CDATA[ */
+var typology_js_settings = {"rtl_mode":"","header_sticky":"","logo":"https:\/\/italiancoders.it\/wp-content\/uploads\/2018\/10\/logo.png","logo_retina":"https:\/\/italiancoders.it\/wp-content\/uploads\/2018\/10\/logo.png","use_gallery":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/min.js.download" id="typology-main-js"></script><iframe style="display: none;" src="./Introduzione a REST - ItalianCoders_files/saved_resource(2).html"></iframe>
+<script type="text/javascript" id="cookie-notice-front-js-extra">
+/* <![CDATA[ */
+var cnArgs = {"ajaxUrl":"https:\/\/italiancoders.it\/wp-admin\/admin-ajax.php","nonce":"08e986b94f","hideEffect":"fade","position":"bottom","onScroll":"1","onScrollOffset":"100","onClick":"0","cookieName":"cookie_notice_accepted","cookieTime":"2592000","cookieTimeRejected":"2592000","cookiePath":"\/","cookieDomain":"","redirection":"0","cache":"1","refuse":"0","revokeCookies":"0","revokeCookiesOpt":"automatic","secure":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/front.min.js.download" id="cookie-notice-front-js"></script>
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/enlighterjs.min.js.download" id="enlighterjs-js"></script>
+<script type="text/javascript" id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"enlighter","language":"enlighter","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script type="text/javascript" src="./Introduzione a REST - ItalianCoders_files/wp-embed.min.js.download" id="wp-embed-js"></script>
+
+		<!-- Cookie Notice plugin v2.0.3 by Digital Factory https://dfactory.eu/ -->
+		<div id="cookie-notice" role="banner" class="cn-position-bottom cn-effect-fade cookie-notice-hidden cookie-revoke-visible" aria-label="Cookie Notice" style="background-color: rgba(30,115,190,1);"><div class="cookie-notice-container" style="color: #fff;"><span id="cn-notice-text" class="cn-text-container">Navigando sul nostro sito ti dichiari d'accordo con la nostra informativa cookie.</span><span id="cn-notice-buttons" class="cn-buttons-container"><a href="https://italiancoders.it/introduzione-a-rest/#" id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button wp-default button" aria-label="Ok">Ok</a><a href="https://italiancoders.it/informativa-cookie/" target="_blank" id="cn-more-info" class="cn-more-info cn-button wp-default button" aria-label="Leggi">Leggi</a></span><a href="javascript:void(0);" id="cn-close-notice" data-cookie-set="accept" class="cn-close-icon" aria-label="Ok"></a></div>
+			
+		</div>
+		<!-- / Cookie Notice plugin -->
+
+
+	
+
+
+<!-- Dynamic page generated in 1.599 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2021-03-10 10:05:48 -->
+
+<!-- Compression = gzip --></body></html>

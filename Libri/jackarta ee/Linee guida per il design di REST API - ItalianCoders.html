@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://italiancoders.it/rest-web-api-linee-guida/ -->
+<html lang="it-IT" class="no-js no-svg"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<meta name="robots" content="max-image-preview:large, index, follow, max-snippet:-1, max-video-preview:-1">
+
+	<!-- This site is optimized with the Yoast SEO plugin v15.9.1 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Linee guida per il design di REST API - ItalianCoders</title>
+	<meta name="description" content="L&#39;obiettivo di questo articolo è quello di fornire un insieme di linee guida attraverso punti chiave / suggerimenti su come progettare REST API">
+	<link rel="canonical" href="https://italiancoders.it/rest-web-api-linee-guida/">
+	<meta property="og:locale" content="it_IT">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Linee guida per il design di REST API - ItalianCoders">
+	<meta property="og:description" content="L&#39;obiettivo di questo articolo è quello di fornire un insieme di linee guida attraverso punti chiave / suggerimenti su come progettare REST API">
+	<meta property="og:url" content="https://italiancoders.it/rest-web-api-linee-guida/">
+	<meta property="og:site_name" content="ItalianCoders">
+	<meta property="article:publisher" content="https://www.facebook.com/ItalianCoders-1971215069660744/">
+	<meta property="article:published_time" content="2017-12-03T20:47:58+00:00">
+	<meta property="article:modified_time" content="2017-12-10T19:04:55+00:00">
+	<meta property="og:image" content="https://italiancoders.it/wp-content/uploads/2017/10/REST-API-WALL.png">
+	<meta property="og:image:width" content="599">
+	<meta property="og:image:height" content="364">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:label1" content="Scritto da">
+	<meta name="twitter:data1" content="Dario Frongillo">
+	<meta name="twitter:label2" content="Tempo di lettura stimato">
+	<meta name="twitter:data2" content="11 minuti">
+	<script src="./Linee guida per il design di REST API - ItalianCoders_files/iubenda.js.download"></script><script type="text/javascript" async="" src="./Linee guida per il design di REST API - ItalianCoders_files/analytics.js.download"></script><script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://italiancoders.it/#website","url":"https://italiancoders.it/","name":"ItalianCoders","description":"Nuovo blog di riferimento per sviluppatori italiani. Il blog offre articoli tecnici di forte impatto e a un livello tecnico medio-alto.","potentialAction":[{"@type":"SearchAction","target":"https://italiancoders.it/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"it-IT"},{"@type":"ImageObject","@id":"https://italiancoders.it/rest-web-api-linee-guida/#primaryimage","inLanguage":"it-IT","url":"https://italiancoders.it/wp-content/uploads/2017/10/REST-API-WALL.png","width":599,"height":364},{"@type":"WebPage","@id":"https://italiancoders.it/rest-web-api-linee-guida/#webpage","url":"https://italiancoders.it/rest-web-api-linee-guida/","name":"Linee guida per il design di REST API - ItalianCoders","isPartOf":{"@id":"https://italiancoders.it/#website"},"primaryImageOfPage":{"@id":"https://italiancoders.it/rest-web-api-linee-guida/#primaryimage"},"datePublished":"2017-12-03T20:47:58+00:00","dateModified":"2017-12-10T19:04:55+00:00","author":{"@id":"https://italiancoders.it/#/schema/person/c168ab4d60c02c2cc8553b1cfbc9d50a"},"description":"L'obiettivo di questo articolo \u00e8 quello di fornire un insieme di linee guida attraverso punti chiave / suggerimenti su come progettare REST API","breadcrumb":{"@id":"https://italiancoders.it/rest-web-api-linee-guida/#breadcrumb"},"inLanguage":"it-IT","potentialAction":[{"@type":"ReadAction","target":["https://italiancoders.it/rest-web-api-linee-guida/"]}]},{"@type":"BreadcrumbList","@id":"https://italiancoders.it/rest-web-api-linee-guida/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://italiancoders.it/","url":"https://italiancoders.it/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://italiancoders.it/rest-web-api-linee-guida/","url":"https://italiancoders.it/rest-web-api-linee-guida/","name":"Linee guida per il design di REST API"}}]},{"@type":"Person","@id":"https://italiancoders.it/#/schema/person/c168ab4d60c02c2cc8553b1cfbc9d50a","name":"Dario Frongillo","image":{"@type":"ImageObject","@id":"https://italiancoders.it/#personlogo","inLanguage":"it-IT","url":"https://secure.gravatar.com/avatar/c05b6b1c63b4f5c76bbc5a861d7d6f59?s=96&d=retro&r=g","caption":"Dario Frongillo"},"description":"Fondatore di Italiancoders e dell iniziativa devtalks. Software architect con un forte background in Java, Architettura REST, framework Spring , Database Design,progettazione e sviluppo di SPA e RIA Web application con framework Javascript. Attualmente mi occupo di sviluppo soluzioni software in ambito Banking e Finance: in particolare progettazione e sviluppo di applicativi web based per la realizzazione di sistemi di trading, interfacce con i mercati finanziari e di servizi real time.","sameAs":["http://dariofrongillo.com/"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="ItalianCoders » Feed" href="https://italiancoders.it/feed/">
+<link rel="alternate" type="application/rss+xml" title="ItalianCoders » Feed dei commenti" href="https://italiancoders.it/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="ItalianCoders » Linee guida per il design di REST API Feed dei commenti" href="https://italiancoders.it/rest-web-api-linee-guida/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/italiancoders.it\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Linee guida per il design di REST API - ItalianCoders_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="./Linee guida per il design di REST API - ItalianCoders_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="github-embed-css" href="./Linee guida per il design di REST API - ItalianCoders_files/github-embed.css" type="text/css" media="all">
+<link rel="stylesheet" id="mks_shortcodes_simple_line_icons-css" href="./Linee guida per il design di REST API - ItalianCoders_files/simple-line-icons.css" type="text/css" media="screen">
+<link rel="stylesheet" id="mks_shortcodes_css-css" href="./Linee guida per il design di REST API - ItalianCoders_files/style.css" type="text/css" media="screen">
+<link rel="stylesheet" id="dashicons-css" href="./Linee guida per il design di REST API - ItalianCoders_files/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="post-views-counter-frontend-css" href="./Linee guida per il design di REST API - ItalianCoders_files/frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="l2h_style-css" href="./Linee guida per il design di REST API - ItalianCoders_files/latex.min.css" type="text/css" media="screen, print">
+<link rel="stylesheet" id="l2h_print_style-css" href="./Linee guida per il design di REST API - ItalianCoders_files/print.min.css" type="text/css" media="print">
+<link rel="stylesheet" id="typology-fonts-css" href="./Linee guida per il design di REST API - ItalianCoders_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="typology-main-css" href="./Linee guida per il design di REST API - ItalianCoders_files/min.css" type="text/css" media="all">
+<style id="typology-main-inline-css" type="text/css">
+body,blockquote:before, q:before{font-family: 'Domine';font-weight: 400;}body,.typology-action-button .sub-menu{color:#444444;}body{background:#f8f8f8;font-size: 1.6em;}.typology-fake-bg{background:#f8f8f8;}.typology-sidebar,.typology-section{background:#ffffff;}h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6,.submit,.mks_read_more a,input[type="submit"],a.mks_button,.cover-letter,.post-letter,.woocommerce nav.woocommerce-pagination ul li span,.woocommerce nav.woocommerce-pagination ul li a,.woocommerce div.product .woocommerce-tabs ul.tabs li,.typology-pagination a,.typology-pagination span,.comment-author .fn,.post-date-month,.typology-button-social,.mks_autor_link_wrap a,.entry-pre-title,.typology-button,button{font-family: 'Josefin Sans';font-weight: 700;}.typology-header .typology-nav{font-family: 'Josefin Sans';font-weight: 700;}.typology-cover .entry-title,.typology-cover h1 { font-size: 6.4rem;}h1, .h1 {font-size: 4.8rem;}h2, .h2 {font-size: 3.5rem;}h3, .h3 {font-size: 2.8rem;}h4, .h4 {font-size: 2.3rem;}h5, .h5,.typology-layout-c.post-image-on .entry-title {font-size: 1.8rem;}h6, .h6 {font-size: 1.5rem;}.widget{font-size: 1.4rem;}.typology-header .typology-nav a{font-size: 1.1rem;}.typology-layout-b .post-date-hidden,.meta-item{font-size: 1.3rem;}.post-letter {font-size: 26rem;}.cover-letter {font-size: 60rem;}h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.post-date-month{color:#333333;}.typology-single-sticky a{color:#444444;}.entry-title a:hover,.typology-single-sticky a:hover{color:#1e73be;}.bypostauthor .comment-author:before,#cancel-comment-reply-link:after{background:#1e73be;}a,.widget .textwidget a,.typology-layout-b .post-date-hidden{color: #1e73be;}.typology-header{height:110px;}.typology-header-sticky-on .typology-header{background:#1e73be;}.site-title a,.typology-site-description{color: #ffffff;}.typology-header .typology-nav,.typology-header .typology-nav > li > a{color: #ffffff;}.typology-header .typology-nav .sub-menu a{ color:#444444;}.typology-header .typology-nav .sub-menu a:hover{color: #1e73be;}.typology-action-button .sub-menu ul a:before{background: #1e73be;}.sub-menu .current-menu-item a{color:#1e73be;}.dot,.typology-header .typology-nav .sub-menu{background:#ffffff;}.typology-header .typology-main-navigation .sub-menu .current-menu-ancestor > a,.typology-header .typology-main-navigation .sub-menu .current-menu-item > a{color: #1e73be;}.typology-header-wide .slot-l{left: 35px;}.typology-header-wide .slot-r{right: 20px;}.meta-item,.meta-item span,.meta-item a,.comment-metadata a{color: #888888;}.comment-meta .url,.meta-item a:hover{color:#333333;}.typology-post:after,.section-title:after,.typology-pagination:before{background:rgba(51,51,51,0.2);}.typology-layout-b .post-date-day,.typology-outline-nav li a:hover,.style-timeline .post-date-day{color:#1e73be;}.typology-layout-b .post-date:after,blockquote:before,q:before{background:#1e73be;}.typology-sticky-c,.typology-sticky-to-top span,.sticky-author-date{color: #888888;}.typology-outline-nav li a{color: #444444;}.typology-post.typology-layout-b:before{background:rgba(68,68,68,0.1);}.submit,.mks_read_more a,input[type="submit"],a.mks_button,.typology-button,.submit,.typology-button-social,.widget .mks_autor_link_wrap a,.widget .mks_read_more a,button{color:#ffffff;background: #1e73be;border:1px solid #1e73be;}.button-invert{color:#1e73be;background:transparent;}.widget .mks_autor_link_wrap a:hover,.widget .mks_read_more a:hover{color:#ffffff;}.typology-cover{min-height: 240px;}.typology-cover-empty{height:209px;min-height:209px;}.typology-fake-bg .typology-section:first-child {top: -99px;}.typology-flat .typology-cover-empty{height:110px;}.typology-flat .typology-cover{min-height:110px;}.typology-cover-empty,.typology-cover-item,.typology-header-sticky{background:#1e73be;}.typology-cover-overlay:after{background: rgba(30,115,190,0.6);}.typology-sidebar-header{background:#1e73be;}.typology-cover,.typology-cover .entry-title,.typology-cover .entry-title a,.typology-cover .meta-item,.typology-cover .meta-item span,.typology-cover .meta-item a,.typology-cover h1,.typology-cover h2,.typology-cover h3{color: #ffffff;}.typology-cover .typology-button{color: #1e73be;background:#ffffff;border:1px solid #ffffff;}.typology-cover .button-invert{color: #ffffff;background: transparent;}.typology-cover-slider .owl-dots .owl-dot span{background:#ffffff;}.typology-outline-nav li:before,.widget ul li:before{background:#1e73be;}.widget a{color:#444444;}.widget a:hover,.widget_calendar table tbody td a,.entry-tags a:hover{color:#1e73be;}.widget_calendar table tbody td a:hover,.widget table td,.entry-tags a{color:#444444;}.widget table,.widget table td,.widget_calendar table thead th,table,td, th{border-color: rgba(68,68,68,0.3);}.widget ul li,.widget .recentcomments{color:#444444;}.widget .post-date{color:#888888;}#today{background:rgba(68,68,68,0.1);}.typology-pagination .current, .typology-pagination .infinite-scroll a, .typology-pagination .load-more a, .typology-pagination .nav-links .next, .typology-pagination .nav-links .prev, .typology-pagination .next a, .typology-pagination .prev a{color: #ffffff;background:#333333;}.typology-pagination a, .typology-pagination span{color: #333333;border:1px solid #333333;}.typology-footer{background:#f8f8f8;color:#aaaaaa;}.typology-footer h1,.typology-footer h2,.typology-footer h3,.typology-footer h4,.typology-footer h5,.typology-footer h6,.typology-footer .post-date-month{color:#aaaaaa;}.typology-count{background: #1e73be;}.typology-footer a, .typology-footer .widget .textwidget a{color: #888888;}input[type="text"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"], input[type="date"], input[type="password"], textarea, select{border-color:rgba(68,68,68,0.2);}blockquote:after, blockquote:before, q:after, q:before{-webkit-box-shadow: 0 0 0 10px #ffffff;box-shadow: 0 0 0 10px #ffffff;}body.wp-editor{background:#ffffff;}.site-title{text-transform: uppercase;}.typology-site-description{text-transform: none;}.typology-nav{text-transform: uppercase;}h1, h2, h3, h4, h5, h6{text-transform: uppercase;}.section-title{text-transform: uppercase;}.widget-title{text-transform: uppercase;}.meta-item{text-transform: none;}.typology-button{text-transform: uppercase;}.submit,.mks_read_more a,input[type="submit"],a.mks_button,.typology-button,.widget .mks_autor_link_wrap a,.widget .mks_read_more a,button,.typology-button-social{text-transform: uppercase;}
+</style>
+<link rel="stylesheet" id="cookie-notice-front-css" href="./Linee guida per il design di REST API - ItalianCoders_files/front.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="enlighterjs-css" href="./Linee guida per il design di REST API - ItalianCoders_files/enlighterjs.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/jquery.min.js.download" id="jquery-core-js"></script>
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/jquery-migrate.min.js.download" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="https://italiancoders.it/wp-json/"><link rel="alternate" type="application/json" href="https://italiancoders.it/wp-json/wp/v2/posts/210"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://italiancoders.it/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://italiancoders.it/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="https://italiancoders.it/?p=210">
+<link rel="alternate" type="application/json+oembed" href="https://italiancoders.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://italiancoders.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F&amp;format=xml">
+<style>
+.latex_thm, .latex_lem, .latex_cor, .latex_defn, .latex_prop, .latex_rem{
+  margin:0;padding:5px;
+  background: lightcyan;
+  border: solid 3px green;
+  -moz-border-radius: 1.0em;
+  -webkit-border-radius: 7px;
+  box-shadow: 0 0 0 green;
+}
+.latex_em{
+  font-style: italic;
+}
+.bibtex_title{
+  font-weight:bold;
+  color: #004b33;
+}
+a.bibtex_title{
+  text-decoration: none;
+}
+</style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://italiancoders.it/wp-content/uploads/2017/10/cropped-favicon-32x32.png" sizes="32x32">
+<link rel="icon" href="https://italiancoders.it/wp-content/uploads/2017/10/cropped-favicon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://italiancoders.it/wp-content/uploads/2017/10/cropped-favicon-180x180.png">
+<meta name="msapplication-TileImage" content="https://italiancoders.it/wp-content/uploads/2017/10/cropped-favicon-270x270.png">
+<style type="text/css">article.typology-layout-c { display:flex; flex-direction:column; } /*Stile per disqus*/ #disqus_thread { max-width: 720px; margin: 0 auto 12rem; } /*Stili per i form*/ .nf-field .nf-field-label { margin-bottom: 0px; } .typology-input { min-height: 32px !important; } .nf-error-msg { font-size: 13px; } .nf-form-fields-required { font-size: 13px; margin-bottom: 20px; } /*Pagina autori e alert*/ img.black-and-white { -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */ filter: grayscale(100%); } .authors-grid { display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; -webkit-align-content: stretch; -ms-flex-line-pack: stretch; align-content: stretch; -webkit-align-items: flex-start; -ms-flex-align: start; align-items: flex-start; } .authors-grid > .author-card { -webkit-order: 0; -ms-flex-order: 0; order: 0; -webkit-flex: 0 1 45%; -ms-flex: 0 1 45%; flex: 0 1 45%; -webkit-align-self: auto; -ms-flex-item-align: auto; align-self: auto; } @media (max-width: 800px) { .authors-grid > .author-card { -webkit-flex: 0 1 100%; -ms-flex: 0 1 100%; flex: 0 1 100%; } } .authors-grid > .author-card { margin-top: 8px; margin-bottom: 20px; } .authors-grid > .author-card > .author-avatar { width: auto; height: auto; max-width: 100%; } .authors-grid > .author-card > .author-name { margin-bottom: 0px; margin-top: 5px; } .authors-grid > .author-card > .author-bio { text-align:justify; font-size: 14px; margin-bottom: 15px; } .authors-grid > .author-card > .author-links > .typology-button { width: auto; min-width: 30px; } .alert{ padding:15px; margin-bottom:.5rem; border:1px solid transparent; border-radius:.125rem; position: relative; padding-left:54px; } .alert:before { font-family: FontAwesome; font-size: 25px; display: block; position: absolute; left: 17px; top: 17px; line-height: 25px; } .alert-heading{ color:inherit; } .alert-link{ font-weight:700; } .alert-dismissible{ padding-right:35px; } .alert-dismissible .close{ position:relative; top:-2px; right:-21px; color:inherit; } .alert-tooltip:before { content: "\f0eb"; } .alert-tooltip{ border-color:#a555ca; background-color:#a555ca0a; color:#a555ca; } .alert-tooltip hr{ border-top-color:#fff; } .alert-tooltip .alert-link{ color:#e6e6e6; } .alert-success:before { content: "\f087"; } .alert-success{ border-color:#4caf50; background-color: #4caf500a; color:#4caf50; } .alert-success hr{ border-top-color:#fff; } .alert-success .alert-link{ color:#e6e6e6; } .alert-info:before { content: "\f05a"; } .alert-info{ border-color:#1e73be; background-color: #1e73be0a; color:#1e73be; } .alert-info hr{ border-top-color:#fff; } .alert-info .alert-link{ color:#e6e6e6; } .alert-warning:before { content: "\f06a"; } .alert-warning{ border-color:#ff5722; background-color: #ff57220a; color:#ff5722; } .alert-warning hr{ border-top-color:#fff; } .alert-warning .alert-link{ color:#e6e6e6; } .alert-danger:before { content: "\f057"; } .alert-danger{ border-color:#f44336; background-color: #f443360a; color:#f44336; } .alert-danger hr{ border-top-color:#fff; } .alert-danger .alert-link{ color:#e6e6e6; } /*Layout temp fix*/ .typology-header .typology-main-navigation { opacity: 1 !important; } #menu-nav { text-align: right } #typology-header > .container { display: table; width: 100%; } #typology-header .slot-logo { display: table-cell; width: 200px; } #typology-header .slot-menu { display: table-cell; vertical-align: middle; } #typology-header .slot-sidebar { display: table-cell; width: 40px; vertical-align: middle; } @media (max-width: 930px) { #typology-header .slot-menu > ul#menu-nav { display: none; } } .section-content.partner-list { margin-bottom: 0px; } .typology-section.first-section { box-shadow: 0 5px 50px 0 rgba(1,1,1,.15); -webkit-box-shadow: 0 5px 50px 0 rgba(1,1,1,.15); } .partner-list a { text-decoration: none !important; border-bottom-width: 0px !important; } /* modifiche all'header logo - menu centrati */ #typology-header img.typology-logo { max-width: 120px; } #typology-header > .container { display: flex; flex-flow: row nowrap; justify-content: space-around; align-items: center; } #typology-header .typology-action-sidebar { margin-top: -2px; } @media (max-width: 930px) { #typology-header .typology-action-sidebar { margin-top: 0px; } #typology-header .slot-menu { display: none; } #typology-header > .container { padding-left: 10px; padding-right: 10px; justify-content: space-between; } #typology-header .typology-site-branding{ display: inline-flex; } #typology-header .slot-logo { padding: 13px 15px; } } /* fine modifiche all'header logo - menu centrati */ .typology-posts-2 { display: flex; flex-wrap: wrap; -webkit-box-align: center; align-items: center; } #follow-us > a.mks_button_large { width: 100%; font-size: 2rem; padding: 1rem; height: auto; }</style>	<script async="" type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/count.js.download"></script><script type="text/javascript" async="" src="./Linee guida per il design di REST API - ItalianCoders_files/embed.js.download"></script><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><script src="./Linee guida per il design di REST API - ItalianCoders_files/count-data.js.download"></script><link rel="prefetch" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.c82b267b396dfbc10ae5113342115da8.css"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.f485ba8b89bf2153fdb9f493ec342aed.js"><link rel="prefetch" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.54cf549c270b597d5587d24486b38d71.js"><link rel="prefetch" as="script" href="https://disqus.com/next/config.js"><style type="text/css"></style><script src="./Linee guida per il design di REST API - ItalianCoders_files/alfie_v4.63f1ab6d6b9d5807dc0c94ef3fe0b851.js.download" async="" charset="UTF-8"></script></head>
+
+	<body class="post-template-default single single-post postid-210 single-format-standard typology-header-wide cookies-set cookies-accepted">
+
+		<header id="typology-header" class="typology-header" style="z-index: 1000;">
+			<div class="container">
+					<div class="slot-logo">
+	<div class="typology-site-branding">
+	
+	<span class="site-title h4"><a href="https://italiancoders.it/" rel="home"><img class="typology-logo" src="./Linee guida per il design di REST API - ItalianCoders_files/logo.png" alt="ItalianCoders" style="width: 120px;"></a></span>	
+</div>
+	
+</div>
+<div class="slot-menu">
+				<ul id="menu-nav" class="typology-nav typology-main-navigation" style="opacity: 1;"><li id="menu-item-6265" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-6265"><a href="https://italiancoders.it/about/">Chi Siamo</a>
+<ul class="sub-menu">
+	<li id="menu-item-6270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6270"><a href="https://italiancoders.it/about/">Manifesto</a></li>
+	<li id="menu-item-6269" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6269"><a href="https://italiancoders.it/about/contributors/">Contributors</a></li>
+	<li id="menu-item-6268" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6268"><a href="https://italiancoders.it/about/blog/">Iniziativa Blog</a></li>
+	<li id="menu-item-6267" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6267"><a href="https://italiancoders.it/about/devtalks/">Iniziativa  DevTalks</a></li>
+	<li id="menu-item-6266" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6266"><a href="https://italiancoders.it/about/channels/">Follow Us</a></li>
+</ul>
+</li>
+<li id="menu-item-5818" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5818"><a href="https://italiancoders.it/devtalks/">DevTalks</a></li>
+<li id="menu-item-875" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-875"><a href="https://italiancoders.it/c/algoritmi-e-strutture-dati/">Algoritmi e Strutture Dati</a></li>
+<li id="menu-item-1775" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1775"><a href="https://italiancoders.it/c/design-pattern/">Design Pattern</a></li>
+<li id="menu-item-24" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-24"><a href="https://italiancoders.it/c/intelligenza-artificiale/">Intelligenza artificiale</a>
+<ul class="sub-menu">
+	<li id="menu-item-876" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-876"><a href="https://italiancoders.it/c/machine-learning/">Machine Learning</a></li>
+</ul>
+</li>
+<li id="menu-item-1776" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-has-children menu-item-1776"><a href="https://italiancoders.it/c/linguaggitecnologie/">Linguaggi&amp;Tecnologie</a>
+<ul class="sub-menu">
+	<li id="menu-item-735" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-735"><a href="https://italiancoders.it/c/linguaggitecnologie/android/">Android</a></li>
+	<li id="menu-item-77" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-77"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/c-cpp/">C/C++</a></li>
+	<li id="menu-item-2306" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2306"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/csharp/">C#</a></li>
+	<li id="menu-item-842" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-842"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/database/">Database</a>
+	<ul class="sub-menu">
+		<li id="menu-item-843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-843"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/database/oracle/">Oracle</a></li>
+	</ul>
+</li>
+	<li id="menu-item-80" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-80"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/go/">Go</a></li>
+	<li id="menu-item-25" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-25"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/java/">Java</a>
+	<ul class="sub-menu">
+		<li id="menu-item-715" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-715"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/java/spring/">Spring</a></li>
+	</ul>
+</li>
+	<li id="menu-item-720" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-720"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/">Javascript</a>
+	<ul class="sub-menu">
+		<li id="menu-item-721" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-721"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/angular/">Angular</a></li>
+		<li id="menu-item-722" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-722"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/react/">React</a></li>
+		<li id="menu-item-1622" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1622"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/vue-js/">Vue.js</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1849" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1849"><a href="https://italiancoders.it/c/linguaggitecnologie/kotlin/">Kotlin</a></li>
+	<li id="menu-item-729" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-729"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/node-js/">Node.js</a>
+	<ul class="sub-menu">
+		<li id="menu-item-730" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-730"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/node-js/expressjs/">Express.js</a></li>
+	</ul>
+</li>
+	<li id="menu-item-29" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-29"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/php/">Php</a></li>
+	<li id="menu-item-30" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-30"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/python/">Python</a></li>
+</ul>
+</li>
+<li id="menu-item-736" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-736"><a href="https://italiancoders.it/c/extra/">Extra</a></li>
+<li id="menu-item-5543" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5543"><a href="https://italiancoders.it/c/gcp/">Google Cloud Platform</a></li>
+<li id="menu-item-4221" class="menu-item menu-item-type-post_type_archive menu-item-object-partner menu-item-4221"><a href="https://italiancoders.it/partner/">Partner</a></li>
+</ul>			
+</div>
+<div class="slot-sidebar">
+	<ul class="typology-nav ">
+	<li class="typology-action-button">
+		<span class="typology-action-sidebar">
+			<i class="fa fa-bars"></i>
+		</span>
+	</li>
+</ul></div>			</div>
+
+							<div style="display:none;"><!--Global Site Tag (gtag.js) &#8211; Google Analytics--><div class="textwidget custom-html-widget"><script async="" src="./Linee guida per il design di REST API - ItalianCoders_files/js"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-107733052-1', { 'anonymize_ip': true });
+</script></div></div>					</header>
+
+
+
+	
+
+	
+		
+
+		
+		<div id="typology-cover" class="typology-cover " style="height: 959px;">
+
+					<div class="typology-cover-item typology-cover-single typology-cover-overlay" style="height: 959px; position: fixed;">
+
+		<div class="cover-item-container" style="opacity: 0.0156413;">
+		    <header class="entry-header">
+		        <h1 class="entry-title">Linee guida per il design di REST API</h1>		         
+	                <div class="entry-meta"><div class="meta-item meta-comments"><a href="https://italiancoders.it/rest-web-api-linee-guida/#disqus_thread" data-disqus-identifier="210 https://italiancoders.it/?p=210">1 Comment</a></div><div class="meta-item meta-author">Di <span class="vcard author"><span class="fn"><a href="https://italiancoders.it/author/dario-frongillo/">Dario Frongillo</a></span></span></div><div class="meta-item meta-category">In <a href="https://italiancoders.it/c/linguaggitecnologie/back-end/" rel="category tag">Back End</a></div><div class="meta-item meta-date"><span class="updated">3 Dicembre 2017</span></div></div>
+	            		    </header>
+		    		    	<div class="cover-letter">L</div>
+		    		</div>
+
+					<div class="typology-cover-img">
+				<img src="./Linee guida per il design di REST API - ItalianCoders_files/REST-API-WALL.png">			</div>
+		
+	</div>
+
+
+		</div>
+
+		<div class="typology-fake-bg">
+
+			<div class="typology-section first-section">
+
+
+
+				<div class="section-content">
+    <article id="post-210" class="typology-post typology-single-post post-210 post type-post status-publish format-standard has-post-thumbnail hentry category-back-end tag-api tag-rest">
+
+                
+        <div class="entry-content clearfix">
+                                        	
+	
+		<div class="typology-social-icons">
+							<a href="javascript:void(0);" class="typology-facebook typology-share-item hover-on" data-url="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F&amp;t=Linee+guida+per+il+design+di+REST+API"><i class="fa fa-facebook"></i></a>							<a href="javascript:void(0);" class="typology-twitter typology-share-item hover-on" data-url="http://twitter.com/intent/tweet?url=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F&amp;text=Linee+guida+per+il+design+di+REST+API"><i class="fa fa-twitter"></i></a>							<a href="javascript:void(0);" class="typology-reddit typology-share-item hover-on" data-url="http://www.reddit.com/submit?url=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F&amp;title=Linee+guida+per+il+design+di+REST+API"><i class="fa fa-reddit-alien"></i></a>							<a href="javascript:void(0);" class="typology-gplus typology-share-item hover-on" data-url="https://plus.google.com/share?url=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F"><i class="fa fa-google-plus"></i></a>							<a href="javascript:void(0);" class="typology-linkedin typology-share-item hover-on" data-url="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://italiancoders.it/rest-web-api-linee-guida/&amp;title=Linee guida per il design di REST API"><i class="fa fa-linkedin"></i></a>					</div>
+
+	            
+            
+            <h2>Introduzione</h2>
+<p>Nello sviluppo di applicazioni web è sempre più frequente l’utilizzo di API offerte da soggetti e società esterne: API per il social network, API per pagamenti, API per recuperare dati che non detieni o per usufruire di servizi offerti da altri. Anche se tu non stai scrivendo API per altri programmatori, è sempre buona norma per la tua applicazione avere delle API coerenti che seguono determinate regole.</p>
+<p>Esistono delle linee guida e regole da seguire quando si progettano delle API in modo che siano logicamente comprensibili anche da chi non le ha sviluppate. L’obiettivo di questo articolo è quello di fornire un insieme di linee guida attraverso punti chiave / suggerimenti su come progettare API. Il target previsto sono invece programmatori o software architect, e l’unico prerequisito per poter comprendere è avere una conoscenza base del protocollo HTTP, e i concetti base dell’architettura RESTful e API WEB. L’articolo non richiederà la conoscenza di nessun&nbsp;particolare linguaggio di programmazione o infrastruttura di rete: tutti i principi e le indicazioni descritte sono applicabili a qualsiasi linguaggio o framework per lo sviluppo di API RESTful.</p>
+<h2></h2>
+<h2>DOCUMENTAZIONE</h2>
+<p>Quando cerco sul web delle API da utilizzare in un mio progetto la prima cosa su cui faccio attenzione è se le API che voglio utilizzare hanno una documentazione di ottima qualità; se quel progetto non offre una documentazione chiara e con esempi di utilizzo scarto subito quel progetto di API. Quando si progetta delle API occorre assolutamente fornire agli utilizzatori la documentazione delle API:</p>
+<ol>
+<li>Descrizione del servizio offerto dalla API</li>
+<li>Url della API</li>
+<li>Elenco degli eventuali parametri o body payload accettati in input, riportando dettagliatamente la struttura che devono avere e il significato semantico del parametro</li>
+<li>Struttura della risposta della API sia in caso di successo che di errore</li>
+<li>Significato dei diversi stati HTTP della risposta della API. Ad esempio se un API che utilizzo mi risponde con l’errore 404 NOT FOUND, mi aspetto che nella documentazione sia riportato in quali occasioni viene sollevato questo errore.</li>
+</ol>
+<p>Esistono diversi Tool riconosciuti come standard dalla community per la produzione di documentazione di API. Riporto quelli che a mio avviso sono i migliori:</p>
+<ul>
+<li><a href="https://help.github.com/articles/about-github-wikis/">Github Wikis</a></li>
+<li><a href="https://github.com/lord/slate">Slate</a></li>
+<li><a href="https://swagger.io/">Swagger</a></li>
+</ul>
+<p>Io personalmente uso Swagger, in quanto recentemente ha lanciato la&nbsp;&nbsp;<b>Specifica OpenAPI</b>&nbsp;(conosciuta originariamente come la Specifica Swagger), una specifica per file di interfaccia leggibili dalle macchine per descrivere, produrre, consumare e visualizzare&nbsp;<a title="Web service" href="https://it.wikipedia.org/wiki/Web_service">servizi web</a>&nbsp;<a title="Representational State Transfer" href="https://it.wikipedia.org/wiki/Representational_State_Transfer">RESTful</a>.<sup id="cite_ref-1" class="reference"><a href="https://it.wikipedia.org/wiki/Specifiche_OpenAPI#cite_note-1">[1]</a></sup>&nbsp; Con i tool di Swagger hai a disposizione una serie di tool per generare:</p>
+<ul>
+<li>il codice dei tuoi model, e non solo, a partire dalla specifica delle API</li>
+<li>la documentazione</li>
+<li>i test case</li>
+</ul>
+<p>Ultimamente utilizzo molto Swagger, il quale è adatto anche all’uso interno in un team di sviluppo, per avere delle specifiche delle API utili sia per chi sviluppa sia al team frontend che le utilizza. Tratterò di Swagger in uno dei prossimi articoli.</p>
+<p>Alcuni esempi di API con una grande documentazione sono:</p>
+<ul>
+<li><a href="https://stripe.com/docs">Stripe</a></li>
+<li><a href="https://www.twilio.com/docs/api/rest">Twilio</a></li>
+<li><a href="https://developer.twitter.com/en/docs">Twitter</a></li>
+</ul>
+<h2></h2>
+<h2>Nome delle risorse e url design</h2>
+<h3>TERMINOLOGIA</h3>
+<p id="e9fb" class="graf graf--p graf-after--h3">Riportiamo i termini ricorrenti nel mondo delle REST API:</p>
+<ul class="postList">
+<li id="845d" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">Risorsa:</strong> è un oggetto o la rappresentazione di qualcosa di significativo nel dominio applicativo. È possibile interagire con le risorse attraverso le API. Esempi di entità? Un Libro, un Ordine, un Post e qualsiasi altra entità che si può astrarre da un determinato contesto. Il concetto di risorsa è quindi molto simile a quello di oggetto nel mondo della programmazione ad oggetti. Prima di mostrare esempi voglio innanzitutto chiarire che il nome delle risorse, documentazione e nome URL sono da standard e linee guida in INGLESE; vi chiedo quindi rispettare questa regola.</li>
+<li id="2b6e" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">Collezioni:</strong> sono insiemi di risorse. Ad esempio&nbsp;<em class="markup--em markup--li-em">People</em> è una collezione di risorse Person.</li>
+<li id="d49d" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">URL</strong>&nbsp;<strong>(Uniform&nbsp;Resource&nbsp;Locator)</strong>: è il path attraverso la quale una risorsa può essere ottenuta e dove possono essere eseguite azioni su di essa.</li>
+</ul>
+<p>&nbsp;</p>
+<p>Facciamo in dettaglio l’esempio di una rappresentazione dell’entità Persona <strong>(Person)</strong>.<strong>&nbsp;</strong>Una persona ha un nome, un cognome , un sesso e un’età. Una rappresentazione JSON della risorsa Person potrebbe quindi essere</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-hover enlighter-linenumbers "><div class="enlighter-toolbar-top enlighter-toolbar"><div class="enlighter-btn enlighter-btn-raw" title="Plain text"></div><div class="enlighter-btn enlighter-btn-copy" title="Copy to clipboard"></div><div class="enlighter-btn enlighter-btn-window" title="Open code in new window"></div><div class="enlighter-btn enlighter-btn-website" title="EnlighterJS 3 Syntax Highlighter"></div></div><div class="enlighter" style=""><div class=""><div><span class="enlighter-g1">{</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"id"</span><span class="enlighter-text">:</span><span class="enlighter-n1">1</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"firstname"</span><span class="enlighter-text">:</span><span class="enlighter-s0">"Marco"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"lastname"</span><span class="enlighter-text">:</span><span class="enlighter-s0">"Rossi"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"sex"</span><span class="enlighter-text">:</span><span class="enlighter-s0">"M"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"age"</span><span class="enlighter-text">:</span><span class="enlighter-n1">28</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text">...</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">}</span></div></div></div><div class="enlighter-raw">{
+"id":1,
+"firstname":"Marco",
+"lastname":"Rossi",
+"sex":"M",
+"age":28,
+...
+}</div><div class="enlighter-toolbar-bottom enlighter-toolbar"></div></div><pre class="EnlighterJSRAW enlighter-origin" data-enlighter-language="null">{
+"id":1,
+"firstname":"Marco",
+"lastname":"Rossi",
+"sex":"M",
+"age":28,
+...
+}</pre>
+<h3>DAI UN ID UNIVOCO ALLA TUA RISORSA</h3>
+<p>E’ assolutamente buona norma includere un campo id la quale rappresenta in modo univoco un’istanza di una determinata risorsa. Tale campo, suggerisco di chiamarlo id, deve essere il primo campo in ordine in una rappresentazione JSON della risorsa.</p>
+<h3>USA IL PLURALE PER L’URL DELLA RISORSA</h3>
+<p>È possibile interagire con le risorse tramite delle API identificate da un URL. È assolutamente buona norma utilizzare una convenzione riconosciuta globalmente per il nome dell’url: gli URL devono chiamarsi con il nome plurale della risorsa che permettono di interagire, nel nostro esempio gli url per interagire con la risorsa Person dovrebbero chiamarsi <strong>/people&nbsp;</strong> (in italiano “persone”).&nbsp; Altri esempi di URL:<strong> /orders, /students, /books.</strong></p>
+<p>Sono assolutamente quindi vietati url del tipo getOrders/, getBooks/, ecc. L’URL corretto è orders/. I più inesperti quindi si chiederanno: se chiamo sia l’URL per creare una risorsa che l’URL per recuperare una risorsa con lo stesso nome, non è motivo di confusione? Assolutamente NO! Il tipo di operazione lo identifica il verbo del metodo (ad es. GET per ottenere la risorsa e POST per crearla). Questo tema verra’ approfondito sotto.</p>
+<h3>USA L’ID PER ACCEDERE ALLA SINGOLA RISORSA</h3>
+<p>Per il design dell’url di una singola risorsa è buona norma utilizzare l’id univoco nella forma&nbsp;/{collection}/{resource id} . Ad esempio:</p>
+<ul>
+<li>/books/abcbc</li>
+<li>/people/1</li>
+<li>/users/dario_frongi</li>
+<li>/people/dhdhdhd</li>
+</ul>
+<h3>url base e versioning</h3>
+<p>Supponiamo che tu sia una sviluppatore di API e che tu abbia pubblicato delle API. Dopo alcuni mesi decidi di rinominare il nome di un parametro della tua API e di inserirne altri per rivoluzionare il comportamento della tua API. Cosa accade? Chiunque utilizzava le tue API non sarà più in grado di utilizzarle. La soluzione a questo problema è quello di utilizzare il versioning delle API come base dell’url. Supponiamo che al lancio del mio progetto le mie api abbiano tutte come URL base:&nbsp;<a class="vglnk" href="https://api.myservice.it/v1" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myservice</span><span>.</span><span>it</span><span>/</span><span>v1</span></a>. Ad esempio <a class="vglnk" href="https://api.myservice.it/v1/orders" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myservice</span><span>.</span><span>it</span><span>/</span><span>v1</span><span>/</span><span>orders</span></a> per ottenere gli ordini dalla mia API. Se io introduco una <strong>breaking change</strong> (una modifica impattante alla API che non garantisce il corretto funzionamento se invocata come nella vecchia maniera)&nbsp; non cancellerò dal mio progetto la API&nbsp;v1/orders, ma creerò un altra API&nbsp;v2/orders comunicando nella documentazione del progetti di migrare al più presto alla versione v2/orders della API.</p>
+<h3>METODI HTTP</h3>
+<p>Il protocollo HTTP fornisce diversi metodi per implementare il prinicipio CRUD (Creae Read Update Delete); ogni diversa funzionalità che voglio fornire per permettere l’interazione con le risorse del mio dominio deve essere mappata con il giusto metodo HTTP:</p>
+<ul>
+<li>&nbsp;POST per creare</li>
+<li>GET per leggere</li>
+<li>PUT Per aggiornare</li>
+<li>DELETE per eleminare</li>
+</ul>
+<p>&nbsp;</p>
+<h3>codici HTTP di risposta</h3>
+<p>Quando un client effettua una richiesta al server attraverso una API, il client dovrebbe saper interpretare il feedback. Il server risponde sempre con un codice HTTP: codici standard che hanno un determinato significato. È importante quindi utilizzare i codici HTTP in modo consono ed universale. Riepilogo i codici HTTP di solito utilizzati:</p>
+<h4 id="6b04" class="graf graf--h4 graf-after--p"><strong class="markup--strong markup--h4-strong">2xx (categoria CODICI DI SUCCESSO)</strong></h4>
+<p>I codici inizianti con il numero 2 sono codici utilizzati per confermare che la richiesta è stata ricevuta e processata con successo dal server.</p>
+<ul class="postList">
+<li id="3235" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">200 Ok: </strong>La risposta standard per rappresentare una operazione di tipo GET, PUT or POST (per azioni e non creazione risorsa) avvenuta con successo.</li>
+<li id="af87" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">201 Created:</strong> Questo codice andrebbe utilizzato lato server per comunicare che la nuova istanza è stata creata con successo. Ad esempio nella creazione di una nuova risorsa usando il metodo POST.</li>
+<li id="8e2e" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">204 No Content: </strong>significa che la richiesta è stata correttamente processata, ma non ha ritornato nessun contenuto. DELETE è un ottimo esempio di utilizzo di questo codice.</li>
+</ul>
+<h4 id="d361" class="graf graf--h4 graf-after--li"><strong class="markup--strong markup--h4-strong">3xx (categoria di Redirection)</strong></h4>
+<ul class="postList">
+<li id="3a8c" class="graf graf--li graf-after--h4"><strong class="markup--strong markup--li-strong">304 Not Modified:</strong> indica che il client ha già in cache la risposta e non è necessario reinviarla.</li>
+</ul>
+<h4 id="b308" class="graf graf--h4 graf-after--li">4xx (categoria di errore client)</h4>
+<p id="6773" class="graf graf--p graf-after--h4">Questa categoria di errore include errori correttamente gestiti dal server e causati da uno scorretto input della API.</p>
+<ul class="postList">
+<li id="8daf" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">400 Bad Request:</strong> indica che la richiesta non è stata processata perché il server non riconosce la richiesta come una tra quelle attese: ad esempio url errata o nome parametro errato.</li>
+<li id="85c5" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">401 Unauthorized:</strong> indica che il client non ha i privilegi per accedere a tale risorsa (la API richiesta richiede l’autenticazione o un token di autenticazione).</li>
+<li id="d2b1" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">403 Forbidden: </strong>indica che la richiesta effettuata è valida e il client è correttamente autenticato, ma non ha i privilegi per poter utilizzare questa API</li>
+<li id="c9e3" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">404 Not Found: </strong>indica che la risorsa richiesta non esiste o è momentaneamente non recuperabile.</li>
+<li id="b4b5" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">410 Gone: </strong>indica che la risorsa richiesta non è disponibile e intenzionalemente spostata.</li>
+</ul>
+<h4 id="a203" class="graf graf--h4 graf-after--li">5xx (categoria di errore server)</h4>
+<p>Questa cateoria di errori rappresentano situazioni non correttamente gestite come eccezioni lato server oppure servizi momentaneamente non disponibili.</p>
+<ul class="postList">
+<li id="f074" class="graf graf--li graf-after--h4"><strong class="markup--strong markup--li-strong">500 Internal Server Error:</strong> indica che la richiesta è valida, ma il server ha riscontrato un errore non gestito (ad es. in java una eccezione non correttamente catturata).</li>
+<li id="b04e" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">503 Service Unavailable: </strong>indica che il server è offline e non può quindi processare richieste.</li>
+</ul>
+<p>&nbsp;</p>
+<p>Dopo aver riportato le linee guida per la naming convention delle URL e dei codici HTTP di risposta riportiamo alcuni esempi di API.</p>
+<h3>crea una risorsa persona (post http)</h3>
+<p>Per creare una nuova risorsa sul server le tue API dovrebbero prevedere un endpoint di metodo POST. Il body della richiesta di solito contiene le info dell’oggetto che si vuole creaee ad eccezione dell’id, il quale solitamente è valorizzato lato server.</p>
+<p>Un esempio di richiesta POST:</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-hover enlighter-linenumbers "><div class="enlighter-toolbar-top enlighter-toolbar"><div class="enlighter-btn enlighter-btn-raw" title="Plain text"></div><div class="enlighter-btn enlighter-btn-copy" title="Copy to clipboard"></div><div class="enlighter-btn enlighter-btn-window" title="Open code in new window"></div><div class="enlighter-btn enlighter-btn-website" title="EnlighterJS 3 Syntax Highlighter"></div></div><div class="enlighter" style=""><div class=""><div><span class="enlighter-text">POST /v1/people HTTP/</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-n1">1</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text">Host: https</span><span class="enlighter-c0">://api.myapi.it</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text">Content-Type: application/json</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">{</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"firstname"</span><span class="enlighter-text">: </span><span class="enlighter-s0">"Dario"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"lastname"</span><span class="enlighter-text">: </span><span class="enlighter-s0">"Frongi"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"age"</span><span class="enlighter-text">:</span><span class="enlighter-n1">30</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">}</span></div></div></div><div class="enlighter-raw">POST /v1/people HTTP/1.1
+Host: <a class="vglnk" href="https://api.myapi.it/" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myapi</span><span>.</span><span>it</span></a>
+Content-Type: application/json
+{
+"firstname": "Dario",
+"lastname": "Frongi",
+"age":30
+}</div><div class="enlighter-toolbar-bottom enlighter-toolbar"></div></div><pre class="EnlighterJSRAW enlighter-origin" data-enlighter-language="null">POST /v1/people HTTP/1.1
+Host: <a class="vglnk" href="https://api.myapi.it/" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myapi</span><span>.</span><span>it</span></a>
+Content-Type: application/json
+{
+"firstname": "Dario",
+"lastname": "Frongi",
+"age":30
+}</pre>
+<p>La risposta a una richiesta POST dovrebbe essere di codice HTTP 201 per confermare la creazione, con body uguale alla rappresentazione della risorsa creata.</p>
+<h3>LEGGI UNA RISORSA CON GET</h3>
+<p>Per ottenere una risorsa&nbsp;le tue API dovrebbero prevedere un endpoint di metodo GET.</p>
+<p>Un esempio di richiesta GET:</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-hover enlighter-linenumbers "><div class="enlighter-toolbar-top enlighter-toolbar"><div class="enlighter-btn enlighter-btn-raw" title="Plain text"></div><div class="enlighter-btn enlighter-btn-copy" title="Copy to clipboard"></div><div class="enlighter-btn enlighter-btn-window" title="Open code in new window"></div><div class="enlighter-btn enlighter-btn-website" title="EnlighterJS 3 Syntax Highlighter"></div></div><div class="enlighter" style=""><div class=""><div><span class="enlighter-text">GET /v1/people HTTP/</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-n1">1</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text">RISPOSTA</span></div></div><div class=""><div><span class="enlighter-text">HTTP/</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-n1">1</span><span class="enlighter-text"> </span><span class="enlighter-n1">200</span><span class="enlighter-text"> OK</span></div></div><div class=""><div><span class="enlighter-text">Content-Type: application/json</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">[</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">{</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"id"</span><span class="enlighter-text">:</span><span class="enlighter-n1">1</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"firstname"</span><span class="enlighter-text">: </span><span class="enlighter-s0">"Dario"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"lastname"</span><span class="enlighter-text">: </span><span class="enlighter-s0">"Frongi"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"age"</span><span class="enlighter-text">:</span><span class="enlighter-n1">30</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">}</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">{</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"id"</span><span class="enlighter-text">:</span><span class="enlighter-n1">2</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"firstname"</span><span class="enlighter-text">: </span><span class="enlighter-s0">"Mario"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"lastname"</span><span class="enlighter-text">: </span><span class="enlighter-s0">"Rossi"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"age"</span><span class="enlighter-text">:</span><span class="enlighter-n1">30</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">}</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">]</span></div></div></div><div class="enlighter-raw">GET /v1/people HTTP/1.1
+
+RISPOSTA
+HTTP/1.1 200 OK
+Content-Type: application/json
+[
+{
+"id":1,
+"firstname": "Dario",
+"lastname": "Frongi",
+"age":30
+},
+{
+"id":2,
+"firstname": "Mario",
+"lastname": "Rossi",
+"age":30
+}
+]</div><div class="enlighter-toolbar-bottom enlighter-toolbar"></div></div><pre class="EnlighterJSRAW enlighter-origin" data-enlighter-language="null">GET /v1/people HTTP/1.1
+
+RISPOSTA
+HTTP/1.1 200 OK
+Content-Type: application/json
+[
+{
+"id":1,
+"firstname": "Dario",
+"lastname": "Frongi",
+"age":30
+},
+{
+"id":2,
+"firstname": "Mario",
+"lastname": "Rossi",
+"age":30
+}
+]</pre>
+<h3>aggiorna UNA RISORSA CON put e PATCH</h3>
+<p>Per aggiornare&nbsp; una risorsa&nbsp;le tue API dovrebbero prevedere un endpoint di metodo PUT o PATCH. Quando utilizzare PUT e quando PATCH?</p>
+<p>Nel caso in cui tu voglia aggiornare parzialmente una risorsa dovresti prevedere un endpoint di verbo PATCH. Ad esempio supponiamo di voler esporre un&nbsp; endpoint per aggiornare lo l’eta’ di una persona:</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-hover enlighter-linenumbers "><div class="enlighter-toolbar-top enlighter-toolbar"><div class="enlighter-btn enlighter-btn-raw" title="Plain text"></div><div class="enlighter-btn enlighter-btn-copy" title="Copy to clipboard"></div><div class="enlighter-btn enlighter-btn-window" title="Open code in new window"></div><div class="enlighter-btn enlighter-btn-website" title="EnlighterJS 3 Syntax Highlighter"></div></div><div class="enlighter" style=""><div class=""><div><span class="enlighter-text">PATCH /v1/people/</span><span class="enlighter-n1">1</span><span class="enlighter-text"> HTTP/</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-n1">1</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text">Host: https</span><span class="enlighter-c0">://api.myapi.it</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text">Content-Type: application/json</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">{</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"age"</span><span class="enlighter-text">: </span><span class="enlighter-n1">15</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">}</span></div></div></div><div class="enlighter-raw">PATCH /v1/people/1 HTTP/1.1
+Host: <a class="vglnk" href="https://api.myapi.it/" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myapi</span><span>.</span><span>it</span></a>
+Content-Type: application/json
+{
+"age": 15,
+}</div><div class="enlighter-toolbar-bottom enlighter-toolbar"></div></div><pre class="EnlighterJSRAW enlighter-origin" data-enlighter-language="null">PATCH /v1/people/1 HTTP/1.1
+Host: <a class="vglnk" href="https://api.myapi.it/" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myapi</span><span>.</span><span>it</span></a>
+Content-Type: application/json
+{
+"age": 15,
+}</pre>
+<p>Nel caso in cui si voglia invece sostituire completamente una risorsa esistente il&nbsp; metodo corretto da utilizzare è il PUT . Quindi nel caso di utilizzo del verbo PUT è opportuno inviare la nuova rappresentazione della risorsa in maniera completa (tutti i campi ad esclusione dell id) mentre nel caso di utilizzo del verbo PATCH occorre inviare i singoli campi da aggiornare.</p>
+<p>La risposta a una richiesta PUT/PATCH dovrebbe essere di codice HTTP 200 per confermare l’aggiornamento avvenuto con successo, con body uguale alla rappresentazione della risorsa aggiornata.</p>
+<p>Un esempio di richiesta PUT per aggiornare il nome della risorsa con id ‘1’ a “Mario”</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-hover enlighter-linenumbers "><div class="enlighter-toolbar-top enlighter-toolbar"><div class="enlighter-btn enlighter-btn-raw" title="Plain text"></div><div class="enlighter-btn enlighter-btn-copy" title="Copy to clipboard"></div><div class="enlighter-btn enlighter-btn-window" title="Open code in new window"></div><div class="enlighter-btn enlighter-btn-website" title="EnlighterJS 3 Syntax Highlighter"></div></div><div class="enlighter" style=""><div class=""><div><span class="enlighter-text">PUT  /v1/people/</span><span class="enlighter-n1">1</span><span class="enlighter-text"> HTTP/</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-n1">1</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text">Host: https</span><span class="enlighter-c0">://api.myapi.it</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text">Content-Type: application/json</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">{</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-s0">"firstname"</span><span class="enlighter-text">: </span><span class="enlighter-s0">"Mario"</span><span class="enlighter-text">,</span></div></div><div class=""><div><span class="enlighter-text"></span><span class="enlighter-g1">}</span></div></div></div><div class="enlighter-raw">PUT  /v1/people/1 HTTP/1.1
+Host: <a class="vglnk" href="https://api.myapi.it/" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myapi</span><span>.</span><span>it</span></a>
+Content-Type: application/json
+{
+"firstname": "Mario",
+}</div><div class="enlighter-toolbar-bottom enlighter-toolbar"></div></div><pre class="EnlighterJSRAW enlighter-origin" data-enlighter-language="null">PUT  /v1/people/1 HTTP/1.1
+Host: <a class="vglnk" href="https://api.myapi.it/" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myapi</span><span>.</span><span>it</span></a>
+Content-Type: application/json
+{
+"firstname": "Mario",
+}</pre>
+<h3>elimina UNA RISORSA CON delete</h3>
+<p>Per eliminare&nbsp; una risorsa&nbsp;le tue API dovrebbero prevedere un endpoint di metodo DELETE.</p>
+<p>La risposta a una richiesta DELETE dovrebbe ressere di codice HTTP 204 per confermare l’avvenuta eliminazione e e un body vuoto.</p>
+<p>Un esempio di richiesta DELETE per eliminare la risorsa person con id 1.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-hover enlighter-linenumbers "><div class="enlighter-toolbar-top enlighter-toolbar"><div class="enlighter-btn enlighter-btn-raw" title="Plain text"></div><div class="enlighter-btn enlighter-btn-copy" title="Copy to clipboard"></div><div class="enlighter-btn enlighter-btn-window" title="Open code in new window"></div><div class="enlighter-btn enlighter-btn-website" title="EnlighterJS 3 Syntax Highlighter"></div></div><div class="enlighter" style=""><div class=""><div><span class="enlighter-text">DELETE  /v1/people/</span><span class="enlighter-n1">1</span><span class="enlighter-text"> HTTP/</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-n1">1</span><span class="enlighter-text"></span></div></div><div class=""><div><span class="enlighter-text">Host: https</span><span class="enlighter-c0">://api.myapi.it</span></div></div></div><div class="enlighter-raw">DELETE  /v1/people/1 HTTP/1.1
+Host: <a class="vglnk" href="https://api.myapi.it/" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myapi</span><span>.</span><span>it</span></a></div><div class="enlighter-toolbar-bottom enlighter-toolbar"></div></div><pre class="EnlighterJSRAW enlighter-origin" data-enlighter-language="null">DELETE  /v1/people/1 HTTP/1.1
+Host: <a class="vglnk" href="https://api.myapi.it/" rel="nofollow"><span>https</span><span>://</span><span>api</span><span>.</span><span>myapi</span><span>.</span><span>it</span></a>
+</pre>
+<h3 id="4b14" class="graf graf--h3 graf-after--p">parametri di ricerca, ordinamento dati e paginazione</h3>
+<p id="189b" class="graf graf--p graf-after--h3">Il client potrebbe voler effettuare delle vere e proprie query utilizzando le URL della API. In fase di design delle API occorre quindi prevedere dei parametri query che possono arrivare sulla URL, e che quindi vanno correttamente gestiti. Di solito con tali parametri si gestisce:</p>
+<ul class="postList">
+<li id="6c8b" class="graf graf--li graf-after--p"><strong class="markup--strong markup--li-strong">Ordinamento: </strong>qualora il client volesse ordinare le risorse ottenute dalla API come ad esempio la lista delle persone ordinate per nome, l’API&nbsp;<code class="markup--code markup--li-code">GET /people</code>&nbsp;accettera’ il parametro query sort nella URL. Ad esempio:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="markup--code markup--li-code">GET v1/people?sort=firstname_asc</code></li>
+<li id="853b" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">Filtri: </strong>per filtrare il dataset le API di solito prevedono alcuni parametri query nella URL. Ad esempio per ottenere le persone con il nome dario di età 30 anni: <code class="markup--code markup--li-code">GET v1/people?name=dario&amp;age=30</code></li>
+<li id="5db6" class="graf graf--li graf-after--li"><strong class="markup--strong markup--li-strong">Pagination:&nbsp; </strong>quando&nbsp; il numero di risorse di una collezione è molto grande si dividono le risorse di una collezione in porzioni chiamate “pagine”, in modo da ridurre l’overhead sulla rete (immaginate di dover far passare sulla rete mobile 2000 risorse! ). Un esempio:&nbsp; <code class="markup--code markup--li-code">GET /people?page=2&amp;size=20</code>&nbsp; significa che le risorse vengono divise in pagine di 20 persone e io voglio ottenere i dati della seconda pagina (o terza a seconda se consideriamo 0 come indice di pagina).</li>
+</ul>
+<h3></h3>
+<h2 id="4b14" class="graf graf--h3 graf-after--p">CONCLUSIONE</h2>
+<p>In questo articolo abbiamo dato delle semplici linee guida che andrebbero sempre seguite nel design di API REST. In un prossimo articolo approfondiremo alcuni temi trattati solo di sfuggita come l’autenticazione e il caching.</p>
+<p>Stay tuned.</p>
+<h3>Bibliografia</h3>
+<p><em>The Web API Design Guidelines for Happy Developers (Antonio Pintus and Federico Pinna)</em><br>
+<em>RESTful Web APIs: Services for a Changing World (<span class="_Xbe kno-fv">Leonard Richardson</span>)</em></p>
+
+                        
+                            <div class="entry-tags"><a href="https://italiancoders.it/t/api/" rel="tag">api</a> <a href="https://italiancoders.it/t/rest/" rel="tag">rest</a></div>
+            
+        </div>
+        
+                     	
+	
+		<div class="typology-social-icons">
+							<a href="javascript:void(0);" class="typology-facebook typology-share-item hover-on" data-url="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F&amp;t=Linee+guida+per+il+design+di+REST+API"><i class="fa fa-facebook"></i></a>							<a href="javascript:void(0);" class="typology-twitter typology-share-item hover-on" data-url="http://twitter.com/intent/tweet?url=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F&amp;text=Linee+guida+per+il+design+di+REST+API"><i class="fa fa-twitter"></i></a>							<a href="javascript:void(0);" class="typology-reddit typology-share-item hover-on" data-url="http://www.reddit.com/submit?url=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F&amp;title=Linee+guida+per+il+design+di+REST+API"><i class="fa fa-reddit-alien"></i></a>							<a href="javascript:void(0);" class="typology-gplus typology-share-item hover-on" data-url="https://plus.google.com/share?url=https%3A%2F%2Fitaliancoders.it%2Frest-web-api-linee-guida%2F"><i class="fa fa-google-plus"></i></a>							<a href="javascript:void(0);" class="typology-linkedin typology-share-item hover-on" data-url="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://italiancoders.it/rest-web-api-linee-guida/&amp;title=Linee guida per il design di REST API"><i class="fa fa-linkedin"></i></a>					</div>
+
+	        
+    </article>
+</div>
+
+
+				
+	<div class="section-head"><h3 class="section-title h6">A proposito di me</h3></div>		
+	<div class="section-content typology-author">
+			
+		<div class="container">
+
+			<div class="col-lg-2">
+				<img alt="" src="./Linee guida per il design di REST API - ItalianCoders_files/c05b6b1c63b4f5c76bbc5a861d7d6f59.jpeg" srcset="https://secure.gravatar.com/avatar/c05b6b1c63b4f5c76bbc5a861d7d6f59?s=200&amp;d=retro&amp;r=g 2x" class="avatar avatar-100 photo" height="100" width="100" loading="lazy">			</div>
+
+			<div class="col-lg-10">
+
+				<h5 class="typology-author-box-title">Dario Frongillo</h5>
+				<div class="typology-author-desc">
+					<p>Fondatore di Italiancoders e dell iniziativa devtalks.<br>
+Software architect con un forte background  in Java, Architettura REST, framework Spring , Database Design,progettazione e sviluppo di SPA e RIA Web application con framework Javascript. Attualmente mi occupo di sviluppo soluzioni software in ambito Banking e Finance: in particolare progettazione e sviluppo di applicativi web based per la realizzazione di sistemi di trading, interfacce con i mercati finanziari e di servizi real time.</p>
+				</div>
+
+				<div class="typology-author-links">
+					<a class="typology-button-social hover-on" href="https://italiancoders.it/author/dario-frongillo/">Altro</a><a href="http://dariofrongillo.com/" target="_blank" class="typology-icon-social hover-on fa fa-link"></a>				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+				
+<div id="disqus_thread"><iframe id="dsq-app574" name="dsq-app574" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Linee guida per il design di REST API - ItalianCoders_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 372px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+
+
+
+			</div>
+
+
+
+		
+
+
+	
+
+
+
+
+
+	<div id="typology-single-sticky" class="typology-single-sticky typology-single-sticky-show typology-show-meta">
+		
+		<div class="typology-sticky-content meta">
+			
+<div class="typology-flex-center">
+	<div class="typology-sticky-author typology-sticky-l">
+		<img alt="" src="./Linee guida per il design di REST API - ItalianCoders_files/c05b6b1c63b4f5c76bbc5a861d7d6f59(1).jpeg" srcset="https://secure.gravatar.com/avatar/c05b6b1c63b4f5c76bbc5a861d7d6f59?s=100&amp;d=retro&amp;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" loading="lazy">		<span class="sticky-author-title">
+			<a href="https://italiancoders.it/author/dario-frongillo/">Di Dario Frongillo</a> 
+			<span class="sticky-author-date">3 Dicembre 2017</span>
+		</span>
+	</div>
+	<div class="typology-sticky-c">
+		
+	</div>
+
+	<div class="typology-sticky-comments typology-sticky-r">
+							<a href="https://italiancoders.it/rest-web-api-linee-guida/#disqus_thread" data-disqus-identifier="210 https://italiancoders.it/?p=210">1 Comment</a>			</div>
+
+</div>
+		</div>
+
+		<div class="typology-sticky-content prev-next">
+			<nav class="typology-prev-next-nav typology-flex-center">
+	
+	
+<div class="typology-prev-link typology-sticky-l">	
+				
+			<a href="https://italiancoders.it/autenticazione-di-servizi-rest-con-jwt-spring/">
+				<span class="typology-pn-ico"><i class="fa fa fa-chevron-left"></i></span>
+				<span class="typology-pn-link">Autenticazione di servizi REST con JWT [SPRING]</span>
+			</a>
+	</div>
+	
+	<a href="javascript: void(0);" class="typology-sticky-to-top typology-sticky-c">
+			<span class="typology-top-ico"><i class="fa fa fa-chevron-up"></i></span>
+			<span class="typology-top-link">Torna su</span>
+	</a>
+
+<div class="typology-next-link typology-sticky-r">	
+		
+			<a href="https://italiancoders.it/esporre-delle-risorse-utilizzando-le-api-resource-di-eloquent/">
+				<span class="typology-pn-ico"><i class="fa fa fa-chevron-right"></i></span>
+				<span class="typology-pn-link">Esporre delle risorse, utilizzando le Api Resource di Eloquent</span>
+			</a>
+			</div>
+</nav>
+
+		</div>
+	</div>
+
+
+
+												<div class="typology-section" style="margin-top: -50px;">
+						<div class="section-head">
+							<h1 class="section-title h6">I nostri Partner</h1>
+							<div class="widget_text section-content section-content-c layout-odd partner-list"><div class="textwidget custom-html-widget"><div class="typology-posts-2">
+	<article class="typology-post typology-layout-c col-lg-6 text-center">
+		<a href="https://italiancoders.it/partner/need-for-nerd/">
+			<img src="./Linee guida per il design di REST API - ItalianCoders_files/partner-need4nerd.png" class="img-responsive center-block" alt="Need4Nerd">
+		</a>
+	</article>
+</div></div></div>						</div>
+					</div>
+							
+
+			<footer id="typology-footer" class="typology-footer">
+
+
+
+				<div class="container">
+
+					
+
+
+					
+						<div class="col-lg-4"><div id="custom_html-2" class="widget_text widget clearfix widget_custom_html"><div class="textwidget custom-html-widget"><iframe class="iubenda-ibadge" scrolling="no" frameborder="0" allowtransparency="true" style="width:114px; height:22px;" title="Privacy Policy " src="javascript:window[&quot;contents&quot;]" src="./Linee guida per il design di REST API - ItalianCoders_files/saved_resource(1).html"></iframe><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script></div></div></div>
+
+					
+
+
+					
+				</div>
+
+
+
+			</footer>
+
+
+
+		</div>
+
+
+
+		<div class="typology-sidebar">
+	<div class="typology-sidebar-header">
+		<div class="typology-sidebar-header-wrapper">
+			<div class="typology-site-branding">
+	
+	<span class="site-title h4"><a href="https://italiancoders.it/" rel="home"><img class="typology-logo" src="./Linee guida per il design di REST API - ItalianCoders_files/logo.png" alt="ItalianCoders" style="width: 200px;"></a></span>	
+</div>
+			<span class="typology-sidebar-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+		</div>
+	</div>
+
+	<div class="widget typology-responsive-menu" style="display: none;">
+					<ul id="menu-nav-1" class="typology-nav typology-main-navigation"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-6265"><a href="https://italiancoders.it/about/">Chi Siamo</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6270"><a href="https://italiancoders.it/about/">Manifesto</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6269"><a href="https://italiancoders.it/about/contributors/">Contributors</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6268"><a href="https://italiancoders.it/about/blog/">Iniziativa Blog</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6267"><a href="https://italiancoders.it/about/devtalks/">Iniziativa  DevTalks</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6266"><a href="https://italiancoders.it/about/channels/">Follow Us</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5818"><a href="https://italiancoders.it/devtalks/">DevTalks</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-875"><a href="https://italiancoders.it/c/algoritmi-e-strutture-dati/">Algoritmi e Strutture Dati</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1775"><a href="https://italiancoders.it/c/design-pattern/">Design Pattern</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-24"><a href="https://italiancoders.it/c/intelligenza-artificiale/">Intelligenza artificiale</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-876"><a href="https://italiancoders.it/c/machine-learning/">Machine Learning</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-has-children menu-item-1776"><a href="https://italiancoders.it/c/linguaggitecnologie/">Linguaggi&amp;Tecnologie</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-735"><a href="https://italiancoders.it/c/linguaggitecnologie/android/">Android</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-77"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/c-cpp/">C/C++</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2306"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/csharp/">C#</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-842"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/database/">Database</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-843"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/database/oracle/">Oracle</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-80"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/go/">Go</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-25"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/java/">Java</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-715"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/java/spring/">Spring</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-720"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/">Javascript</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-721"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/angular/">Angular</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-722"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/react/">React</a></li>
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1622"><a href="https://italiancoders.it/c/linguaggitecnologie/front-end/javascript-front-end/vue-js/">Vue.js</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1849"><a href="https://italiancoders.it/c/linguaggitecnologie/kotlin/">Kotlin</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-729"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/node-js/">Node.js</a><span class="typology-nav-widget-acordion"><i class="fa fa-angle-down"></i></span>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-730"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/node-js/expressjs/">Express.js</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-29"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/php/">Php</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-30"><a href="https://italiancoders.it/c/linguaggitecnologie/back-end/python/">Python</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-736"><a href="https://italiancoders.it/c/extra/">Extra</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5543"><a href="https://italiancoders.it/c/gcp/">Google Cloud Platform</a></li>
+<li class="menu-item menu-item-type-post_type_archive menu-item-object-partner menu-item-4221"><a href="https://italiancoders.it/partner/">Partner</a></li>
+</ul>		</div>
+
+					
+								<div id="search-2" class="widget clearfix widget_search"><form class="typology-search-form" action="https://italiancoders.it/" method="get">
+	<input name="s" type="text" value="" placeholder="Scrivi qui per cercare">
+	<button type="submit" class="typology-button typology-button-search typology-icon-button">Cerca</button> 
+	</form></div><div id="post_views_counter_list_widget-2" class="widget clearfix widget_post_views_counter_list_widget"><h4 class="widget-title h5">Gli articoli più letti</h4><ul>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/introduzione-spring-inversion-of-control/">Spring-01 – Introduzione al framework Spring</a> <span class="count">(38.862)</span>
+			</li>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/ordinamento-di-un-array-parte-1/">Ordinamento di un Array – Parte 1</a> <span class="count">(35.974)</span>
+			</li>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/autenticazione-di-servizi-rest-con-jwt-spring/">Autenticazione di servizi REST con JWT [SPRING]</a> <span class="count">(32.461)</span>
+			</li>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/introduzione-a-rest/">Introduzione a REST</a> <span class="count">(30.621)</span>
+			</li>
+			<li>
+					<a class="post-title" href="https://italiancoders.it/rest-web-api-linee-guida/">Linee guida per il design di REST API</a> <span class="count">(27.436)</span>
+			</li></ul></div>
+		<div id="recent-posts-2" class="widget clearfix widget_recent_entries">
+		<h4 class="widget-title h5">Articoli recenti</h4>
+		<ul>
+											<li>
+					<a href="https://italiancoders.it/il-buono-il-brutto-lipc-considerazioni-sulle-prestazioni-della-posix-ipc-pt-3/">Il buono, il brutto, l’IPC – considerazioni sulle prestazioni della POSIX IPC – pt.3</a>
+									</li>
+											<li>
+					<a href="https://italiancoders.it/come-ho-superato-lesame-ckad-certified-kubernetes-application-developer/">Come ho superato l’esame CKAD ( Certified Kubernetes Application Developer)</a>
+									</li>
+											<li>
+					<a href="https://italiancoders.it/sviluppare-in-cobol-puo-essere-divertente/">Sviluppare in COBOL può essere divertente</a>
+									</li>
+											<li>
+					<a href="https://italiancoders.it/svelte-usiamo-i-componenti/">Svelte, usiamo i componenti</a>
+									</li>
+											<li>
+					<a href="https://italiancoders.it/per-qualche-ipc-in-piu-considerazioni-sulle-prestazioni-della-posix-ipc-pt-2/">Per qualche IPC in più – considerazioni sulle prestazioni della POSIX IPC – pt.2</a>
+									</li>
+					</ul>
+
+		</div><div id="recent-comments-2" class="widget clearfix widget_recent_comments"><h4 class="widget-title h5">Commenti recenti</h4><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="https://italiancoders.it/spring-03-introduzione-al-container-ioc-spring/" rel="external nofollow ugc" class="url">Spring-03: Introduzione al Container IoC di Spring - ItalianCoders</a></span> su <a href="https://italiancoders.it/introduzione-spring-inversion-of-control/#comment-51">Spring-01 – Introduzione al framework Spring</a></li><li class="recentcomments"><span class="comment-author-link"><a href="https://italiancoders.it/abstract-factory-design-pattern/" rel="external nofollow ugc" class="url">Abstract Factory Design Pattern - ItalianCoders</a></span> su <a href="https://italiancoders.it/factory-method-design-pattern/#comment-49">Factory Method Design Pattern</a></li><li class="recentcomments"><span class="comment-author-link">Ruggiero Altini</span> su <a href="https://italiancoders.it/kotlin-cose-cosa-serve-sapere-ai-programmatori-java/#comment-45">Kotlin: Che cos’è e cosa serve sapere ai programmatori Java</a></li><li class="recentcomments"><span class="comment-author-link">Luca</span> su <a href="https://italiancoders.it/kotlin-cose-cosa-serve-sapere-ai-programmatori-java/#comment-44">Kotlin: Che cos’è e cosa serve sapere ai programmatori Java</a></li><li class="recentcomments"><span class="comment-author-link">Mattia Marchiani</span> su <a href="https://italiancoders.it/decorator-pattern/#comment-43">DECORATOR PATTERN</a></li></ul></div>				
+</div>
+
+<div class="typology-sidebar-overlay"></div>
+		
+
+		<script type="text/javascript" id="disqus_count-js-extra">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"https-italiancoders-it"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/comment_count.js.download" id="disqus_count-js"></script>
+<script type="text/javascript" id="disqus_embed-js-extra">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.21"},"disqusIdentifier":"210 https:\/\/italiancoders.it\/?p=210","disqusShortname":"https-italiancoders-it","disqusTitle":"Linee guida per il design di REST API","disqusUrl":"https:\/\/italiancoders.it\/rest-web-api-linee-guida\/","postId":"210"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/comment_embed.js.download" id="disqus_embed-js"></script>
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/main.js.download" id="mks_shortcodes_js-js"></script>
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/comment-reply.min.js.download" id="comment-reply-js"></script>
+<script type="text/javascript" id="typology-main-js-extra">
+/* <![CDATA[ */
+var typology_js_settings = {"rtl_mode":"","header_sticky":"","logo":"https:\/\/italiancoders.it\/wp-content\/uploads\/2018\/10\/logo.png","logo_retina":"https:\/\/italiancoders.it\/wp-content\/uploads\/2018\/10\/logo.png","use_gallery":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/min.js.download" id="typology-main-js"></script>
+<script type="text/javascript" id="cookie-notice-front-js-extra">
+/* <![CDATA[ */
+var cnArgs = {"ajaxUrl":"https:\/\/italiancoders.it\/wp-admin\/admin-ajax.php","nonce":"08e986b94f","hideEffect":"fade","position":"bottom","onScroll":"1","onScrollOffset":"100","onClick":"0","cookieName":"cookie_notice_accepted","cookieTime":"2592000","cookieTimeRejected":"2592000","cookiePath":"\/","cookieDomain":"","redirection":"0","cache":"1","refuse":"0","revokeCookies":"0","revokeCookiesOpt":"automatic","secure":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/front.min.js.download" id="cookie-notice-front-js"></script>
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/enlighterjs.min.js.download" id="enlighterjs-js"></script>
+<script type="text/javascript" id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"enlighter","language":"enlighter","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script type="text/javascript" src="./Linee guida per il design di REST API - ItalianCoders_files/wp-embed.min.js.download" id="wp-embed-js"></script>
+
+		<!-- Cookie Notice plugin v2.0.3 by Digital Factory https://dfactory.eu/ -->
+		<div id="cookie-notice" role="banner" class="cn-position-bottom cn-effect-fade cookie-notice-hidden cookie-revoke-visible cn-animated" aria-label="Cookie Notice" style="background-color: rgba(30,115,190,1);"><div class="cookie-notice-container" style="color: #fff;"><span id="cn-notice-text" class="cn-text-container">Navigando sul nostro sito ti dichiari d'accordo con la nostra informativa cookie.</span><span id="cn-notice-buttons" class="cn-buttons-container"><a href="https://italiancoders.it/rest-web-api-linee-guida/#" id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button wp-default button" aria-label="Ok">Ok</a><a href="https://italiancoders.it/informativa-cookie/" target="_blank" id="cn-more-info" class="cn-more-info cn-button wp-default button" aria-label="Leggi">Leggi</a></span><a href="javascript:void(0);" id="cn-close-notice" data-cookie-set="accept" class="cn-close-icon" aria-label="Ok"></a></div>
+			
+		</div>
+		<!-- / Cookie Notice plugin -->
+
+
+	
+
+<iframe style="display: none;" src="./Linee guida per il design di REST API - ItalianCoders_files/saved_resource(2).html"></iframe></body></html>

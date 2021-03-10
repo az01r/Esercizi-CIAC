@@ -1,0 +1,18 @@
+CREARE REST SERVICE (SENZA TEMPLATE)
+
+creare classe configurazione
+@ApplicationPath("api")
+public class JAXRSConfiguration extends Application(javax.ws.rs.core){
+
+}
+
+creare package risorse
+dentro creare risorse, ovvero il servizio di rest vero e proprio, ad esempio 
+@Path("/ping")
+public class PingResource {
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String ping(){
+		return "ping ok at "+LocalDateTime.now();
+	}
+}

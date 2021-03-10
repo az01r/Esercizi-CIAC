@@ -6,10 +6,11 @@ Vanno scaricati sulla macchina (si possono anche installare in docker), noi usia
 Possiamo creare un collegamento dentro NetBeans per far partire il server direttamente dall'editor:
 	Services->Servers->Add Server->WildFly Application Server
 
+Per usare un application server:
+1.	cercare comando per farlo partire e per stopparlo oppure
+	cercare se c'è un plugin per l'editor (evito di memorizzare comandi)
+2.	impostare l'application server per il run del progetto
+3.	mettere il .war dell'applicazione dentro la cartella deployments dell'app. server	
 
 
-
-Caricare un .war in un server locale: vedi img 
-Si carica in locale durante lo svilupp dell'app, dopodichè si carica su un server su cui gira
-un application server
 
