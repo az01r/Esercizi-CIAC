@@ -52,7 +52,7 @@ public class UserStore {
         User found = users.get(id);
         return found == null ? Optional.empty() : Optional.of(found);
     }
-
+    
     /**
      * aggiungere /id_user nell'url
      * aggiungere /id_user nel json (oltre a nome/cognome)
@@ -60,6 +60,33 @@ public class UserStore {
      */
     public void update(User u) {
         find(u.getId()).ifPresent(v->users.put(u.getId(),u));
-        //users.put(u.getId(), u);
     }
+    
+    public void partialUpdate(int id,String nome,String cognome){
+        Optional<User> found = find(id);
+        if(found.isPresent()){
+            User u = found.get();
+            u.setNome(nome!=null ? nome : u.getNome());
+            u.setCognome(cognome!=null ? cognome : u.getCognome());
+            users.put(id,u);
+        }
+    }
+    
+    public List<User>search(String nome, String cognome){
+        return users.values().stream().filter(v->(nome==null ? true : v.getNome().equals(nome))&&(cognome==null ? true : v.getCognome().equals(cognome))).collect(Collectors.toList());
+    }
+    
+    /*
+    
+    NON SI FA COSI MA PASSANDO I PARAMETRI TRAMITE URL
+    public Optional<User> find(String nome) {
+        for (User user : users.values()) {
+            if(user.getNome().equals(nome)){
+                return Optional.of(user);
+            }
+        }
+        return Optional.empty();
+    }
+    
+    */
 }

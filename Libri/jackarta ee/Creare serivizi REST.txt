@@ -1,3 +1,5 @@
+Documentazione: https://eclipse-ee4j.github.io/jakartaee-tutorial/jaxrs002.html
+
 CREARE REST SERVICE (SENZA TEMPLATE)
 
 creare classe configurazione

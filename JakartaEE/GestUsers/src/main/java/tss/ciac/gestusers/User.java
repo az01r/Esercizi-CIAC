@@ -20,7 +20,6 @@ public class User implements Serializable {
 
     public User() {
         this(null,null);
-//this.id = count++;
     }
 
     public User(String nome, String cognome) {
