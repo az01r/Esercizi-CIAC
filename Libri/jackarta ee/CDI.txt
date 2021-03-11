@@ -1,0 +1,9 @@
+Gestisce autonomamente le dipendenze delle classi
+Quando necessario crea e distrugge istanze al posto nostro
+per usarlo
+@Inject private Message message		(deve essere presente nel progetto il file beans.xml)
+
+Posso definire la durata di vita di una istanza
+@RequestScoped		ad ogni richiesta di ogni utente viene creata un'istanza
+@SessionScoped 		un'istanza per ogni utente (browser che si connette all'applicazione)
+@ApplicationScoped	una sola istanza che dura da quando pubblico a quando fermo l'application server (Wild Fly)
