@@ -9,9 +9,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
+import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -20,6 +22,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import tss.ciac.gestusers.User;
 import tss.ciac.gestusers.UserStore;
 
@@ -46,13 +49,16 @@ public class UserResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON) // viene creata un'istanza di user a partire dai dati .json
-    public void create(User u) { 
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response create(User u) { 
         store.add(u);
+        return Response.status(Response.Status.CREATED).entity(u).build();
     }
     
     @DELETE
     @Path("{id}")
     public void delete(@PathParam("id") Integer id){
+        store.find(id).orElseThrow(() -> new NotFoundException());
         store.remove(id);
     }
     
@@ -61,14 +67,8 @@ public class UserResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void update(@PathParam("id") Integer id, User u){
         u.setId(id);
+        store.find(id).orElseThrow(() -> new NotFoundException());
         store.update(u);
-    }
-    
-    //url per passare i parametri --> ?nome=Paolo&cognome=Grosso
-    @PATCH
-    @Path("{id}")
-    public void partialUpdate(@PathParam("id") Integer id, @QueryParam("nome") String nome, @QueryParam("cognome") String cognome){
-            store.partialUpdate(id, nome, cognome);
     }
     
     /**
@@ -79,17 +79,26 @@ public class UserResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> search(@QueryParam("nome") String nome, @QueryParam("cognome") String cognome) {
+    public List<User> find(@QueryParam("nome") String nome, @QueryParam("cognome") String cognome) {
         if(nome==null && cognome==null){
             return store.all();
         }
-        return store.search(nome, cognome);
+        return store.find(nome, cognome);
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public User find(@PathParam("id") Integer id) {
-        return store.find(id).get();
+        return store.find(id).orElseThrow(() -> new NotFoundException()); // .get(); //.orElseThrow()
     }
+    
+    //url per passare i parametri --> ?nome=Paolo&cognome=Grosso
+    @PATCH
+    @Path("{id}")
+    public void partialUpdate(@PathParam("id") Integer id, JsonObject json){
+        store.find(id).orElseThrow(() -> new NotFoundException());
+        store.partialUpdate(id, json);
+    }
+    
 }

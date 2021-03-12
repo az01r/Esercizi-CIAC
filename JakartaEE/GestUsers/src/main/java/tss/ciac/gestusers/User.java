@@ -13,19 +13,11 @@ import java.util.Objects;
  */
 public class User implements Serializable {
 
-    private static int count = 0;
-    private int id;
+    private Integer id;
     private String nome;
     private String cognome;
 
     public User() {
-        this(null,null);
-    }
-
-    public User(String nome, String cognome) {
-        this.id = count++;
-        this.nome = nome;
-        this.cognome = cognome;
     }
 
     public int getId() {
