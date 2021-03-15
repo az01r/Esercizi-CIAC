@@ -26,7 +26,7 @@ function carica() {
             .then(function (dati) {
                 msg = "";
                 msg = dati[0].nome + " " + dati[0].cognome;
-                ris = document.querySelector("#dresult");
+                ris = document.querySelector("#dResult");
                 ris.innerHTML = msg;
             });
 }
