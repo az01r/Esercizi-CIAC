@@ -10,10 +10,37 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="js/script.js"></script>
+        <script src="js/utils.js"></script>
+
         <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body onload="init()">
-        <button id="btnCarica">Carica dati</button>
-        <div id="dResult"></div>
+        <header>
+            <h1>Bank System</h1>
+            <p>Compila per effettuare il login</p>
+        </header>
+        <div id="dLogin">
+            <h3>Form Login</h3>
+            <form id="fLogin">
+                <input type="text" id="usr" name="usr" placeholder="ins. username"/><br>
+                <input type="password" id="pwd" name="pwd" placeholder="ins. password"/><br>
+                <input type="button" id="btnLogin" value="Login"><br>
+            </form>
+            <div id="dLoginMsg"></div>
+        </div>
+        <div id="dbank" >
+            <h2>Backoffice cliente</h2>
+            <h3 id="loguser"></h3>
+            <p>In questa sezione potete gestire il vostro conto</p>
+            <hr>
+            <button id="btnCarica">Carica Movimenti</button>
+            <div id="dAccount" style="block">
+                <form id="fAddTransaction">
+                    <input type="text" id="amount" name="amount" placeholder="ins. amount"/><br>
+
+                    <br><br><br>
+                    <input type="button" id="btnAddTransaction" value="send transaction"><br>
+                </form>
+            </div>
     </body>
 </html>

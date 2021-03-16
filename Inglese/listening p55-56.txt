@@ -1,0 +1,11 @@
+23 b
+24 c
+25 c
+26 b
+27 c
+28 c
+29 a
+30 b
+
+board = consiglio di amministrazione
+chairman = presidente

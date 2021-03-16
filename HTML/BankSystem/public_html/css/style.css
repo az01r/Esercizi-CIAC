@@ -7,4 +7,30 @@ and open the template in the editor.
     Created on : 15 mar 2021, 11:47:05
     Author     : Paolo
 */
-
+body{
+    text-align: center;
+    margin:0px;
+    background-color: darksalmon;
+}
+h1{
+    margin: 0px;
+    background-color: beige;
+}
+#dLogin{
+    padding: 10px;
+    background-color: burlywood;
+    margin: auto;
+    width: 40%;
+    margin-top: 5%;
+}
+input{
+    margin: 5px;
+}
+#dBank{
+    display: none;
+    padding: 10px;
+    background-color: darkseagreen;
+    margin: auto;
+    width: 50%;
+    margin-top: 5%;
+}
