@@ -1,0 +1,10 @@
+airhacks\service\JAXRSConfiguration.class
+it\tss\bankSystem\entity\Transaction$Type.class
+airhacks\service\ping\boundary\PingResource.class
+it\tss\bankSystem\boundary\UserResource.class
+it\tss\bankSystem\entity\User.class
+it\tss\bankSystem\entity\Transaction.class
+it\tss\bankSystem\entity\AbstractEntity.class
+it\tss\bankSystem\control\UserStore.class
+it\tss\bankSystem\entity\User$Role.class
+it\tss\bankSystem\entity\Account.class
