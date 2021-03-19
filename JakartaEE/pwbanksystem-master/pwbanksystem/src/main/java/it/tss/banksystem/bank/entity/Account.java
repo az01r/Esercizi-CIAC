@@ -28,7 +28,7 @@ public class Account extends AbstractEntity implements Serializable {
 
     @ManyToOne(optional = false) // un user può avere tanti account ovvero tanti conti
     @JoinColumn(name = "user_id")
-    @JsonbTypeAdapter(UserLinkAdapter.class)
+    @JsonbTypeAdapter(UserLinkAdapter.class) // converte in Json usando la classe UserLinkAdapter
     private User user;
 
     private boolean deleted = false;

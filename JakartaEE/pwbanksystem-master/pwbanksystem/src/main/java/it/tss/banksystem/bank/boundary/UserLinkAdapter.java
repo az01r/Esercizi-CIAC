@@ -13,8 +13,11 @@ import javax.json.JsonObject;
 import javax.json.bind.adapter.JsonbAdapter;
 
 /**
- *
- * @author tss
+ * JsonbAdapter converte da JsonObject a User e viceversa
+ * un User in json è
+ * {
+ *      "id": 21
+ * }
  */
 public class UserLinkAdapter implements JsonbAdapter<User, JsonObject> {
 

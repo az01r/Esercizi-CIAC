@@ -71,6 +71,7 @@ public class AccountResource {
     /*
     get/set
      */
+    
     public Long getUserId() {
         return userId;
     }

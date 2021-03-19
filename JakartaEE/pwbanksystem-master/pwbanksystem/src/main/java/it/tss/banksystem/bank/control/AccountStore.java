@@ -34,7 +34,7 @@ public class AccountStore {
         return em.createQuery("select e from Account e where e.deleted=false order by e.user.usr", Account.class)
                 .getResultList();
     }
-
+    
     public List<Account> findByUser(Long id) {
         return em.createQuery("select e from Account e where e.user.id= :user_id", Account.class)
                 .setParameter("user_id", id)
@@ -66,4 +66,17 @@ public class AccountStore {
         found.setDeleted(true);
         em.merge(found);
     }
+    
+    public double totalDeposit() {
+        return (double)(em.createQuery("SELECT SUM(balance) FROM Account e WHERE e.deleted=FALSE", Double.class).getSingleResult());         
+    }
+    
+    /*
+    public double totalDeposit() {
+        return em.createQuery("select e from Account e where e.deleted=false ", Account.class)
+                .getResultStream()
+                .mapToDouble(Account::getBalance)
+                .sum();
+    }
+    */
 }

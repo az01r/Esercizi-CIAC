@@ -24,9 +24,9 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
  */
 
 /* 
-    obbligatorio iniziare e terminare la transazione -> se qualcosa va storto 
-    non fa l'intero create
-    */
+obbligatorio iniziare e terminare la transazione -> se qualcosa va storto 
+non fa l'intero create
+*/
 @RequestScoped
 @Transactional(Transactional.TxType.REQUIRED)
 public class UserStore {
@@ -77,4 +77,8 @@ public class UserStore {
         accountStore.findByUser(id).stream().map(Account::getId).forEach(accountStore::delete);
     }
 
+    public long count(){
+        return em.createQuery("SELECT COUNT(e) FROM User e", Long.class).getSingleResult();
+    }
+    
 }

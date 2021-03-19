@@ -42,6 +42,7 @@ public class TransactionsResource {
         t.setAccount(account);
         return store.create(t);
     }
+    
     /*
     get/set
     */
@@ -61,6 +62,5 @@ public class TransactionsResource {
     public void setAccountid(Long accountid) {
         this.accountid = accountid;
     }
-    
     
 }
