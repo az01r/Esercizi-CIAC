@@ -5,8 +5,8 @@
  */
 package it.tss.bankSystem.boundary;
 
-import it.tss.bankSystem.control.UserStore;
-import it.tss.bankSystem.entity.User;
+import it.tss.bankSystem.control.AccountStore;
+import it.tss.bankSystem.entity.Account;
 import java.util.List;
 import javax.inject.Inject;
 import javax.json.JsonObject;
@@ -16,35 +16,39 @@ import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.eclipse.microprofile.openapi.models.OpenAPI;
 
 /**
  *
- * @author Paolo
+ * @author tss
  */
 
-@Path("/users")
-public class UserResource {
+@Path("/accounts")
+public class AccountResource {
     
     @Inject
-    UserStore store;
+    AccountStore store;
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> search(){
+    public List<Account> searchAll(){
         return store.search();
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Account> search(Long userId){
+        return store.searchByUser(userId);
     }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(User u){ // creazione di un'entity
-        User saved = store.create(u);
+    public Response create(Account a){ // creazione di un'entity
+        Account saved = store.create(a);
         return Response.status(Response.Status.CREATED)
                 .entity(saved)
                 .build();
@@ -54,10 +58,10 @@ public class UserResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response find(@PathParam("id") Long id){
-        User user = store.find(id).orElseThrow((() -> 
+        Account account = store.find(id).orElseThrow((() -> 
             new NotFoundException()
         ));
-        return Response.ok().entity(user).build();
+        return Response.ok().entity(account).build();
     }
     
     @DELETE
@@ -73,8 +77,8 @@ public class UserResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response update(@PathParam("id") Long id, JsonObject json){
-        User user = store.find(id).orElseThrow(() -> new NotFoundException()); 
-        store.update(user,json); // ritorna l'User aggiornato
-        return Response.ok().entity(user).build();
+        Account account = store.find(id).orElseThrow(() -> new NotFoundException()); 
+        store.update(account,json); // ritorna l'User aggiornato
+        return Response.ok().entity(account).build();
     }
 }

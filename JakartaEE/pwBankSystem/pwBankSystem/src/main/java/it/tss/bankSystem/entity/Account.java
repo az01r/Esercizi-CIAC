@@ -21,6 +21,8 @@ import javax.persistence.Table;
 @Table(name = "account")
 public class Account extends AbstractEntity implements Serializable{
     
+    private boolean deleted = false;
+    
     private Double balance;
     
     private Long overdraft;
@@ -37,8 +39,6 @@ public class Account extends AbstractEntity implements Serializable{
         this.overdraft = overdraft;
         this.user = user;
     }
-
-    
     
     public Double getBalance() {
         return balance;
@@ -54,6 +54,18 @@ public class Account extends AbstractEntity implements Serializable{
 
     public void setOverdraft(Long overdraft) {
         this.overdraft = overdraft;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public User getUser() {
+        return user;
     }
     
 }

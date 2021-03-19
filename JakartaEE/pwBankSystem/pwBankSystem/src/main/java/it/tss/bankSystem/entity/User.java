@@ -6,6 +6,7 @@
 package it.tss.bankSystem.entity;
 
 import java.io.Serializable;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -26,6 +27,8 @@ public class User extends AbstractEntity implements Serializable{
     public enum Role{
         ADMIN, USER
     }
+    
+    private boolean deleted=false;
     
     private String fname;
     
@@ -73,6 +76,7 @@ public class User extends AbstractEntity implements Serializable{
         this.usr = usr;
     }
 
+    @JsonbTransient
     public String getPwd() {
         return pwd;
     }
@@ -103,6 +107,14 @@ public class User extends AbstractEntity implements Serializable{
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
     
 }
