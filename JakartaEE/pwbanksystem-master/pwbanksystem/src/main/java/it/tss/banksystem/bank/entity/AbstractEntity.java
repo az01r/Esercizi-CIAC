@@ -4,7 +4,7 @@
  * 3 modi:
  * - ritornare direttamente le Entity, usando 2 tipi di annotazioni: 
  *   per JPA e Jsonb per definire cosa restituire;
- *      es: @JsonbTransient non 
+ *      es: @JsonbTransient non fa ritornare la proprietà
  * - restituire un json appositamente costruito da noi
  * NB problema: devo però definire io la documentazione mentre usando le annotazioni 
  *              Swagger analizza e interpreta autonomamente la classe java
@@ -13,6 +13,8 @@
  *   crea la documentazione autonomamente senza dover usare due tipi di annotazioni
  * 
  * In questo progetto abbiamo scelto quest'ultima strada
+ * Link per interfaccia openapi dell'app:
+ * http://localhost:8080/resources/openapi-ui
  */
 package it.tss.banksystem.bank.entity;
 
