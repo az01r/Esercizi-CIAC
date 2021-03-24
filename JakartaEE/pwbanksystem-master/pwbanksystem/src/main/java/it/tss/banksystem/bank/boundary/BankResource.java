@@ -7,6 +7,8 @@ package it.tss.banksystem.bank.boundary;
 
 import it.tss.banksystem.bank.control.AccountStore;
 import it.tss.banksystem.bank.control.UserStore;
+import java.math.BigDecimal;
+import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.ws.rs.GET;
@@ -16,29 +18,24 @@ import javax.ws.rs.Path;
  *
  * @author Paolo
  */
-
 @Path("/bank")
 public class BankResource {
+
+    @Inject
+    private UserStore userStore;
     
-    UserStore userStore;
-    AccountStore accountStore;
-/*
-    @Override
-    public String toString() {
-        return "BankResource{" + "totAccont=" + userStore.count() + ", totDeposit=" + accountStore.totalDeposit() + '}';
-    }
-    
-    @GET
-    @Path("/stats")
-    public String stats() {
-        return this.toString();
-    } 
-*/  
-    
+    @Inject
+    private AccountStore accountStore;
+
     @GET
     @Path("/stats")
     public JsonObject stats() {
-        return Json.createObjectBuilder().add("naccounts", userStore.count()).add("totDeposit", accountStore.totalDeposit()).build();
-    } 
-    
+        long numUsers = userStore.searchCount();
+        double totalDeposit = accountStore.totalDeposit();
+        return Json.createObjectBuilder()
+                .add("users", numUsers)
+                .add("deposits", totalDeposit)
+                .build();
+    }
+
 }

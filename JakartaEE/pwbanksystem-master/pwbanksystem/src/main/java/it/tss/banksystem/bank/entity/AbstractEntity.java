@@ -1,7 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * E' comodo rispondere alle chiamate dei servizi rest usando le classi stesse. 
+ * Bisogna però gestire i dati che non vogliamo che vengano restituiti al client.
+ * 3 modi:
+ * - ritornare direttamente le Entity, usando 2 tipi di annotazioni: 
+ *   per JPA e per Openapi per definire cosa restituire;
+ * - restituire un json appositamente costruito da noi
+ * NB problema: devo però definire io la documentazione mentre usando le annotazioni 
+ *              Swagger analizza e interpreta autonomamente la classe java
+ * - creare classi apposite con solo gli attributi che voglio restituire e usare
+ *   queste per rispondere alle chiamate dei servizi. In questo modo la Swagger 
+ *   crea la documentazione autonomamente senza dover usare due tipi di annotazioni
+ * 
+ * In questo progetto abbiamo scelto quest'ultima strada
  */
 package it.tss.banksystem.bank.entity;
 
@@ -20,13 +30,12 @@ import javax.persistence.Version;
 
 /**
  *
- * @author alfonso
+ * @author Paolo
  */
 
-/* 
-tutto quello che viene scritto viene riportato in tutte le tabelle che 
-estendono questa classe 
-*/
+/**
+ * Classe astratta e relative annotazioni di JPA
+ */
 @MappedSuperclass
 @EntityListeners({EntityListener.class})
 public abstract class AbstractEntity {
@@ -35,16 +44,14 @@ public abstract class AbstractEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @JsonbDateFormat(value = "dd/MM/yyyy HH:mm:ss")
     @Column(name = "created_on")
     protected LocalDateTime createdOn;
 
-    @JsonbDateFormat(value = "dd/MM/yyyy HH:mm:ss")
     @Column(name = "modified_on")
     protected LocalDateTime modifiedOn;
 
     @ManyToOne
-    @JoinColumn(name = "created_by_id") //self join
+    @JoinColumn(name = "created_by_id")
     protected User createdBy;
 
     @ManyToOne
@@ -52,10 +59,11 @@ public abstract class AbstractEntity {
     protected User modifiedBy;
 
     /*
-    Tramite il campo version JPA avverte se quando si sta modificando un record
-    qualcun'altro ha modificato il record prima che io lo abbia modificato 
+    JPA aggiorna il campo version autonomamente, in questo modo avverte se 
+    quando si sta modificando un record qualcun'altro ha modificato il 
+    record prima che io lo abbia modificato 
     Evita quindi le modifiche concorrenti
-    */
+     */
     @Version
     protected Long version;
 

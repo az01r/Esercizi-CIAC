@@ -12,33 +12,45 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import it.tss.banksystem.bank.boundary.dto.TransactionCreate;
 
 /**
  *
- * @author alfonso
+ * @author Paolo
  */
 @Entity
 @Table(name = "transaction")
-public class Transaction extends AbstractEntity implements Serializable{
-    
-    public enum Type{
+public class Transaction extends AbstractEntity implements Serializable {
+
+    public enum Type {
         DEPOSIT, WITHDRAWAL, TRANSFER
     }
-    
+
     @Enumerated(EnumType.STRING)
     private Type type;
-    
+
     private Double amount;
-    
+
     @ManyToOne(optional = false)
     private Account account;
-    
+
     @ManyToOne
     private Account transfer;
-    
+
     @Column(length = 2048)
     private String note;
 
+    public Transaction() {
+    }
+    
+    public Transaction(TransactionCreate t, Account account, Account transfer) {
+        this.type = t.type;
+        this.amount = t.amount;
+        this.account = account;
+        this.transfer = transfer;
+    }
+    
+    
     public Type getType() {
         return type;
     }
@@ -78,6 +90,4 @@ public class Transaction extends AbstractEntity implements Serializable{
     public void setNote(String note) {
         this.note = note;
     }
-    
-    
 }

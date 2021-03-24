@@ -1,6 +1,6 @@
-Documentazione: https://eclipse-ee4j.github.io/jakartaee-tutorial/jaxrs002.html
-
 CREARE REST SERVICE (SENZA TEMPLATE)
+
+Documentazione: https://eclipse-ee4j.github.io/jakartaee-tutorial/jaxrs002.html
 
 creare classe configurazione
 @ApplicationPath("api")
@@ -18,3 +18,14 @@ public class PingResource {
 		return "ping ok at "+LocalDateTime.now();
 	}
 }
+
+----------------------------------------------------------------------------------------
+
+Documentare servizi rest usando standard Openapi
+swagger.io permette di gestire i servizi rest senza scrivere una linea di codice
+Nel path basta aggiungere /openapi-ui per:
+ - avere una descrizione dei servizi di rest offerti
+ - eseguire un servizio rest tramite un'interfaccia grafica
+
+----------------------------------------------------------------------------------------
+

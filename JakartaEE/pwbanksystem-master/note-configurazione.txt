@@ -36,10 +36,8 @@ comandi docker --------------------
 
 docker pull mariadb:10.3
 
-Creare volume per salvare in locale sulla macchina i database che creiamo
 docker volume create mariadb-tss
 
-creare e far partire un container
 docker run -d --name mariadb-tss -e MYSQL_ROOT_PASSWORD=root -p 3307:3306 --mount source=mariadb-tss,target=/var/lib/mysql --restart=always mariadb:10.3
 
 
@@ -47,7 +45,6 @@ mysql workbench ------------------
 
 creare connessione al server porta 3307
 
-creare connessione "app" sulla 3307
 GRANT ALL ON pwbanksystem.* TO 'app'@'%' IDENTIFIED BY 'app';
 
 
