@@ -8,6 +8,7 @@
     <data-source>
         <name>java:global/jdbc/dsbanksystem</name>
         <class-name>org.mariadb.jdbc.MariaDbDataSource</class-name>
+        <!-- l'url dipende dalla connessione definita nel pom, che modifica OtherSources/resources/env/___.properties -->
         <url>${ds.url}</url>
         <user>app</user>
         <password>app</password>

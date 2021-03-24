@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *   creare classi apposite con solo gli attributi che voglio restituire e usare
+ *   queste per rispondere alle chiamate dei servizi. In questo modo la Swagger 
+ *   crea la documentazione autonomamente senza dover usare due tipi di annotazioni
+ * 
+ * In questo progetto abbiamo scelto quest'ultima strada
  */
 package it.tss.banksystem.bank.boundary.dto;
 

@@ -3,7 +3,8 @@
  * Bisogna però gestire i dati che non vogliamo che vengano restituiti al client.
  * 3 modi:
  * - ritornare direttamente le Entity, usando 2 tipi di annotazioni: 
- *   per JPA e per Openapi per definire cosa restituire;
+ *   per JPA e Jsonb per definire cosa restituire;
+ *      es: @JsonbTransient non 
  * - restituire un json appositamente costruito da noi
  * NB problema: devo però definire io la documentazione mentre usando le annotazioni 
  *              Swagger analizza e interpreta autonomamente la classe java

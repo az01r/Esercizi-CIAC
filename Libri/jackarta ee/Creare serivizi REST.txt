@@ -27,5 +27,32 @@ Nel path basta aggiungere /openapi-ui per:
  - avere una descrizione dei servizi di rest offerti
  - eseguire un servizio rest tramite un'interfaccia grafica
 
+Per usare Openapi di mircroprofile:
+
+1. aggiungere nel pom la dipendenza
+<dependency>
+            <groupId>org.microprofile-ext.openapi-ext</groupId>
+            <artifactId>openapi-ui</artifactId>
+            <version>1.1.4</version>
+</dependency>
+
+2. mettere come configurazione nelle proprietà di WildFly standalone-microprofile.xml
 ----------------------------------------------------------------------------------------
+
+/*
+ * E' comodo rispondere alle chiamate dei servizi rest usando le classi stesse. 
+ * Bisogna però gestire i dati che non vogliamo che vengano restituiti al client.
+ * 3 modi:
+ * - ritornare direttamente le Entity, usando 2 tipi di annotazioni: 
+ *   per JPA e Jsonb per definire cosa restituire;
+ *      es: @JsonbTransient non 
+ * - restituire un json appositamente costruito da noi
+ * NB problema: devo però definire io la documentazione mentre usando le annotazioni 
+ *              Swagger analizza e interpreta autonomamente la classe java
+ * - creare classi apposite con solo gli attributi che voglio restituire e usare
+ *   queste per rispondere alle chiamate dei servizi. In questo modo la Swagger 
+ *   crea la documentazione autonomamente senza dover usare due tipi di annotazioni
+ * 
+ * In questo progetto abbiamo scelto quest'ultima strada
+ */
 

@@ -83,6 +83,7 @@
         <finalName>pwbanksystem</finalName>
     </build>
     <profiles>
+        <!-- profili per configurare la connessione in OtherSources/resources/env -->
         <profile>
             <id>local</id>
             <activation>
