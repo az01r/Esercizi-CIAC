@@ -1,0 +1,13 @@
+1) creare private e public key (.bat per windows, .sh per linux)
+2) mettere le chiavi create in resources/META-INF/
+3) modificare file microprofile-config.properties
+mp.jwt.verify.issuer=it.tss.pwbanksystem
+mp.jwt.verify.publickey.location=/META-INF/publicKey.pem
+4) aggiungere annotazioni in JAXRSConfiguration.java
+@LoginConfig(authMethod = "MP-JWT", realmName = "MP-JWT")
+@DeclareRoles({"ADMIN","USER"})
+5) aggiungere a /Web Pages/WEB-INF/web.xml
+<context-param>
+        <param-name>resteasy.role.based.security</param-name>
+        <param-value>true</param-value>
+</context-param>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.tss.banksystem.security.control;
 
 import com.nimbusds.jose.JOSEObjectType;
@@ -17,12 +12,10 @@ import java.security.PrivateKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.text.ParseException;
 import java.util.Base64;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
-import org.eclipse.microprofile.jwt.Claims;
 
 /**
  *
@@ -31,10 +24,10 @@ import org.eclipse.microprofile.jwt.Claims;
 public class JWTManager {
 
     private static final String PRIVATE_KEY = "/META-INF/privateKey.pem";
-    private static final String ISS = "it.tss.pwbanksustem";
+    private static final String ISS = "it.tss.pwbanksystem";
 
     /**
-     * usa una chiave pubblica e una privata per generare un token
+     * crea il token di un utente usando la chiave privata
      *
      * @param usr
      * @return
@@ -123,6 +116,11 @@ public class JWTManager {
         return jwt;
     }
 
+    /**
+     * ricava i ruoli che abbiamo definito e li manda al metodo che crea il token
+     * @param user
+     * @return 
+     */
     private JSONArray loadGroups(User user) {
         JSONArray result = new JSONArray();
         result.add(user.getRole().name());

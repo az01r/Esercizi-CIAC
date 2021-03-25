@@ -15,6 +15,7 @@ import it.tss.banksystem.bank.control.UserStore;
 import it.tss.banksystem.bank.entity.Account;
 import it.tss.banksystem.bank.entity.User;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -31,6 +32,7 @@ import javax.ws.rs.core.Response;
  *
  * @author Paolo
  */
+@RolesAllowed({"ADMIN","USER"})
 public class UserResource {
 
     @Inject

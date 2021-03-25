@@ -1,6 +1,6 @@
 /*
  *   creare classi apposite con solo gli attributi che voglio restituire e usare
- *   queste per rispondere alle chiamate dei servizi. In questo modo la Swagger 
+ *   queste per rispondere alle chiamate dei servizi. In questo modo Swagger 
  *   crea la documentazione autonomamente senza dover usare due tipi di annotazioni
  * 
  * In questo progetto abbiamo scelto quest'ultima strada
