@@ -1,0 +1,4 @@
+java with maven
+from archetype
+airhacks
+jakartaee-essentials

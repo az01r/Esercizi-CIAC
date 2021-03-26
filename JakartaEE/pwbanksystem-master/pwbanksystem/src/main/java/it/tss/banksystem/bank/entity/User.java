@@ -43,6 +43,7 @@ public class User extends AbstractEntity implements Serializable {
         ADMIN, USER
     }
 
+    @Column(nullable = false)
     private String fname;
     @Column(nullable = false)
     private String lname;
