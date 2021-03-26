@@ -17,7 +17,7 @@ public class SecurityEncoding {
      * @param value
      * @return 
      */
-    public static String shaHash(String value) {
+   public static String shaHash(String value) {
         try {
             MessageDigest m = null;
             m = MessageDigest.getInstance("SHA-256");
@@ -28,4 +28,5 @@ public class SecurityEncoding {
             throw new IllegalArgumentException("Impossibile codificare in SHA-256", ex);
         }
     }
+   
 }

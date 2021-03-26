@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.json.JsonObject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -29,7 +30,6 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
  *
  * @author Paolo
  */
-
 /* 
 obbligatorio iniziare e terminare la transazione -> se qualcosa va storto 
 non fa l'intero create
@@ -53,25 +53,27 @@ public class UserStore {
         return found == null ? Optional.empty() : Optional.of(found);
     }
 
-    private TypedQuery<User> searchQuery(boolean deleted) {
-        return em.createQuery("select e from User e where e.deleted= :deleted order by e.usr ", User.class)
-                .setParameter("deleted", deleted);
+    private TypedQuery<User> searchQuery(boolean deleted, String lname) {
+        return em.createQuery("select e from User e where e.deleted= :deleted and e.lname like :lname order by e.usr ", User.class)
+                .setParameter("deleted", deleted)
+                .setParameter("lname", lname == null ? "%" : "%" + lname + "%");
     }
 
     public List<User> searchAll() {
-        return searchQuery(false).getResultList();
+        return searchQuery(false,null).getResultList();
     }
 
-    public List<User> search(int start, int maxResult) {
+    public List<User> search(int start, int maxResult, String lname) {
 
-        return searchQuery(false)
+        return searchQuery(false, lname)
                 .setFirstResult(start)
                 .setMaxResults(maxResult == 0 ? this.maxResult : maxResult)
                 .getResultList();
     }
 
-    public long searchCount() {
-        return em.createQuery("select COUNT(e) from User e where e.deleted=false ", Long.class)
+    public long searchCount(String lname) {
+        return em.createQuery("select COUNT(e) from User e where e.deleted=false and e.lname like :lname", Long.class)
+                .setParameter("lname", lname == null ? "%" : "%" + lname + "%")
                 .getSingleResult();
     }
 
@@ -79,17 +81,17 @@ public class UserStore {
         return find(id).map(UserViewFull::new);
     }
 
-    public UserList searchView(int start, int maxResult) {
+    public UserList searchView(int start, int maxResult,String lname) {
         UserList result = new UserList();
-        result.total = searchCount();
-        result.data = search(start, maxResult).stream().map(UserViewLink::new).collect(Collectors.toList());
+        result.total = searchCount(lname);
+        result.data = search(start, maxResult, lname).stream().map(UserViewLink::new).collect(Collectors.toList());
         return result;
     }
 
-    public UserList searchFullView(int start, int maxResult) {
+    public UserList searchFullView(int start, int maxResult, String lname) {
         UserList result = new UserList();
-        result.total = searchCount();
-        result.data = search(start, maxResult).stream().map(UserViewFull::new).collect(Collectors.toList());
+        result.total = searchCount(lname);
+        result.data = search(start, maxResult, lname).stream().map(UserViewFull::new).collect(Collectors.toList());
         return result;
     }
 
@@ -119,15 +121,14 @@ public class UserStore {
 
     public Optional<User> findByUserAndPwd(String usr, String pwd) {
         try {
-            User res = em.createQuery("SELECT e FROM User e WHERE e.usr= :usr AND e.pwd= :pwd", User.class)
-                            .setParameter("usr", usr)
-                            .setParameter("pwd", SecurityEncoding.shaHash(pwd))
-                            .getSingleResult();
-            return Optional.of(res);
+            User found = em.createNamedQuery(User.LOGIN, User.class)
+                    .setParameter("usr", usr)
+                    .setParameter("pwd", SecurityEncoding.shaHash(pwd))
+                    .getSingleResult();
+            return Optional.of(found);
         } catch (NoResultException ex) {
             return Optional.empty();
         }
-
     }
 
 }

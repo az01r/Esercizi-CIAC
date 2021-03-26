@@ -13,14 +13,14 @@ package it.tss.banksystem.bank.boundary.dto;
  */
 public class AccountCreate {
     public double amount;
-    public int overDraft;
+    public int overdraft;
 
     public AccountCreate() {
     }
 
-    public AccountCreate(double amount, int overDraft) {
+    public AccountCreate(double amount, int overdraft) {
         this.amount = amount;
-        this.overDraft = overDraft;
+        this.overdraft = overdraft;
     }
     
     

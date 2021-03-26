@@ -30,8 +30,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
-import org.eclipse.microprofile.jwt.Claim;
-import org.eclipse.microprofile.jwt.Claims;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 /**
@@ -73,8 +71,8 @@ public class UsersResource {
     @RolesAllowed("ADMIN")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public UserList search(@QueryParam("start") int start, @QueryParam("maxResult") int maxResult) {
-        return store.searchFullView(start, maxResult);
+    public UserList search(@QueryParam("start") int start, @QueryParam("maxResult") int maxResult, @QueryParam("lname") String lname ) {
+        return store.searchFullView(start, maxResult, lname);
     }
 
     /**
@@ -94,9 +92,9 @@ public class UsersResource {
     @RolesAllowed({"ADMIN","USER"})
     @Path("{userId}")
     public UserResource find(@PathParam("userId") Long id) {
-        boolean isUser = securityCtx.isUserInRole(User.Role.USER.name()); // ritorna vero se il ruolo contenuto nel token è USER
-        if(isUser && jwt.getSubject()!=null || Long.parseLong(jwt.getSubject())!=id){ // jwt.getSubject ritorna l'id dello user
-            throw new ForbiddenException("Access forbidden: role not allowed");
+        boolean isUserRole = securityCtx.isUserInRole(User.Role.USER.name()); // ritorna vero se il ruolo contenuto nel token è USER
+        if (isUserRole && (jwt == null || jwt.getSubject()== null || Long.parseLong(jwt.getSubject()) != id)) { // jwt.getSubject ritorna l'id dello user
+            throw new ForbiddenException(Response.status(Response.Status.FORBIDDEN).entity("Access forbidden: role not allowed").build());
         }
         UserResource sub = resource.getResource(UserResource.class);
         sub.setUserId(id);

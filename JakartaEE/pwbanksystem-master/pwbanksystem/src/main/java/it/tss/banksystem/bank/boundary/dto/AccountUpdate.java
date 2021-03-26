@@ -11,13 +11,13 @@ package it.tss.banksystem.bank.boundary.dto;
  */
 public class AccountUpdate {
 
-    public int overDraft;
+    public int overdraft;
 
     public AccountUpdate() {
     }
 
-    public AccountUpdate(int overDraft) {
-        this.overDraft = overDraft;
+    public AccountUpdate(int overdraft) {
+        this.overdraft = overdraft;
     }
 
 }

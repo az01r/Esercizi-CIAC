@@ -8,11 +8,9 @@
 package it.tss.banksystem.bank.boundary;
 
 import it.tss.banksystem.bank.boundary.dto.AccountList;
-import it.tss.banksystem.bank.boundary.dto.AccountView;
 import it.tss.banksystem.bank.control.AccountStore;
 import it.tss.banksystem.bank.entity.Account;
 import it.tss.banksystem.bank.entity.User;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.RolesAllowed;
@@ -23,6 +21,7 @@ import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.ResourceContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -44,15 +43,15 @@ public class AccountsResource {
 
     @Context
     private UriInfo uriInfo;
-
+    
     @Inject
     private AccountStore store;
     
-    @Context
-    SecurityContext securityCtx;
-    
     @Inject
     JsonWebToken jwt;
+    
+    @Context
+    SecurityContext securityCtx;
 
     @PostConstruct
     public void init() {
@@ -61,10 +60,11 @@ public class AccountsResource {
         System.out.println(uriInfo.getAbsolutePath());
     }
 
+    @RolesAllowed({"ADMIN"})
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public AccountList search() {
-        return store.searchView();
+    public AccountList search(@QueryParam("start") int start, @QueryParam("maxResult") int maxResult, @QueryParam("minBalance") Double minBalance, @QueryParam("maxBalance") Double maxBalance ) {
+        return store.searchView(minBalance,maxBalance,start,maxResult);
     }
 
     /**
@@ -86,8 +86,8 @@ public class AccountsResource {
     @Produces(MediaType.APPLICATION_JSON)
     public AccountResource find(@PathParam("accountId") Long id) {
         Account account = store.find(id).orElseThrow(() -> new NotFoundException());
-        boolean isUser = securityCtx.isUserInRole(User.Role.USER.name()); // ritorna vero se il ruolo contenuto nel token è USER
-        if (isUser && (jwt == null || jwt.getSubject() == null || Long.parseLong(jwt.getSubject()) != account.getUser().getId())) { // jwt.getSubject ritorna l'id dello user proprietario dell'account
+        boolean isRoleUser = securityCtx.isUserInRole(User.Role.USER.name()); // ritorna vero se il ruolo contenuto nel token è USER
+        if (isRoleUser && (jwt == null || jwt.getSubject() == null || Long.parseLong(jwt.getSubject()) != account.getUser().getId())) { // jwt.getSubject ritorna l'id dello user proprietario dell'account
             throw new ForbiddenException(Response.status(Response.Status.FORBIDDEN).entity("Access forbidden: role not allowed").build());
         }
         AccountResource sub = resource.getResource(AccountResource.class);

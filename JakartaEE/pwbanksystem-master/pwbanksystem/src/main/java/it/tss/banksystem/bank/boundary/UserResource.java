@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.tss.banksystem.bank.boundary;
 
 import it.tss.banksystem.bank.boundary.dto.AccountCreate;
@@ -14,7 +9,6 @@ import it.tss.banksystem.bank.control.AccountStore;
 import it.tss.banksystem.bank.control.UserStore;
 import it.tss.banksystem.bank.entity.Account;
 import it.tss.banksystem.bank.entity.User;
-import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -45,18 +39,18 @@ public class UserResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response find() {
+    public UserViewFull find() {
         UserViewFull user = store.findView(userId).orElseThrow(() -> new NotFoundException());
-        return Response.ok().entity(user).build();
+        return user;
     }
 
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(UserUpdate u) {
+    public UserViewFull update(UserUpdate u) {
         User user = store.find(userId).orElseThrow(() -> new NotFoundException());
         User updated = store.update(user, u);
-        return Response.ok().entity(updated).build();
+        return new UserViewFull(user);
     }
 
     @DELETE

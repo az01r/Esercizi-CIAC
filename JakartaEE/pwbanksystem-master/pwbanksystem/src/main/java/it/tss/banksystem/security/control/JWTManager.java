@@ -25,7 +25,7 @@ public class JWTManager {
 
     private static final String PRIVATE_KEY = "/META-INF/privateKey.pem";
     private static final String ISS = "it.tss.pwbanksystem";
-
+    
     /**
      * crea il token di un utente usando la chiave privata
      *
@@ -65,9 +65,7 @@ public class JWTManager {
 
     private PrivateKey readPrivateKey(String resourceName) throws Exception {
         byte[] byteBuffer = new byte[16384];
-        int length = Thread.currentThread().getContextClassLoader()
-                .getResource(resourceName)
-                .openStream()
+        int length = getClass().getResourceAsStream(resourceName)
                 .read(byteBuffer);
 
         String key = new String(byteBuffer, 0, length).replaceAll("-----BEGIN (.*)-----", "")
@@ -84,28 +82,8 @@ public class JWTManager {
     private JSONObject generateJWT(User usr) {
         long currentTimeInSecs = (System.currentTimeMillis() / 1000);
         long expirationTime = currentTimeInSecs + 1000;
-        /*
-            JsonObject jwt =
-                    Json.createObjectBuilder()
-                            .add(Claims.iss.name(), ISS)
-                            .add(Claims.iat.name(), currentTimeInSecs)
-                            .add(Claims.auth_time.name(), currentTimeInSecs)
-                            .add(Claims.exp.name(), expirationTime)
-                            .add(Claims.upn.name(), usr)
-                            .add(Claims.groups.name(), loadGroups(groups))
-                            .build();
-         */
 
         JSONObject jwt = new JSONObject();
-        /*
-        jwt.put(Claims.iss.name(), ISS);
-        jwt.put(Claims.iat.name(), currentTimeInSecs);
-        jwt.put(Claims.auth_time.name(), currentTimeInSecs);
-        jwt.put(Claims.exp.name(), expirationTime);
-        jwt.put(Claims.sub.name(), usr.getId().toString());
-        jwt.put(Claims.upn.name(), usr.getUsr());
-        jwt.put(Claims.groups.name(), loadGroups(usr));
-        */
         jwt.put("iss", ISS);
         jwt.put("iat", currentTimeInSecs);
         jwt.put("auth_time", currentTimeInSecs);
@@ -114,13 +92,9 @@ public class JWTManager {
         jwt.put("upn", usr.getUsr());
         jwt.put("groups", loadGroups(usr));
         return jwt;
+
     }
 
-    /**
-     * ricava i ruoli che abbiamo definito e li manda al metodo che crea il token
-     * @param user
-     * @return 
-     */
     private JSONArray loadGroups(User user) {
         JSONArray result = new JSONArray();
         result.add(user.getRole().name());

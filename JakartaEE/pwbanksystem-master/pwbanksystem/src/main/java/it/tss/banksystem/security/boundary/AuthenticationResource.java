@@ -23,29 +23,18 @@ import javax.ws.rs.core.Response;
  */
 @Path("/auth")
 public class AuthenticationResource {
-    
+
     @Inject
     UserStore store;
-    
+
     @Inject
     JWTManager jwtManager;
-    
+
     @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED) //riceve l'url
-    public Response login (@FormParam("usr") String usr,@FormParam("pwd") String pwd) {
-        User found = store.findByUserAndPwd(usr,pwd)
-                .orElseThrow(
-                () -> new NotAuthorizedException("Invalid user or password", Response.status(Response.Status.UNAUTHORIZED)
-                .build()));
-        return Response.ok().entity(getToken(found)).build();
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response login(@FormParam("usr") String usr, @FormParam("pwd") String pwd) {
+        User found = store.findByUserAndPwd(usr, pwd).orElseThrow(() -> new NotAuthorizedException("invalid user or password", Response.status(Response.Status.UNAUTHORIZED).build()));
+        return Response.ok().entity(jwtManager.generate(found)).build();
     }
-    
-    private String getToken(User usr) {
-        String result = jwtManager.generate(usr);
-        System.out.println("------------ generated token -------------------");
-        System.out.println(result);
-        System.out.println("------------ curl command for test -------------");
-        System.out.println("curl -v -i -H'Authorization: Bearer " + result + "' http://localhost:8080/projectwork/resources/users");
-        return result;
-    }
+
 }
