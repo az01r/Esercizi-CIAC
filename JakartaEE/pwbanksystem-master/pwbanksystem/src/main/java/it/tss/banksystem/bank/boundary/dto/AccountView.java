@@ -9,12 +9,12 @@ import it.tss.banksystem.bank.entity.Account;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class AccountView extends AccountViewLink {
 
     public double balance;
-    public int overdraft;
+    public int overDraft;
     public UserViewLink user;
     
     public AccountView() {
@@ -23,7 +23,7 @@ public class AccountView extends AccountViewLink {
     public AccountView(Account a) {
         super(a);
         this.balance = a.getBalance();
-        this.overdraft = a.getOverdraft();
+        this.overDraft = a.getOverDraft();
         this.user = new UserViewLink(a.getUser());
     }
 

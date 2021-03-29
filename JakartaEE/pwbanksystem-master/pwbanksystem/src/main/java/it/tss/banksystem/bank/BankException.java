@@ -7,7 +7,7 @@ package it.tss.banksystem.bank;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class BankException extends RuntimeException {
 

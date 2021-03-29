@@ -1,16 +1,16 @@
 /*
- * risorsa usata dagli amministratori
- * ordine: accounts/account/transactions
- * 
- * https://eclipse-ee4j.github.io/jakartaee-tutorial/jaxrs002.html
- * 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package it.tss.banksystem.bank.boundary;
 
 import it.tss.banksystem.bank.boundary.dto.AccountList;
+import it.tss.banksystem.bank.boundary.dto.AccountView;
 import it.tss.banksystem.bank.control.AccountStore;
 import it.tss.banksystem.bank.entity.Account;
 import it.tss.banksystem.bank.entity.User;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.RolesAllowed;
@@ -32,10 +32,10 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 
 /**
  *
- * @author Paolo
+ * @author tss
  */
-@Path("/accounts")
 @DenyAll
+@Path("/accounts")
 public class AccountsResource {
 
     @Context
@@ -43,15 +43,14 @@ public class AccountsResource {
 
     @Context
     private UriInfo uriInfo;
-    
-    @Inject
-    private AccountStore store;
-    
-    @Inject
-    JsonWebToken jwt;
-    
+
     @Context
     SecurityContext securityCtx;
+
+    @Inject
+    JsonWebToken jwt;
+    @Inject
+    private AccountStore store;
 
     @PostConstruct
     public void init() {
@@ -64,7 +63,7 @@ public class AccountsResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public AccountList search(@QueryParam("start") int start, @QueryParam("maxResult") int maxResult, @QueryParam("minBalance") Double minBalance, @QueryParam("maxBalance") Double maxBalance ) {
-        return store.searchView(minBalance,maxBalance,start,maxResult);
+        return store.searchView(minBalance, maxBalance, start, maxResult);
     }
 
     /**
@@ -81,18 +80,18 @@ public class AccountsResource {
      * @param id dell'account da visualizzare
      * @return 
      */
-    @RolesAllowed({"ADMIN","USER"})
+    @RolesAllowed({"ADMIN", "USER"})
     @Path("{accountId}")
     @Produces(MediaType.APPLICATION_JSON)
     public AccountResource find(@PathParam("accountId") Long id) {
         Account account = store.find(id).orElseThrow(() -> new NotFoundException());
-        boolean isRoleUser = securityCtx.isUserInRole(User.Role.USER.name()); // ritorna vero se il ruolo contenuto nel token è USER
-        if (isRoleUser && (jwt == null || jwt.getSubject() == null || Long.parseLong(jwt.getSubject()) != account.getUser().getId())) { // jwt.getSubject ritorna l'id dello user proprietario dell'account
+        boolean isUserRole = securityCtx.isUserInRole(User.Role.USER.name()); // ritorna vero se il ruolo contenuto nel token è USER
+        if (isUserRole && (jwt == null || jwt.getSubject() == null || Long.parseLong(jwt.getSubject()) != account.getUser().getId())) { // jwt.getSubject ritorna l'id dello user proprietario dell'account
             throw new ForbiddenException(Response.status(Response.Status.FORBIDDEN).entity("Access forbidden: role not allowed").build());
         }
         AccountResource sub = resource.getResource(AccountResource.class);
         sub.setAccountId(id);
         return sub;
     }
-    
+
 }

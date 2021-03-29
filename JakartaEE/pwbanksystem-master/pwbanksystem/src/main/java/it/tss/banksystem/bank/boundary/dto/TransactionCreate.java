@@ -7,11 +7,12 @@ package it.tss.banksystem.bank.boundary.dto;
 
 import it.tss.banksystem.bank.boundary.adapters.TransactionTypeAdapter;
 import it.tss.banksystem.bank.entity.Transaction;
+import java.time.LocalDateTime;
 import javax.json.bind.annotation.JsonbTypeAdapter;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class TransactionCreate {
 

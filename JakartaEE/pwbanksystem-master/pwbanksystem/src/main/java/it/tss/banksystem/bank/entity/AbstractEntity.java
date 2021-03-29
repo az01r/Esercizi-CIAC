@@ -28,7 +28,7 @@ import javax.persistence.Version;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 
 /**

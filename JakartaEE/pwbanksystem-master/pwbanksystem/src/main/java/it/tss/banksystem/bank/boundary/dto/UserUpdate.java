@@ -7,7 +7,7 @@ package it.tss.banksystem.bank.boundary.dto;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class UserUpdate {
 

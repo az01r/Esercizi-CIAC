@@ -11,7 +11,7 @@ import org.eclipse.microprofile.auth.LoginConfig;
  *
  * @author airhacks.com
  */
-@LoginConfig(authMethod = "MP-JWT", realmName = "MP-JWT") // metodo di autenticazione (token jwt)
+@LoginConfig(authMethod = "MP-JWT" , realmName = "MP-JWT") // metodo di autenticazione (token jwt)
 @DeclareRoles({"ADMIN","USER"}) // i groups di jwt sono associati da jwt ai ruoli definiti dall'applicazione java
 @ApplicationPath("resources")
 public class JAXRSConfiguration extends Application {

@@ -18,7 +18,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.json.JsonObject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -28,8 +27,9 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
+
 /* 
 obbligatorio iniziare e terminare la transazione -> se qualcosa va storto 
 non fa l'intero create
@@ -38,6 +38,8 @@ non fa l'intero create
 @Transactional(Transactional.TxType.REQUIRED)
 public class UserStore {
 
+    private System.Logger LOG = System.getLogger(UserStore.class.getName());
+    
     @PersistenceContext //chiedo a JPA di creare un'istanza di EntityManager
     private EntityManager em;
 
@@ -49,6 +51,7 @@ public class UserStore {
     int maxResult;
 
     public Optional<User> find(Long id) {
+        LOG.log(System.Logger.Level.INFO, "find user " + id);
         User found = em.find(User.class, id); //EntityManager ha un metodo find che cerca un'entity dando una classe e la chiave primaria
         return found == null ? Optional.empty() : Optional.of(found);
     }
@@ -60,7 +63,7 @@ public class UserStore {
     }
 
     public List<User> searchAll() {
-        return searchQuery(false,null).getResultList();
+        return searchQuery(false, null).getResultList();
     }
 
     public List<User> search(int start, int maxResult, String lname) {
@@ -81,7 +84,7 @@ public class UserStore {
         return find(id).map(UserViewFull::new);
     }
 
-    public UserList searchView(int start, int maxResult,String lname) {
+    public UserList searchView(int start, int maxResult, String lname) {
         UserList result = new UserList();
         result.total = searchCount(lname);
         result.data = search(start, maxResult, lname).stream().map(UserViewLink::new).collect(Collectors.toList());

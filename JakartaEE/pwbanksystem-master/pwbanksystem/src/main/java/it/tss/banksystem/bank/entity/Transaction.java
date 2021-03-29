@@ -20,7 +20,7 @@ import javax.persistence.SequenceGenerator;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 @Entity
 @Table(name = "transaction")

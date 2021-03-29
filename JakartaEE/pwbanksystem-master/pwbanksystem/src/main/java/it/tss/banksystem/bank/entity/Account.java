@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 @NamedQueries({
     @NamedQuery(name = Account.ALL, query = "select e from Account e where e.deleted=false")
@@ -38,8 +38,8 @@ public class Account extends AbstractEntity implements Serializable {
     protected Long id;
 
     private double balance;
-    @Column(name = "overdraft")
-    private int overdraft;
+    @Column(name = "over_draft")
+    private int overDraft;
 
     @ManyToOne(optional = false) // un user può avere tanti account ovvero tanti conti
     @JoinColumn(name = "user_id")
@@ -53,7 +53,7 @@ public class Account extends AbstractEntity implements Serializable {
 
     public Account(AccountCreate a, User user) {
         this.balance = a.amount;
-        this.overdraft = a.overdraft;
+        this.overDraft = a.overDraft;
         this.user = user;
     }
 
@@ -65,12 +65,12 @@ public class Account extends AbstractEntity implements Serializable {
         this.balance = balance;
     }
 
-    public int getOverdraft() {
-        return overdraft;
+    public int getOverDraft() {
+        return overDraft;
     }
 
-    public void setOverdraft(int overdraft) {
-        this.overdraft = overdraft;
+    public void setOverDraft(int overDraft) {
+        this.overDraft = overDraft;
     }
 
     public User getUser() {

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class UserList {
     public long total;

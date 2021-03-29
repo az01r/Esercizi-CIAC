@@ -7,7 +7,7 @@ package it.tss.banksystem.bank.boundary.dto;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class BankViewStats {
     public long totalUsers ;
@@ -22,4 +22,6 @@ public class BankViewStats {
         this.totalBalance = totalBalance;
         this.avgBalance = avgBalance;
     }
+    
+    
 }

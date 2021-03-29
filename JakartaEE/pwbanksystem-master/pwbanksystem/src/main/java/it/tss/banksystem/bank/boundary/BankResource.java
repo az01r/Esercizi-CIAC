@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 @RolesAllowed({"ADMIN"})
 @Path("/bank")

@@ -11,7 +11,7 @@ import javax.ws.rs.ext.Provider;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 @Provider
 public class BankExceptionMapper implements ExceptionMapper<BankException> {

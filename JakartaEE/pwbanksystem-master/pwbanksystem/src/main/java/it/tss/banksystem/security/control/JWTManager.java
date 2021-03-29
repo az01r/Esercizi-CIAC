@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package it.tss.banksystem.security.control;
 
 import com.nimbusds.jose.JOSEObjectType;
@@ -16,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
+import org.eclipse.microprofile.jwt.Claims;
 
 /**
  *
@@ -25,7 +31,7 @@ public class JWTManager {
 
     private static final String PRIVATE_KEY = "/META-INF/privateKey.pem";
     private static final String ISS = "it.tss.pwbanksystem";
-    
+
     /**
      * crea il token di un utente usando la chiave privata
      *

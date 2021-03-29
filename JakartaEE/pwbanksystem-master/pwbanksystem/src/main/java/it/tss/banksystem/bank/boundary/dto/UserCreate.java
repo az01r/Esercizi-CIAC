@@ -9,11 +9,11 @@ import javax.validation.constraints.NotEmpty;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class UserCreate {
 
-    @NotEmpty
+    
     public String fname;
     @NotEmpty
     public String lname;

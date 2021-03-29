@@ -22,7 +22,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 @NamedQueries({
     @NamedQuery(name = User.LOGIN, query = "select e from User e where e.usr= :usr and e.pwd= :pwd and e.deleted=false")
@@ -43,7 +43,6 @@ public class User extends AbstractEntity implements Serializable {
         ADMIN, USER
     }
 
-    @Column(nullable = false)
     private String fname;
     @Column(nullable = false)
     private String lname;

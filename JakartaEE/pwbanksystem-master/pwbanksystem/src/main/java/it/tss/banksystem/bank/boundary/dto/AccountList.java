@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class AccountList {
 

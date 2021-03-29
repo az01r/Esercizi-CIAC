@@ -12,7 +12,7 @@ import javax.json.bind.adapter.JsonbAdapter;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 
 /**

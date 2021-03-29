@@ -9,7 +9,7 @@ import it.tss.banksystem.bank.entity.Account;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class AccountViewLink {
 

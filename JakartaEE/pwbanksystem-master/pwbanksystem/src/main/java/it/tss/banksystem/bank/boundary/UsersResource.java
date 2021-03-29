@@ -30,14 +30,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
+import org.eclipse.microprofile.jwt.Claim;
+import org.eclipse.microprofile.jwt.Claims;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
-@Path("/users")
 @DenyAll
+@Path("/users")
 public class UsersResource {
 
     @Context
@@ -48,19 +50,13 @@ public class UsersResource {
 
     @Context
     private ResourceContext resource;
-    
+
     @Context
     SecurityContext securityCtx;
-    
+
     @Inject
     JsonWebToken jwt;
-    
-    /*
-    @Inject
-    @Claim(standard = Claims.sub)
-    String userId;
-    */
-    
+
     @PostConstruct
     public void init() {
         System.out.println(uriInfo.getPath());
@@ -68,7 +64,7 @@ public class UsersResource {
         System.out.println(uriInfo.getAbsolutePath());
     }
 
-    @RolesAllowed("ADMIN")
+    @RolesAllowed({"ADMIN"})
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public UserList search(@QueryParam("start") int start, @QueryParam("maxResult") int maxResult, @QueryParam("lname") String lname ) {
@@ -89,7 +85,7 @@ public class UsersResource {
      * @param id dell'user da visualizzare
      * @return 
      */
-    @RolesAllowed({"ADMIN","USER"})
+    @RolesAllowed({"ADMIN", "USER"})
     @Path("{userId}")
     public UserResource find(@PathParam("userId") Long id) {
         boolean isUserRole = securityCtx.isUserInRole(User.Role.USER.name()); // ritorna vero se il ruolo contenuto nel token è USER

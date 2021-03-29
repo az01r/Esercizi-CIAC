@@ -28,7 +28,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 @RequestScoped
 @Transactional(Transactional.TxType.REQUIRED)
@@ -120,7 +120,7 @@ public class AccountStore {
      * @return
      */
     public Account update(Account account, AccountUpdate a) {
-        account.setOverdraft(a.overdraft);
+        account.setOverDraft(a.overDraft);
         return em.merge(account);
     }
 
@@ -168,7 +168,7 @@ public class AccountStore {
     }
 
     private void checkWithdrawal(Account account, Double amount) {
-        if (account.getBalance() + account.getOverdraft() < amount) {
+        if (account.getBalance() + account.getOverDraft() < amount) {
             throw new BankException("Saldo insufficiente");
         }
     }

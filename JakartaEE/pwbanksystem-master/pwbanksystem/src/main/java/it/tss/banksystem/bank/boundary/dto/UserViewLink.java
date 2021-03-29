@@ -9,7 +9,7 @@ import it.tss.banksystem.bank.entity.User;
 
 /**
  *
- * @author Paolo
+ * @author alfonso
  */
 public class UserViewLink {
     public Long id;
