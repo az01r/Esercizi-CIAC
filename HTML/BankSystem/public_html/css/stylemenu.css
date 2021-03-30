@@ -1,0 +1,121 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* -------------reset----------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+input:focus, button:focus {outline:0;}
+
+img {
+    vertical-align: middle;
+}
+
+a{
+    text-decoration:none;
+}
+
+ul li{ 
+    list-style:none;
+}
+
+html,body{
+    font-family: 'Roboto Slab', serif;
+    color:#666 /*color-text*/;
+    height:100%;
+    width:100%;
+    background-color:white;
+}
+
+h1{
+    font-size: 1.5em;
+    text-align:center;
+    font-weight: bold;
+    color:#A24038/* primary color*/;
+}
+h1{
+    font-size: 2em;
+    text-align:center;
+    font-weight: bold;
+    color:#A24038/* primary color*/;
+    margin:10px;
+}
+h2{
+    margin:10px;
+    font-size: 1.3em;
+    text-align:center;
+    font-weight: bold;
+    color:#A24038/* primary color*/;
+}
+header{min-height: 60px}
+/* page e row inner interna full tutta pagina ------------------ */
+.page{width: 100%;
+        margin-top: 10px;}
+.page .inner-row{
+    max-width:980px;
+    margin:auto;
+    padding: 10px 10px 10px 10px  ;
+}
+.page .full-row{
+    width:100%;
+    margin:0px;
+    padding: 0px;
+}
+#flex{
+    display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+    
+}
+.flex-item{
+flex:1;
+}
+.flex-item:nth-child(odd){
+background-color: antiquewhite ;   
+}
+.flex-item:nth-child(even){
+ background-color: lightgoldenrodyellow;    
+   
+}
+   .legend {
+    display: block;
+    margin: 28px;
+}
+ 
+.callaction{
+   background-image: url(../img/bankcallaction.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.callaction img {display: block;
+position: fixed;
+  width: 200px;
+  height: 100px;
+  left: 50%;
+  top: 10%;}
+
+.page a{
+    color:#A24038/* primary color*/;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.page a:hover{
+    color:#B3453E/* primary lightcolor*/;
+}
+

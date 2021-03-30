@@ -1,28 +1,30 @@
 /* -----------------Menu nella versione mobile-----------------*/
 
-ul li {
+ul > li {
     list-style: none;
+    
 }
+
 
 .active{
     color:#FFFFFF/* primary super-lightcolor*/;
-    background-color: #B3453E/* primary lightcolor*/;
+    background-color: #07417b/* primary lightcolor*/;
 }
 
 .active-dropdown{
     color:#FFFFFF /* primary super-lightcolor*/;
-    background-color:#B3453E/* primary lightcolor*/;
+    background-color:#07417b/* primary lightcolor*/;
 }
 
 nav{
-    height:100%;
-    background-color:#A24038;/* primary lightcolor* /* sfondo menu mobile*/
-    position:fixed;
-    width:100%;
-    margin-top:54px;
-    visibility:hidden;
-    overflow:auto;/* permette lo scroll quando il menu è aperto*/
-
+   height: auto;
+    background-color: #285e94;
+    position: fixed;
+    width: 100%;
+    max-width: 250px;
+    margin-top: 54px;
+    visibility: hidden;
+    overflow: auto;
 }
 
 nav ul{
@@ -38,7 +40,7 @@ nav ul li a {
 }
 
 .submenu{
-    color:#FF6759 /* primary super-lightcolor*/;
+    
     padding-left: 55px;
     padding-bottom: 5px;
 }
@@ -59,8 +61,8 @@ nav ul li ul li a {
 /* ----------------- div bar per l'attivazione del menu ------------------ */
 
 #bar{
-    background-color: #A24038 /* primary color*/; 
-    height:54px;
+    background-color: #07417b /* primary color*/; 
+    height:60px;
     width:100%;
     z-index:2;
     position:fixed;
@@ -177,26 +179,26 @@ nav ul li ul li a {
 
     nav{
         z-index:3;
-        margin-top:0px;
+        margin-top:19px;
         height:auto;
         background-color:transparent;
         transition:none;
         width:auto;
+        max-width: none;
         float:right;
         right:12px;
         visibility:visible;
-        font-family:'Roboto Slab', serif;
         overflow:inherit;
     }
 
     .active{
         background-color:transparent;
-        color:#FF6759 /* primary super-lightcolor*/;
+        border-bottom: 2px solid /* primary super-lightcolor*/;
     }
 
     .active-dropdown{
         color:#fff;
-        background-color:#B3453E/* primary lightcolor*/;
+        background-color:#07417b/* primary lightcolor*/;
     }
 
     nav ul{
@@ -212,7 +214,7 @@ nav ul li ul li a {
 
     nav ul li a:hover {
         background-color:transparent;
-        color:#FF6759 /* primary super-lightcolor*/;
+        border-bottom: 2px solid /* primary super-lightcolor*/;
     }
 
     .submenu{
@@ -239,7 +241,7 @@ nav ul li ul li a {
         position:fixed;
         height:0;
         overflow:hidden;
-        background-color: #A24038 /* primary color*/
+        background-color: #07417b /* primary color*/
     }
 
     nav ul li:hover ul{
@@ -255,20 +257,21 @@ nav ul li ul li a {
         float:none;
         padding:0;
         min-width: 160px;
-        border-top: 1px solid #B3453E/* primary lightcolor*/;
+        border-top: 1px solid #07417b/* primary lightcolor*/;
     }
 
     nav ul li ul li a {
         padding: 16px 32px;
         display: block;
-        background-color: #A24038/* primary color*/;
+        background-color: #07417b/* primary color*/;
         color: #ffffff;
         font-weight: normal;
     }
 
     nav ul li ul li a:hover {
-        background-color:#B3453E/* primary lightcolor*/;
-        color:#FF6759 /* primary super-lightcolor*/;
+        background-color:#07417b/* primary lightcolor*/;
+        border-bottom: 2px solid /* primary super-lightcolor*/;
     }
 
 }
+
