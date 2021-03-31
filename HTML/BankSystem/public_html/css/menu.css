@@ -16,15 +16,14 @@ ul > li {
     background-color:#07417b/* primary lightcolor*/;
 }
 
-nav{
-   height: auto;
+nav {
     background-color: #285e94;
     position: fixed;
     width: 100%;
-    max-width: 250px;
+    height: 100%;
     margin-top: 54px;
     visibility: hidden;
-    overflow: auto;
+    overflow: scroll;
 }
 
 nav ul{
@@ -41,7 +40,7 @@ nav ul li a {
 
 .submenu{
     
-    padding-left: 55px;
+    
     padding-bottom: 5px;
 }
 
@@ -55,6 +54,7 @@ nav ul li ul li a {
     padding:10px 0 10px 55px;
     border:hidden; 
 }
+
 
 
 

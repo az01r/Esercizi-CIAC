@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package blog.entity;
+package it.tss.pwblog.blog.entity;
 
-import blog.boundary.dto.CommentCreate;
-import java.time.LocalDateTime;
+import it.tss.pwblog.blog.boundary.dto.CommentCreate;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,6 +36,8 @@ public class Comment extends AbstractEntity{
     private int rating;
     @Column
     private Long answersTo;
+    @Column
+    private boolean deleted = false;
 
     public Comment() {
     }
@@ -97,6 +98,14 @@ public class Comment extends AbstractEntity{
         this.answersTo = answersTo;
     }
 
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -122,5 +131,4 @@ public class Comment extends AbstractEntity{
         return true;
     }
         
-    
 }

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+        To change this template file, choose Tools | Templates
+        and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Roboto|Trirong">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/menu.css" /> 
+        <script src="js/script.js"></script>
+        <script src="js/scriptuser.js"></script>
+        <script src="js/jwt-decode.js"></script> 
+
+    </head>
+    <body onload="inituser()">
+        <header>
+            <input type="checkbox" id="hamburger"/>
+            <label class="menuicon" for="hamburger">
+                <span></span>
+            </label>
+            <div id="bar"> 
+                <div id="logo">
+                    <a href="#"><img src="img/logobank.png" alt="your logo" title="your logo" height="54"></a>
+                </div> <!--/fine logo-->   
+            </div><!--/fine bar--> 
+            <nav class="menu-visibility">
+                <ul>
+                    <li><a  href="home.html" class="active">HOME</a></li>
+                    <li><a class="submenu" href="#">SERVIZI</a>
+                        <ul>
+                            <li><a href="#">Servizio 1</a></li>
+                            <li><a href="#">Servizio 3</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li><a href="chi_siamo.html" >CHI SIAMO</a></li>
+                    <li><a href="#" >CONTATTI</a></li>
+                    <li><a class="logout" onclick="logout()" href="#" >LOGOUT</a>
+
+                    </li>
+
+
+                </ul>
+            </nav>
+        </header>
+        <div class="page">    
+
+            <div class="inner-row">
+                <h1 class="titolo">AREA Personale - BANK SYSTEM</h1>
+                <h2>in quest'area puoi gestire il tuo conto</h2>
+                <div class="flex"> 
+                    <div class="flex-item col25 " id='info_profile'>
+                        <div id="info_user">
+                            
+                        </div>
+                        <div id="info_account">
+                            <select id="sel_id_account">
+                            
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex-item col75" id='info_accounts'>
+                        <p class="item">One morning, when Gregor Samsa woke from troubled dreams, legs, pitifully thin compared with the size 
+                            of the rest of him, waved about helplessly as he looked. <br>
+                            "What's happened to me?" he thought. It wasn't a dream. His room, a proper human</p>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        <footer class="flex">
+            <div class="flex-item">
+                <a href="#">link1 link1 </a>
+                <hr>
+                <a href="#">link1 link1</a>
+                <hr>
+                <a href="#">link1 link1 </a>
+                <hr>
+                <a href="#">link1 link1</a>
+                <hr>
+                <a href="#">link1 link1</a>
+                <hr>
+            </div>
+            <div  class="flex-item">
+                <a href="#">link1 link1 </a>
+                <hr>
+                <a href="#">link1 link1</a>
+                <hr>
+            </div>
+            <div  class="flex-item">
+                <a href="#">link1 link1 </a>
+                <hr>
+                <a href="#">link1 link1</a>
+                <hr>
+                <a href="#">link1 link1 </a>
+                <hr>
+                <a href="#">link1 link1</a>
+                <hr>
+                <a href="#">link1 link1 </a>
+                <hr>
+                <a href="#">link1 link1</a>
+
+
+            </div>
+
+        </footer>
+    </body>
+
+</html>
+

@@ -16,7 +16,7 @@
  * Link per interfaccia openapi dell'app:
  * http://localhost:8080/resources/openapi-ui
  */
-package blog.entity;
+package it.tss.pwblog.blog.entity;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;

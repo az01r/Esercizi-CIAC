@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package blog.entity;
+package it.tss.pwblog.blog.entity;
 
-import blog.boundary.dto.ArticleCreate;
-import java.time.LocalDateTime;
+import it.tss.pwblog.blog.boundary.dto.ArticleCreate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

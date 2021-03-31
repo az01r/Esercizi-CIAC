@@ -32,7 +32,7 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User extends AbstractEntity implements Serializable {
 
-    public static final String LOGIN = "User.login";
+    public static final String LOGIN = "User.login"; // usato dentro UserStore.findByUserAndPwd(String usr, String pwd)
     
     @Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", initialValue = 1, allocationSize = 1)

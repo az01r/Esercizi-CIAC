@@ -38,10 +38,11 @@ import javax.persistence.Version;
 @EntityListeners({EntityListener.class})
 public abstract class AbstractEntity {
 
-    @Column(name = "created_on")
+    
+    @Column(name="created_on")
     protected LocalDateTime createdOn;
 
-    @Column(name = "modified_on")
+    @Column(name="modified_on")
     protected LocalDateTime modifiedOn;
 
     @ManyToOne

@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package blog.boundary.dto;
+package it.tss.pwblog.blog.boundary.dto;
 
-import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
 
 
@@ -23,8 +22,6 @@ public class CommentCreate {
     public Long userId;
     @NotEmpty
     public int rating;
-    @NotEmpty
-    public LocalDateTime date;
     @NotEmpty
     public Long answersTo;
 }

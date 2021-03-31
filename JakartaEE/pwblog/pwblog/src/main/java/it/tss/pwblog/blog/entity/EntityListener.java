@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.tss.banksystem.bank.entity;
+package it.tss.pwblog.blog.entity;
 
-import it.tss.banksystem.bank.control.UserStore;
+import it.tss.pwblog.blog.control.BlogUserStore;
 import java.time.LocalDateTime;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -16,12 +15,12 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 
 /**
  *
- * @author tss
+ * @author Paolo
  */
 public class EntityListener {
-
+    
     @Inject
-    UserStore userStore;
+    BlogUserStore userStore;
 
     @Inject
     JsonWebToken jwt;
@@ -31,18 +30,18 @@ public class EntityListener {
         System.out.println("init entity listener..");
     }
 
-    @PrePersist
+    @PrePersist // prima che venga l'oggetto creato
     public void onPrePersist(AbstractEntity e) {
         if (jwt != null && jwt.getSubject()!=null) {
-            e.setCreatedBy(userStore.find(Long.parseLong(jwt.getSubject())).get());
+            e.setCreatedBy(userStore.search(0,Long.parseLong(jwt.getSubject())).get());
         }
         e.setCreatedOn(LocalDateTime.now());
     }
 
-    @PreUpdate
+    @PreUpdate // prima che venga l'oggetto aggiornato
     public void onPreUpdate(AbstractEntity e) {
         if (jwt != null && jwt.getSubject()!=null) {
-            e.setModifiedBy(userStore.find(Long.parseLong(jwt.getSubject())).get());
+            e.setModifiedBy(userStore.search(0,Long.parseLong(jwt.getSubject())).get());
         }
         e.setModifiedOn(LocalDateTime.now());
     }

@@ -23,5 +23,4 @@ public class UserList {
         this.data = data;
     }
     
-    
 }

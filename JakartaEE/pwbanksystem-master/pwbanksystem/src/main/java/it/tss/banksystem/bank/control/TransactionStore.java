@@ -5,7 +5,6 @@
  */
 package it.tss.banksystem.bank.control;
 
-import it.tss.banksystem.bank.boundary.dto.TransactionCreate;
 import it.tss.banksystem.bank.boundary.dto.TransactionList;
 import it.tss.banksystem.bank.boundary.dto.TransactionView;
 import it.tss.banksystem.bank.entity.Transaction;

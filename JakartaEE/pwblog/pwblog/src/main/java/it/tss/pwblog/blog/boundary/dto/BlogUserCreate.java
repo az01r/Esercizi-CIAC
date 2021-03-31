@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package blog.boundary.dto;
+package it.tss.pwblog.blog.boundary.dto;
 
-import blog.entity.BlogUser.Role;
+import it.tss.pwblog.blog.boundary.adapters.RoleTypeAdapter;
+import it.tss.pwblog.blog.entity.BlogUser;
+import javax.json.bind.annotation.JsonbTypeAdapter;
 import javax.validation.constraints.NotEmpty;
 
 /**
@@ -23,7 +25,6 @@ public class BlogUserCreate {
     @NotEmpty
     public String pwd;
     @NotEmpty
-    public Role role;
-    @NotEmpty
-    public boolean banned;
+    @JsonbTypeAdapter(RoleTypeAdapter.class)
+    public BlogUser.Role role;
 }
