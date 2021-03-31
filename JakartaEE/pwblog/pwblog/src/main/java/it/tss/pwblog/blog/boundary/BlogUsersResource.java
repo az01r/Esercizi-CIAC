@@ -3,6 +3,7 @@ package it.tss.pwblog.blog.boundary;
 
 import it.tss.pwblog.blog.boundary.dto.BlogUserCreate;
 import it.tss.pwblog.blog.control.BlogUserStore;
+import it.tss.pwblog.blog.control.CommentStore;
 import it.tss.pwblog.blog.entity.BlogUser;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,14 +40,17 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 public class BlogUsersResource {
 
     @Context
+    private ResourceContext resource;
+    
+    @Context
     private UriInfo uriInfo;
 
     @Inject
     private BlogUserStore store;
 
-    @Context
-    private ResourceContext resource;
-
+    @Inject
+    private CommentStore commentStore;
+    
     @Context
     SecurityContext securityCtx;
 
@@ -95,6 +99,7 @@ public class BlogUsersResource {
     @Path("{userId}")
     public Response ban(@PathParam("userId") Long userId) {
         BlogUser user = store.search(0,userId).orElseThrow(() -> new NotFoundException());
+        commentStore.searchByUser(0, 0, userId).stream().forEach(v -> v.setDeleted(true));
         store.ban(userId);
         return Response.status(Response.Status.ACCEPTED).build();
     }

@@ -6,6 +6,8 @@
 package it.tss.pwblog.blog.boundary;
 
 import it.tss.pwblog.blog.control.CommentStore;
+import it.tss.pwblog.blog.entity.Comment;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.RolesAllowed;
@@ -44,6 +46,7 @@ public class CommentsResource {
 
     @Inject
     JsonWebToken jwt;
+    
     @Inject
     private CommentStore store;
 
@@ -54,34 +57,11 @@ public class CommentsResource {
         System.out.println(uriInfo.getAbsolutePath());
     }
 
-    //FINIRE COMMENTSRESOURCE E COMMENTRESOURCE
-
-    /**
-     * Non mettendo il metodo HTTP posso intercettare i parametri nel
-     * Path e mandarli a una sottorisorsa. Sarà questa a intercettare 
-     * e gestire i metodi HTTP relativi alla singola risorsa.
-     * 
-     * Possono eseguire il find solo gli admin o un user il cui id(nel token) == all'id passato nel path
-     * 
-     * In Postman:
-     * - passare token in Authorization
-     * - aggiungere /id_account all' url
-     * 
-     * @param id dell'account da visualizzare
-     * @return 
-     */
     @RolesAllowed({"ADMIN", "USER"})
-    @Path("{accountId}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public AccountResource find(@PathParam("accountId") Long id) {
-        Account account = store.find(id).orElseThrow(() -> new NotFoundException());
-        boolean isUserRole = securityCtx.isUserInRole(User.Role.USER.name()); // ritorna vero se il ruolo contenuto nel token è USER
-        if (isUserRole && (jwt == null || jwt.getSubject() == null || Long.parseLong(jwt.getSubject()) != account.getUser().getId())) { // jwt.getSubject ritorna l'id dello user proprietario dell'account
-            throw new ForbiddenException(Response.status(Response.Status.FORBIDDEN).entity("Access forbidden: role not allowed").build());
-        }
-        AccountResource sub = resource.getResource(AccountResource.class);
-        sub.setAccountId(id);
+    @Path("{commentId}")
+    public CommentResource find(@PathParam("commentId") Long id) {
+        CommentResource sub = resource.getResource(CommentResource.class);
+        sub.setCommentId(id);
         return sub;
     }
-
 }

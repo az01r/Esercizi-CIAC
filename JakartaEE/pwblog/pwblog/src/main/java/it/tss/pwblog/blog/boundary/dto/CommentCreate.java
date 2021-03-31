@@ -22,6 +22,4 @@ public class CommentCreate {
     public Long userId;
     @NotEmpty
     public int rating;
-    @NotEmpty
-    public Long answersTo;
 }

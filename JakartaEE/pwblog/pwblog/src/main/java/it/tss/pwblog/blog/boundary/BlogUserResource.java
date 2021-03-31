@@ -36,7 +36,7 @@ public class BlogUserResource {
     @Inject
     private BlogUserStore store;
 
-    private Long userId;
+    private Long userId; // defito tramite setUserId chiamato da BlogUsersResource
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -55,6 +55,7 @@ public class BlogUserResource {
     }
 
     /**
+     * ** in più rispetto alla consegna **
      * NB è uguale al ban dell'admin
      * @return 
      */
@@ -66,12 +67,18 @@ public class BlogUserResource {
         return Response.status(Response.Status.ACCEPTED).build();
     }
 
+    /**
+     * ** in più rispetto alla consegna **
+     * 
+     * @return List<Comment> lista commenti scritti dall'utente
+     */
     @GET
     @Path("comments")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Comment> comments() {
         return commentStore.searchByUser(0, 0, userId);
     }
+    
 
     /*
     get/set

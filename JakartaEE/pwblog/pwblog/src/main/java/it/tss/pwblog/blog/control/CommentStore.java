@@ -7,6 +7,7 @@ package it.tss.pwblog.blog.control;
 
 import it.tss.pwblog.blog.entity.Comment;
 import java.util.List;
+import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -79,9 +80,9 @@ public class CommentStore {
      * @param commentId
      * @return Comment
      */
-    public Comment searchSingleComment(Long commentId) {
-        return searchQuery(false, null, null, commentId)
-                .getSingleResult();
+    public Optional<Comment> searchSingleComment(Long commentId) {
+        Comment found = searchQuery(false, null, null, commentId).getSingleResult();
+        return found == null ? Optional.empty() : Optional.of(found);
     }
     
     public void delete(Long id) {

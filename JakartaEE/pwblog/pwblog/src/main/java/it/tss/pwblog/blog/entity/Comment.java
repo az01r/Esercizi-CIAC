@@ -47,7 +47,6 @@ public class Comment extends AbstractEntity{
         this.articleId = c.articleId;
         this.userId = c.userId;
         this.rating = c.rating;
-        this.answersTo = c.answersTo;
     }
 
     public Long getId() {
