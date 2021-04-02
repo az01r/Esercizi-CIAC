@@ -12,20 +12,12 @@ import javax.annotation.PostConstruct;
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
-import javax.ws.rs.ForbiddenException;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.ResourceContext;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
-import org.eclipse.microprofile.jwt.JsonWebToken;
 
 /**
  *
@@ -36,7 +28,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 public class CommentsResource {
 
     @Context
-    private ResourceContext resource;
+    private ResourceContext resource; // usato per passare al singolo commento
 
     @Context
     private UriInfo uriInfo;
@@ -44,8 +36,8 @@ public class CommentsResource {
     @Context
     SecurityContext securityCtx;
 
-    @Inject
-    JsonWebToken jwt;
+//    @Inject
+//    JsonWebToken jwt;
     
     @Inject
     private CommentStore store;
@@ -59,7 +51,7 @@ public class CommentsResource {
 
     @RolesAllowed({"ADMIN", "USER"})
     @Path("{commentId}")
-    public CommentResource find(@PathParam("commentId") Long id) {
+    public CommentResource search(@PathParam("commentId") Long id) {
         CommentResource sub = resource.getResource(CommentResource.class);
         sub.setCommentId(id);
         return sub;

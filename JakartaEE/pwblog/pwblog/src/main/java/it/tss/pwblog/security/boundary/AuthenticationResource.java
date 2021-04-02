@@ -33,7 +33,7 @@ public class AuthenticationResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response login(@FormParam("email") String email, @FormParam("pwd") String pwd) {
-        BlogUser found = store.searchByEmailAndPwd(email, pwd).orElseThrow(() -> new NotAuthorizedException("invalid email or password", Response.status(Response.Status.UNAUTHORIZED).build()));
+        BlogUser found = store.findUserByEmailAndPwd(email, pwd).orElseThrow(() -> new NotAuthorizedException("invalid email or password", Response.status(Response.Status.UNAUTHORIZED).build()));
         return Response.ok().entity(jwtManager.generate(found)).build();
     }
 

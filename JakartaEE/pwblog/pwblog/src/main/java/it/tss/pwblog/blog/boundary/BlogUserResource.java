@@ -40,43 +40,51 @@ public class BlogUserResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public BlogUser find() {
-        BlogUser user = store.search(0, userId).orElseThrow(() -> new NotFoundException());
+    public BlogUser searchUser() {
+        BlogUser user = store.findUserById(userId).orElseThrow(() -> new NotFoundException());
         return user;
     }
 
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public BlogUser update(BlogUserUpdate u) {
-        BlogUser oldUser = store.search(0, userId).orElseThrow(() -> new NotFoundException());
-        BlogUser newUser = store.update(oldUser, u);
+    public BlogUser updateUser(BlogUserUpdate u) {
+        BlogUser oldUser = store.findUserById(userId).orElseThrow(() -> new NotFoundException());
+        BlogUser newUser = store.updateUsr(oldUser, u);
         return newUser;
     }
 
     /**
-     * ** in più rispetto alla consegna **
-     * NB è uguale al ban dell'admin
+     * NB è simile al ban dell'admin cambia solo che questo non cancella i 
+     * commenti postati in passato
      * @return 
      */
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete() {
-        BlogUser user = store.search(0,userId).orElseThrow(() -> new NotFoundException());
-        store.ban(userId);
+    public Response deleteUser() {
+        store.findUserById(userId).orElseThrow(() -> new NotFoundException());
+        store.banUsr(userId);
+        return Response.status(Response.Status.ACCEPTED).build();
+    }
+    
+    @RolesAllowed({"ADMIN"})
+    @PATCH
+    public Response banUser() {
+        store.findUserById(userId).orElseThrow(() -> new NotFoundException());
+        commentStore.findCommentsByUser(userId).orElseThrow(() -> new NotFoundException()).stream().forEach(v -> v.setDeleted(true));
+        store.banUsr(userId);
         return Response.status(Response.Status.ACCEPTED).build();
     }
 
     /**
-     * ** in più rispetto alla consegna **
      * 
      * @return List<Comment> lista commenti scritti dall'utente
      */
     @GET
-    @Path("comments")
+    @Path("/comments")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Comment> comments() {
-        return commentStore.searchByUser(0, 0, userId);
+        return commentStore.findCommentsByUser(userId).orElseThrow(() -> new NotFoundException());
     }
     
 

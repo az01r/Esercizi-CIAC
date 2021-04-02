@@ -6,6 +6,7 @@
 package it.tss.pwblog.blog.entity;
 
 import it.tss.pwblog.blog.boundary.dto.ArticleCreate;
+import it.tss.pwblog.blog.boundary.dto.ArticleUpdate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -66,6 +67,10 @@ public class Article extends AbstractEntity{
     public void setTitle(String title) {
         this.title = title;
     }
+    
+    public void setTitle(ArticleUpdate u){
+        setTitle(u.title == null ? this.title : u.title);
+    }
 
     public String getText() {
         return text;
@@ -75,6 +80,9 @@ public class Article extends AbstractEntity{
         this.text = text;
     }
 
+    public void setText(ArticleUpdate u){
+        setText(u.text == null ? this.text : u.text);
+    }
 
     public List<String> getTags() {
         return tags;
@@ -82,6 +90,10 @@ public class Article extends AbstractEntity{
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+    
+    public void setTags(ArticleUpdate u){
+        setTags(u.tags == null ? this.tags : u.tags);
     }
 
     @Override

@@ -5,7 +5,6 @@ import it.tss.pwblog.blog.boundary.dto.BlogUserCreate;
 import it.tss.pwblog.blog.control.BlogUserStore;
 import it.tss.pwblog.blog.control.CommentStore;
 import it.tss.pwblog.blog.entity.BlogUser;
-import java.time.LocalDateTime;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.security.DenyAll;
@@ -47,9 +46,6 @@ public class BlogUsersResource {
 
     @Inject
     private BlogUserStore store;
-
-    @Inject
-    private CommentStore commentStore;
     
     @Context
     SecurityContext securityCtx;
@@ -67,16 +63,16 @@ public class BlogUsersResource {
     @RolesAllowed({"ADMIN"})
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<BlogUser> search(@QueryParam("start") int start, @QueryParam("maxResult") int maxResult, @QueryParam("email") String email ) {
-        return store.search(start, maxResult, email);
+    public List<BlogUser> searchAllUsers() {
+        return store.findAllUsers();
     }
 
     @PermitAll
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(@Valid BlogUserCreate u) {
-        BlogUser created = store.create(new BlogUser(u));
+    public Response createUser(@Valid BlogUserCreate u) {
+        BlogUser created = store.createUsr(new BlogUser(u));
         return Response.status(Response.Status.CREATED)
                 .entity(created)
                 .build();
@@ -84,7 +80,7 @@ public class BlogUsersResource {
     
     @RolesAllowed({"ADMIN", "USER"})
     @Path("{userId}")
-    public BlogUserResource find(@PathParam("userId") Long id) {
+    public BlogUserResource search(@PathParam("userId") Long id) {
         boolean isUserRole = securityCtx.isUserInRole(BlogUser.Role.USER.name()); // ritorna vero se il ruolo contenuto nel token è USER
         if (isUserRole && (jwt == null || jwt.getSubject()== null || Long.parseLong(jwt.getSubject()) != id)) { // jwt.getSubject ritorna l'id dello user
             throw new ForbiddenException(Response.status(Response.Status.FORBIDDEN).entity("Access forbidden: role not allowed").build());
@@ -94,14 +90,4 @@ public class BlogUsersResource {
         return sub;
     }
 
-    @RolesAllowed({"ADMIN"})
-    @PATCH
-    @Path("{userId}")
-    public Response ban(@PathParam("userId") Long userId) {
-        BlogUser user = store.search(0,userId).orElseThrow(() -> new NotFoundException());
-        commentStore.searchByUser(0, 0, userId).stream().forEach(v -> v.setDeleted(true));
-        store.ban(userId);
-        return Response.status(Response.Status.ACCEPTED).build();
-    }
-    
 }

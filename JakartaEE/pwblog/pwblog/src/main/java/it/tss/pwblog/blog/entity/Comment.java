@@ -44,8 +44,6 @@ public class Comment extends AbstractEntity{
 
     public Comment(CommentCreate c) {
         this.text = c.text;
-        this.articleId = c.articleId;
-        this.userId = c.userId;
         this.rating = c.rating;
     }
 

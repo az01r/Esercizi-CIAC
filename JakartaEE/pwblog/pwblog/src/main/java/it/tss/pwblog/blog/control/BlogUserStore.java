@@ -38,10 +38,6 @@ public class BlogUserStore {
     @PersistenceContext //chiedo a JPA di creare un'istanza di EntityManager
     private EntityManager em;
     
-    @Inject
-    @ConfigProperty(name = "maxResult", defaultValue = "10")
-    int maxResult; // serve nel search per dare un limite ai risultati ritornati
-
     private TypedQuery<BlogUser> searchQuery(boolean banned, String email, Long id) {
         return em.createQuery("SELECT E FROM BlogUser E WHERE e.banned= :banned AND E.email LIKE :email AND E.id= :id ORDER BY E.id ", BlogUser.class)
                 .setParameter("banned", banned)
@@ -53,7 +49,7 @@ public class BlogUserStore {
      * cerca tutti gli utenti
      * @return List<BlogUser>
      */
-    public List<BlogUser> searchAll() {
+    public List<BlogUser> findAllUsers() {
         return searchQuery(false, null, null).getResultList();
     }
     
@@ -64,27 +60,23 @@ public class BlogUserStore {
      * @param email email dell'utente da cercare
      * @return List<BlogUser>
      */
-    public List<BlogUser> search(int start, int maxResult, String email) {
+    public List<BlogUser> findUserByEmail(String email) {
         return searchQuery(false, email, null)
-                .setFirstResult(start)
-                .setMaxResults(maxResult == 0 ? this.maxResult : maxResult)
                 .getResultList();
     }
     
     /**
      * cerca utenti
-     * @param start inserire un valore se si vuole ritorare i risultati a partire da un certo numero
-     * @param maxResult numero massimo di risultati ritornati
      * @param id id dell'utente da cercare
      * @return Optional<BlogUser>
      */
-    public Optional<BlogUser> search(int start, Long id) {
+    public Optional<BlogUser> findUserById(Long id) {
         LOG.log(System.Logger.Level.INFO, "search user " + id);
         BlogUser found = em.find(BlogUser.class, id); //EntityManager ha un metodo find che cerca un'entity dando una classe e la chiave primaria
         return found == null ? Optional.empty() : Optional.of(found);
     }
     
-    public Optional<BlogUser> searchByEmailAndPwd(String email, String pwd) {
+    public Optional<BlogUser> findUserByEmailAndPwd(String email, String pwd) {
         try {
             BlogUser found = em.createNamedQuery(BlogUser.LOGIN, BlogUser.class)
                     .setParameter("email", email)
@@ -96,13 +88,13 @@ public class BlogUserStore {
         }
     }
     
-    public BlogUser create(BlogUser u) {
+    public BlogUser createUsr(BlogUser u) {
         u.setPwd(SecurityEncoding.shaHash(u.getPwd())); // prima di salvare l'utente nel db crypto la pwd
         BlogUser saved = em.merge(u);
         return saved;
     }
 
-    public BlogUser update(BlogUser user, BlogUserUpdate u) {
+    public BlogUser updateUsr(BlogUser user, BlogUserUpdate u) {
         user.setFname(u);
         user.setLname(u);
         user.setEmail(u);
@@ -112,7 +104,7 @@ public class BlogUserStore {
         return em.merge(user);
     }
 
-    public void ban(Long id) {
+    public void banUsr(Long id) {
         BlogUser found = em.find(BlogUser.class, id);
         found.setBanned(true);
         em.merge(found);

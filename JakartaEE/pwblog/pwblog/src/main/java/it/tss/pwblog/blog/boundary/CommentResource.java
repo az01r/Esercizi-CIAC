@@ -8,6 +8,8 @@ package it.tss.pwblog.blog.boundary;
 import it.tss.pwblog.blog.boundary.dto.CommentCreate;
 import it.tss.pwblog.blog.control.CommentStore;
 import it.tss.pwblog.blog.entity.Comment;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -37,25 +39,28 @@ public class CommentResource {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Comment find() {
-        Comment comment = store.searchSingleComment(commentId).orElseThrow(() -> new NotFoundException());
-        return comment;
+    public List<Comment> searchComment() {
+        Comment comment = store.findCommentById(commentId).orElseThrow(() -> new NotFoundException());
+        List<Comment> responses = new ArrayList<>();
+        responses.add(comment);
+        store.findResponsesToComment(commentId).get().stream().forEach(v -> responses.add(v));
+        return responses;
     }
     
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete() {
-        Comment comment = store.searchSingleComment(commentId).orElseThrow(() -> new NotFoundException());
+    public Response deleteComment() {
+        Comment comment = store.findCommentById(commentId).orElseThrow(() -> new NotFoundException());
         comment.setDeleted(true);
         return Response.status(Response.Status.ACCEPTED).build();
     }
     
     @POST
-    @Path("{accountId}")
+    @Path("{commentId}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response answerTo(@PathParam("accountId") Long upperCommentId, @Valid CommentCreate c) {
-        Comment created = store.create(new Comment(c));
+    public Response createAnswerComment(@PathParam("commentId") Long upperCommentId, @Valid CommentCreate c) {
+        Comment created = store.createComm(new Comment(c));
         created.setAnswersTo(upperCommentId);
         return Response.status(Response.Status.CREATED)
                 .entity(created)

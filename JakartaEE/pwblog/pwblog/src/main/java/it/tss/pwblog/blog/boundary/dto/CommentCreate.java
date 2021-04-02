@@ -17,9 +17,5 @@ public class CommentCreate {
     @NotEmpty
     public String text;
     @NotEmpty
-    public Long articleId;
-    @NotEmpty
-    public Long userId;
-    @NotEmpty
     public int rating;
 }
