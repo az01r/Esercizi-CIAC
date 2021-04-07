@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * @author alfonso
+ * @author Paolo
  */
 @Path("/auth")
 public class AuthenticationResource {

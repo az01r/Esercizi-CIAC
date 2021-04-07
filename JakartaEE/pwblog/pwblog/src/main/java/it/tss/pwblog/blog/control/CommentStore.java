@@ -6,16 +6,14 @@
 package it.tss.pwblog.blog.control;
 
 import it.tss.pwblog.blog.entity.Comment;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  *
@@ -28,7 +26,7 @@ public class CommentStore {
     @PersistenceContext
     private EntityManager em;
 
-    private TypedQuery<Comment> searchQuery(boolean deleted, Long userId, Long articleId, Long commentId, Long answersTo, LocalDateTime ffrom, LocalDateTime tto) {
+    private TypedQuery<Comment> searchQuery(boolean deleted, Long userId, Long articleId, Long commentId, Long answersTo, LocalDate ffrom, LocalDate tto) {
         return em.createQuery("SELECT E FROM Comment E WHERE E.deleted :deleted AND E.userId :userId AND E.articleId :articleId AND E.id :commentId AND E.answersTo :answersTo AND E.createdOn >= ffrom AND E.createdOn <= tto ORDER BY E.id ", Comment.class)
                 .setParameter("deleted", deleted)
                 .setParameter("userId", userId == null ? "%" : userId)
@@ -105,7 +103,7 @@ public class CommentStore {
         return em.merge(comment);
     }
 
-    public Optional<List<Comment>> findCommentsByPeriod(LocalDateTime from, LocalDateTime to) {
+    public Optional<List<Comment>> findCommentsByPeriod(LocalDate from, LocalDate to) {
         List found = searchQuery(false, null, null, null, null, from, to).getResultList();
         return found.isEmpty() ? Optional.empty() : Optional.of(found);
     }

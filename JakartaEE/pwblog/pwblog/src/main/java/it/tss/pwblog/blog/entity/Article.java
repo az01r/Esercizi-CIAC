@@ -7,6 +7,7 @@ package it.tss.pwblog.blog.entity;
 
 import it.tss.pwblog.blog.boundary.dto.ArticleCreate;
 import it.tss.pwblog.blog.boundary.dto.ArticleUpdate;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,15 +22,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- *
- * @author Paolo
- */
 @NamedQueries({
     @NamedQuery(name = "Article.findByTag",query = "SELECT E FROM Article E WHERE :tag MEMBER OF E.tags")
 })
+ * @author Paolo
+ */
+
 @Entity
 @Table(name = "articles")
-public class Article extends AbstractEntity{
+public class Article extends AbstractEntity implements Serializable{
     @Id
     @SequenceGenerator(name = "article_sequence", sequenceName = "article_sequence", initialValue = 1, allocationSize = 1)
     @GeneratedValue(generator = "article_sequence")

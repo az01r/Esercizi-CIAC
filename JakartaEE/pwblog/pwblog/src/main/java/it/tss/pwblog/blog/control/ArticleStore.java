@@ -7,7 +7,7 @@ package it.tss.pwblog.blog.control;
 
 import it.tss.pwblog.blog.boundary.dto.ArticleUpdate;
 import it.tss.pwblog.blog.entity.Article;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
@@ -17,7 +17,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import security.control.SecurityEncoding;
 
 /**
  *
@@ -38,7 +37,7 @@ public class ArticleStore {
         return em.merge(u);
     }
 
-    private TypedQuery<Article> searchQuery(Long id, String title, LocalDateTime ffrom, LocalDateTime tto) {
+    private TypedQuery<Article> searchQuery(Long id, String title, LocalDate ffrom, LocalDate tto) {
         return em.createQuery("SELECT E FROM Article E WHERE E.id :id AND E.title LIKE :title AND E.createdOn >= ffrom AND E.createdOn <= tto ORDER BY E.id ", Article.class)
                 .setParameter("title", title == null ? "%" : "%" + title + "%")
                 .setParameter("id", id == null ? "%" : id)
@@ -67,7 +66,7 @@ public class ArticleStore {
         return em.merge(article);
     }
 
-    public Optional<List<Article>> findArticlesByPeriod(LocalDateTime from, LocalDateTime to) {
+    public Optional<List<Article>> findArticlesByPeriod(LocalDate from, LocalDate to) {
         List found = searchQuery(null, null, from, to).getResultList();
         return found.isEmpty() ? Optional.empty() : Optional.of(found);
     }

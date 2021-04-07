@@ -28,6 +28,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import org.eclipse.microprofile.jwt.Claim;
+import org.eclipse.microprofile.jwt.Claims;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 /**
  *
@@ -37,6 +40,9 @@ import javax.ws.rs.core.UriInfo;
 @Path("/articles")
 public class ArticlesResource {
 
+    @Inject
+    JsonWebToken jwt;
+    
     @Context
     private ResourceContext resource; // usato per passare al singolo articolo
     
@@ -75,7 +81,7 @@ public class ArticlesResource {
     @Path("{articleId}")
     public ArticleResource search(@PathParam("articleId") Long id) {
         ArticleResource sub = resource.getResource(ArticleResource.class);
-        sub.setId(id);
+        sub.setArticleId(id);
         return sub;
     }
 }

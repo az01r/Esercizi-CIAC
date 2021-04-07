@@ -24,32 +24,39 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.eclipse.microprofile.jwt.Claim;
+import org.eclipse.microprofile.jwt.Claims;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 /**
  *
  * @author Paolo
  */
 public class ArticleResource {
-
+    
+    @Inject
+    @Claim(standard = Claims.sub)
+    Long userId;
+    
     @Inject
     private ArticleStore store;
 
     @Inject
     private CommentStore commentstore;
     
-    private Long id;
+    private Long articleId;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Article searchArticleById() {
-        return store.findArticleById(id).orElseThrow(() -> new NotFoundException());
+        return store.findArticleById(articleId).orElseThrow(() -> new NotFoundException());
     }
 
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Article updateArticleById(ArticleUpdate a) {
-        Article oldArticle = store.findArticleById(id).orElseThrow(() -> new NotFoundException());
+        Article oldArticle = store.findArticleById(articleId).orElseThrow(() -> new NotFoundException());
         Article newArticle = store.update(oldArticle, a);
         return newArticle;
     }
@@ -57,7 +64,7 @@ public class ArticleResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Comment> searchCommentsInArticle() {
-        return commentstore.findCommentsByArticle(id).orElseThrow(() -> new NotFoundException());
+        return commentstore.findCommentsByArticle(articleId).orElseThrow(() -> new NotFoundException());
     }
     
     /**
@@ -69,26 +76,23 @@ public class ArticleResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{userId}")
-    public Response createComment(@Valid CommentCreate c, @PathParam("userId") Long userId) {
-        Comment created = commentstore.createComm(new Comment(c));
-        created.setArticleId(id);
-        created.setUserId(userId);
+    public Response createComment(@Valid CommentCreate c) {
+        Comment created = new Comment(c,userId,articleId);
+        commentstore.createComm(created);
         return Response.status(Response.Status.CREATED)
                 .entity(created)
                 .build();
     }
-    
 
     /*
     get/set
      */
-    public Long getId() {
-        return id;
+    public Long getArticleId() {
+        return articleId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setArticleId(Long articleId) {
+        this.articleId = articleId;
     }
 
 }

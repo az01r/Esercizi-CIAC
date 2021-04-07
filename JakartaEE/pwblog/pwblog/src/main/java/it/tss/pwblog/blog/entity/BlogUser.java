@@ -14,6 +14,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,6 +23,9 @@ import javax.persistence.Table;
  *
  * @author Paolo
  */
+    @NamedQueries({
+    @NamedQuery(name = BlogUser.LOGIN, query = "select e from BlogUser e where e.email= :email and e.pwd= :pwd and e.banned=false")
+})
 @Entity
 @Table(name = "users")
 public class BlogUser extends AbstractEntity{

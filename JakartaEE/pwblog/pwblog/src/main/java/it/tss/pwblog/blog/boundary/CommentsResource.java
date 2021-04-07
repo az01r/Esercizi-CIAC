@@ -53,7 +53,7 @@ public class CommentsResource {
     @Path("{commentId}")
     public CommentResource search(@PathParam("commentId") Long id) {
         CommentResource sub = resource.getResource(CommentResource.class);
-        sub.setCommentId(id);
+        sub.setUpperCommentId(id);
         return sub;
     }
 }

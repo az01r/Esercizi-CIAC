@@ -6,16 +6,18 @@
 package it.tss.pwblog.blog.boundary.dto;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 
 /**
- *
+ * contiene solo i dati che voglio avere da json
  * @author Paolo
  */
 public class CommentCreate {
     
     @NotEmpty
     public String text;
-    @NotEmpty
+    @NotNull
     public int rating;
+
 }

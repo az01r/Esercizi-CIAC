@@ -42,9 +42,12 @@ public class Comment extends AbstractEntity{
     public Comment() {
     }
 
-    public Comment(CommentCreate c) {
+    public Comment(CommentCreate c, Long userId, Long articleId) {
         this.text = c.text;
         this.rating = c.rating;
+        this.articleId = articleId;
+        this.userId = userId;
+        
     }
 
     public Long getId() {
