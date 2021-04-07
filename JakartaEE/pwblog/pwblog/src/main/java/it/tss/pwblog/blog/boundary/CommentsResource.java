@@ -35,9 +35,6 @@ public class CommentsResource {
 
     @Context
     SecurityContext securityCtx;
-
-//    @Inject
-//    JsonWebToken jwt;
     
     @Inject
     private CommentStore store;

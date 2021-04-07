@@ -44,13 +44,11 @@ public abstract class AbstractEntity {
     @Column(name = "modified_on")
     protected LocalDateTime modifiedOn;
 
-    @ManyToOne
-    @JoinColumn(name = "created_by_id")
-    protected BlogUser createdBy;
+    @Column(name = "created_by_id")
+    protected Long createdById;
 
-    @ManyToOne
-    @JoinColumn(name = "modified_by_id")
-    protected BlogUser modifiedBy;
+    @Column(name = "modified_by_id")
+    protected Long modifiedById;
 
     /*
     JPA aggiorna il campo version autonomamente, in questo modo avverte se 
@@ -81,20 +79,20 @@ public abstract class AbstractEntity {
         this.modifiedOn = modifiedOn;
     }
 
-    public BlogUser getCreatedBy() {
-        return createdBy;
+    public Long getCreatedById() {
+        return createdById;
     }
 
-    public void setCreatedBy(BlogUser createdBy) {
-        this.createdBy = createdBy;
+    public void setCreatedById(Long createdById) {
+        this.createdById = createdById;
     }
 
-    public BlogUser getModifiedBy() {
-        return modifiedBy;
+    public Long getModifiedById() {
+        return modifiedById;
     }
 
-    public void setModifiedBy(BlogUser modifiedBy) {
-        this.modifiedBy = modifiedBy;
+    public void setModifiedById(Long modifiedById) {
+        this.modifiedById = modifiedById;
     }
 
     public Long getVersion() {

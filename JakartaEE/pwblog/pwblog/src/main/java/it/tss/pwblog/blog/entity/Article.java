@@ -28,6 +28,7 @@ import javax.persistence.Table;
  * @author Paolo
  */
 
+
 @Entity
 @Table(name = "articles")
 public class Article extends AbstractEntity implements Serializable{
@@ -40,6 +41,7 @@ public class Article extends AbstractEntity implements Serializable{
     private String title;
     @Column(nullable = false)
     private String text;
+    
     @Column(nullable = false)
     @ElementCollection()
     private List<String> tags = new ArrayList<>();
@@ -47,10 +49,11 @@ public class Article extends AbstractEntity implements Serializable{
     public Article() {
     }
 
-    public Article(ArticleCreate a) {
+    public Article(ArticleCreate a, Long userId) {
         this.title = a.title;
         this.text = a.text;
         this.tags = (ArrayList<String>) a.tags;
+        this.createdById = userId;
     }
 
     public Long getId() {

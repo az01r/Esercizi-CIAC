@@ -29,7 +29,7 @@ import net.minidev.json.JSONObject;
 public class JWTManager {
 
     private static final String PRIVATE_KEY = "/META-INF/privateKey.pem";
-    private static final String ISS = "it.tss.pwbanksystem";
+    private static final String ISS = "it.tss.pwblog";
 
     /**
      * crea il token di un utente usando la chiave privata

@@ -33,7 +33,7 @@ public class EntityListener {
     @PrePersist // prima che venga l'oggetto creato
     public void onPrePersist(AbstractEntity e) {
         if (jwt != null && jwt.getSubject()!=null) {
-            e.setCreatedBy(userStore.findUserById(Long.parseLong(jwt.getSubject())).get());
+            e.setCreatedById(userStore.findUserById(Long.parseLong(jwt.getSubject())).get().id);
         }
         e.setCreatedOn(LocalDateTime.now());
     }
@@ -41,7 +41,7 @@ public class EntityListener {
     @PreUpdate // prima che venga l'oggetto aggiornato
     public void onPreUpdate(AbstractEntity e) {
         if (jwt != null && jwt.getSubject()!=null) {
-            e.setModifiedBy(userStore.findUserById(Long.parseLong(jwt.getSubject())).get());
+            e.setModifiedById(userStore.findUserById(Long.parseLong(jwt.getSubject())).get().id);
         }
         e.setModifiedOn(LocalDateTime.now());
     }

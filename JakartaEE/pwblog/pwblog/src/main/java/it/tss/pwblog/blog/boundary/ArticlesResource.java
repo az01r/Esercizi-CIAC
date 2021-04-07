@@ -41,7 +41,8 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 public class ArticlesResource {
 
     @Inject
-    JsonWebToken jwt;
+    @Claim(standard = Claims.sub)
+    Long userId;
     
     @Context
     private ResourceContext resource; // usato per passare al singolo articolo
@@ -62,16 +63,16 @@ public class ArticlesResource {
     @RolesAllowed({"ADMIN", "USER"})
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Article> searchAllArticles(@QueryParam("start") int start, @QueryParam("maxResult") int maxResult) {
-        return store.findAllArticles(start, maxResult).orElseThrow(() -> new NotFoundException());
+    public List<Article> searchAllArticles() {
+        return store.findAllArticles().orElseThrow(() -> new NotFoundException());
     }
     
-    @PermitAll
+    @RolesAllowed({"ADMIN"})
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createArticle(@Valid ArticleCreate a) {
-        Article created = store.createArt(new Article(a));
+        Article created = store.createArt(new Article(a,userId));
         return Response.status(Response.Status.CREATED)
                 .entity(created)
                 .build();

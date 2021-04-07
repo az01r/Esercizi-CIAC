@@ -20,18 +20,17 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "comments")
-public class Comment extends AbstractEntity{
+public class Comment extends AbstractEntity {
+
     @Id
     @SequenceGenerator(name = "comment_sequence", sequenceName = "comment_sequence", initialValue = 1, allocationSize = 1)
     @GeneratedValue(generator = "comment_sequence")
     protected Long id;
-    
+
     @Column
     private String text;
     @Column
     private Long articleId;
-    @Column
-    private Long userId;
     @Column
     private int rating;
     @Column
@@ -46,8 +45,8 @@ public class Comment extends AbstractEntity{
         this.text = c.text;
         this.rating = c.rating;
         this.articleId = articleId;
-        this.userId = userId;
-        
+        this.createdById = userId;
+
     }
 
     public Long getId() {
@@ -74,14 +73,6 @@ public class Comment extends AbstractEntity{
         this.articleId = articleId;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     public int getRating() {
         return rating;
     }
@@ -105,7 +96,7 @@ public class Comment extends AbstractEntity{
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -130,5 +121,5 @@ public class Comment extends AbstractEntity{
         }
         return true;
     }
-        
+
 }

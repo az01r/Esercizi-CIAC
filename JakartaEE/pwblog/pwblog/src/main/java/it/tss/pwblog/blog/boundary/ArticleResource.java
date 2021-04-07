@@ -12,6 +12,7 @@ import it.tss.pwblog.blog.control.CommentStore;
 import it.tss.pwblog.blog.entity.Article;
 import it.tss.pwblog.blog.entity.Comment;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;

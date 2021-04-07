@@ -63,9 +63,10 @@ public class CommentResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createAnswerComment(@Valid CommentCreate c) {
-        Comment comment = store.findCommentById(upperCommentId).orElseThrow(() -> new NotFoundException());        
-        Comment created = store.createComm(new Comment(c, userId, comment.getArticleId()));
+        Comment comment = store.findCommentById(upperCommentId).orElseThrow(() -> new NotFoundException());  
+        Comment created = new Comment(c, userId, comment.getArticleId());
         created.setAnswersTo(upperCommentId);
+        created = store.createComm(created);
         return Response.status(Response.Status.CREATED)
                 .entity(created)
                 .build();
