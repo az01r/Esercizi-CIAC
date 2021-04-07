@@ -33,10 +33,6 @@ public class ArticleStore {
     @PersistenceContext //chiedo a JPA di creare un'istanza di EntityManager
     private EntityManager em;
 
-    @Inject
-    @ConfigProperty(name = "maxResult", defaultValue = "10")
-    int maxResult; // serve nel search per dare un limite ai risultati ritornati
-
     public Article createArt(Article u) {
         return em.merge(u);
     }

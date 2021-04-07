@@ -17,6 +17,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -38,11 +42,25 @@ public class BlogUserStore {
     @PersistenceContext //chiedo a JPA di creare un'istanza di EntityManager
     private EntityManager em;
     
-    private TypedQuery<BlogUser> searchQuery(boolean banned, String email, Long id) {
-        return em.createQuery("SELECT E FROM BlogUser E WHERE e.banned= :banned AND E.email LIKE :email AND E.id= :id ORDER BY E.id ", BlogUser.class)
-                .setParameter("banned", banned)
-                .setParameter("email", email == null ? "%" : "%" + email + "%")
-                .setParameter("id", id == null ? "%" : id);
+    private List<BlogUser> searchQuery(boolean banned, String email, Long id) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<BlogUser> query = cb.createQuery(BlogUser.class);
+        Root<BlogUser> root = query.from(BlogUser.class);
+        query.select(root).where(searchPredicate(cb, root, banned, email, id));
+        return em.createQuery(query)
+                .getResultList();
+    }
+    
+    public Predicate searchPredicate(CriteriaBuilder cb, Root<BlogUser> root, boolean banned, String email, Long id) {
+        Predicate result = cb.conjunction();
+        result = cb.and(result, cb.equal(root.get("banned"), banned));
+        if (email != null) {
+            result = cb.and(result, cb.equal(root.get("email"), email));
+        }
+        if (id != null) {
+            result = cb.and(result, cb.equal(root.get("id"), id));
+        }
+        return result;
     }
     
     /**
@@ -50,7 +68,7 @@ public class BlogUserStore {
      * @return List<BlogUser>
      */
     public List<BlogUser> findAllUsers() {
-        return searchQuery(false, null, null).getResultList();
+        return searchQuery(false, null, null);
     }
     
     /**
@@ -61,8 +79,7 @@ public class BlogUserStore {
      * @return List<BlogUser>
      */
     public List<BlogUser> findUserByEmail(String email) {
-        return searchQuery(false, email, null)
-                .getResultList();
+        return searchQuery(false, email, null);
     }
     
     /**
@@ -98,7 +115,7 @@ public class BlogUserStore {
         user.setFname(u);
         user.setLname(u);
         user.setEmail(u);
-        user.setPwd(u);
+        user.setPwd(SecurityEncoding.shaHash(u.pwd)); // prima di salvare l'utente nel db crypto la pwd       
         user.setRole(u);
         user.setBanned(u);
         return em.merge(user);

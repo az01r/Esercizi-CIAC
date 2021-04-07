@@ -14,6 +14,7 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -43,7 +44,7 @@ public class Article extends AbstractEntity implements Serializable{
     private String text;
     
     @Column(nullable = false)
-    @ElementCollection()
+    @ElementCollection(fetch = FetchType.EAGER) // prende tutti i tag 
     private List<String> tags = new ArrayList<>();
 
     public Article() {
