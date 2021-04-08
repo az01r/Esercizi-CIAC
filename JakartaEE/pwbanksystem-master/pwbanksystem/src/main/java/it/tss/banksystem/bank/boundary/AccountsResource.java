@@ -49,6 +49,7 @@ public class AccountsResource {
 
     @Inject
     JsonWebToken jwt;
+    
     @Inject
     private AccountStore store;
 
