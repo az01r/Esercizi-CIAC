@@ -1,0 +1,22 @@
+new -> other -> Qualifier ... interceptor 
+
+vanno aggiunti nel beans.xml
+<interceptors>
+	<class> ...pacchetti/nome classe.... </class>
+</interceptors>
+
+@Logged
+@Interceptor
+public class LoggedInterceptor {
+
+	@Inject
+	System.Logger LOG;
+	
+	@AroundInvoke
+	public Object log(InvocationContext ic) throws Exception {
+	
+		LOG.log(System.Logger.Info ic.
+		return ic.proceed()
+	}
+
+}

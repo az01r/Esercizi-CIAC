@@ -1,0 +1,64 @@
+--------------------------------------------------------------------------------------------------------
+					CREARE EVENTI JEE CON CDI
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+1) Nella classe dove voglio creare un evento 
+--------------------------------------------------------------------------------------------------------
+
+	@Inject
+	@AuthenticationAccepted		    // annotazione creata da noi per dare un nome all'evento 
+	private Event<String> authAccepted; // creo un evento di tipo String
+
+	@Inject
+	@AuthenticationFailed		  // annotazione creata da noi per dare un nome all'evento 
+	private Event<String> authFailed; // creo un evento di tipo String
+
+	...
+
+	authAccepted.fire("Login ok, hello " + usr); // .fire() triggera l'evento
+
+	...
+
+	authFailed.fire("Login failed"); // .fire() triggera l'evento
+
+	...
+
+--------------------------------------------------------------------------------------------------------
+2) Per ascoltare gli evento creo delle classi apposite
+--------------------------------------------------------------------------------------------------------
+
+	- se non ho bisogno di differenziare gli eventi di uno stesso tipo
+	/**
+	 * ascolta tutti gli eventi di tipo String
+	 */
+	public class AuthenticationListener {
+
+		public void onAuthentication(@Observes String msg) {
+			System.out.println(msg);
+		}
+
+	}
+
+
+	- se ho bisogno di differenziare gli eventi di uno stesso tipo
+	/**
+	 * ascolta tutti gli di tipo String con annotazione @AuthenticationFailed
+	 */
+	public class AuthenticationNotifier {
+	
+		/**
+		 * intercetta l'evento @AuthenticationFailed e fa qualcosa di conseguenza
+		 */
+		public void onAuthentication(@Observes @AuthenticationFailed String msg) {
+			System.out.println("Sending email to account owner: " + msg);	
+		}
+
+		/**
+		 * intercetta l'evento @AuthenticationAccepted e fa qualcosa di conseguenza
+		 */
+		public void onAuthentication(@Observes @AuthenticationAccepted String msg) {
+			System.out.println(msg);
+		}
+
+	}
+

@@ -1,0 +1,6 @@
+Comandi Git
+1) creare repository su github
+2) da terminale andare nella cartella del progetto dare il comando
+   git remote add origin <urlRepository>
+3) git push origin master
+   inserire usr e pwd
