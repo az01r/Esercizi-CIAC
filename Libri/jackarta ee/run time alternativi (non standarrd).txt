@@ -1,0 +1,2 @@
+Sostituisce un application server, non è standard ma supporta microprofile e alcune delle funzionalità standard
+Il vantaggio è che sono più veloci rispetto agli standard
