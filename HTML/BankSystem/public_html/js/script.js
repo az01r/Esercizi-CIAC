@@ -27,7 +27,7 @@ function doRegistrazione(event) {
     //checkbox array stesso name piu' oggetti
     formJSON.news = data.getAll('news');
     let bodydata = JSON.stringify(formJSON)
-    fetch("http://example.com/api/endpoint/", {
+    fetch("https://pwbanksystem.tssdev.it/resources/users", {
         method: "post",
         headers: {
             'Accept': 'application/json',
@@ -35,22 +35,27 @@ function doRegistrazione(event) {
         },
         body: bodydata
     })
-            .then((response) => {
-                //do something awesome that makes the world a better place
+            .then((response) => response.json()
+                ).then((user) => {
+                    alert("utente creato correttamente\nnome:" +user.lname
+                           + "\ncognome:"+user.fname 
+                           + "\nPuoi effettuare il Login con:\n"+user.usr 
+                           );
             });
 }
 
-
-
 function showLogin() {
     const flog = document.querySelector("#flogin");
+    if (sessionStorage.getItem("token")){
+        window.location.href="user.html";
+        return;
+        
+    }
     if (flog.style.display == "none")
         flog.style.display = "block";
     else
         flog.style.display = "none";
 }
-
-
 function login() {
 
     url = "https://pwbanksystem.tssdev.it/resources/auth";
@@ -92,49 +97,6 @@ function login() {
 
 }
 
-function exlogin() {
-    let url = "https://gugudesign.it/sapere/?login";
-    let usr = document.querySelector("#usr").value;
-    let pwd = document.querySelector("#pwd").value;
-    let f = document.querySelector("#flogin");
-    let formData = new FormData(f);
-
-    fetch(url, {
-        method: 'POST',
-        body: formData
-    })
-            .then(response =>
-                response.json()
-            )
-            .then(function (json) {
-                if (json.hasOwnProperty("token")) { //loggato
-                    let divout = document.querySelector("#dresult");
-                    let html = "";
-                    let token = json.token;
-                    let record = json.items[0];
-                    loggedUser = record;
-                    html += visJSONobj(record);
-                    sessionStorage.setItem("id_user", record.id);
-                    sessionStorage.setItem("id_account", record.id_account);
-                    sessionStorage.setItem("token", token);
-                    divout.innerHTML = html;
-                    let msgloguser = "Benvenuto " + loggedUser.nome.toUpperCase() + " " + loggedUser.cognome.toUpperCase()
-                            + "<br>conto n° " + loggedUser.id_account;
-                    document.querySelector("#loguser").innerHTML = msgloguser;
-
-                    document.querySelector("#dlogin").style.display = "none";
-                    document.querySelector("#dbank").style.display = "block";
-                } else {
-                    sessionStorage.clear();
-                    document.querySelector("#dlogin").style.display = "block";
-                    document.querySelector("#dbank").style.display = "none";
-                }
-                document.querySelector("#dloginmsg").innerHTML = json.login;
-            })
-            .catch(error => {
-                console.log("Errore durante fetch:" + error);
-            })
-}
 function entra() {
     if (sessionStorage.getItem("id_user") != "") {
         document.querySelector("#flogin").style.display = "none";
@@ -147,6 +109,7 @@ function entra() {
 
 
 }
+/*   ex php //////////////
 function addTransaction() {
     //   sdafsfsdfsdf.it/getGPSposition.php?city=ivrea&reg=piemonte
     url = "https://gugudesign.it/sapere/?addTransaction";
@@ -155,12 +118,9 @@ function addTransaction() {
     let formData = new FormData();
     formData.append('id_account', id_account);
     formData.append('amount', amount);
-
-
     fetch(url, {
         method: 'POST',
         body: formData,
-
     }
     )
             .then(response =>
@@ -173,7 +133,6 @@ function addTransaction() {
             .catch(error => {
                 console.log("Errore durante fetch:" + error);
             })
-
 }
 function caricaTransaction() {
     let id = sessionStorage.getItem("id_account");
@@ -193,7 +152,7 @@ function caricaTransaction() {
             });
 }
 
-
+*/
 
 
 

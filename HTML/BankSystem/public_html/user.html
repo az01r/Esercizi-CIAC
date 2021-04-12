@@ -17,7 +17,7 @@ To change this license header, choose License Headers in Project Properties.
         <script src="js/jwt-decode.js"></script> 
 
     </head>
-    <body onload="inituser()">
+    <body class="user" onload="inituser()">
         <header>
             <input type="checkbox" id="hamburger"/>
             <label class="menuicon" for="hamburger">
@@ -25,23 +25,13 @@ To change this license header, choose License Headers in Project Properties.
             </label>
             <div id="bar"> 
                 <div id="logo">
-                    <a href="#"><img src="img/logobank.png" alt="your logo" title="your logo" height="54"></a>
+                    <a href="#"><img src="img/logobankW.png" alt="your logo" title="your logo" height="54"></a>
                 </div> <!--/fine logo-->   
             </div><!--/fine bar--> 
             <nav class="menu-visibility">
                 <ul>
                     <li><a  href="home.html" class="active">HOME</a></li>
-                    <li><a class="submenu" href="#">SERVIZI</a>
-                        <ul>
-                            <li><a href="#">Servizio 1</a></li>
-                            <li><a href="#">Servizio 3</a></li>
-                        </ul>
-                    </li>
-
-
-                    <li><a href="chi_siamo.html" >CHI SIAMO</a></li>
-                    <li><a href="#" >CONTATTI</a></li>
-                    <li><a class="logout" onclick="logout()" href="#" >LOGOUT</a>
+                     <li><a class="logout" onclick="logout()" href="#" >LOGOUT</a>
 
                     </li>
 
@@ -49,26 +39,34 @@ To change this license header, choose License Headers in Project Properties.
                 </ul>
             </nav>
         </header>
-        <div class="page">    
+        <div class="page ">    
 
-            <div class="inner-row">
+            <div class="full-row center">
                 <h1 class="titolo">AREA Personale - BANK SYSTEM</h1>
-                <h2>in quest'area puoi gestire il tuo conto</h2>
+                <h3 id="hwelcome"></h3>
+                <hr class="spacerS">
+                <h3>in quest'area puoi gestire il tuo conto</h3>
+                <hr class="spacerS">
+            </div>    
+            <div class="inner-row">
+            
                 <div class="flex"> 
-                    <div class="flex-item col25 " id='info_profile'>
+                    <div class="flex-item col1 " id='info_profile'>
+                        
                         <div id="info_user">
-                            
+                        
                         </div>
+                        <hr>
                         <div id="info_account">
-                            <select id="sel_id_account">
-                            
+                            <h3>Seleziona il tuo conto</h3>
+                            <select id="selidaccount" 
+                                    onchange="getInfouserAccountTransaction()">
+                                
                             </select>
                         </div>
                     </div>
-                    <div class="flex-item col75" id='info_accounts'>
-                        <p class="item">One morning, when Gregor Samsa woke from troubled dreams, legs, pitifully thin compared with the size 
-                            of the rest of him, waved about helplessly as he looked. <br>
-                            "What's happened to me?" he thought. It wasn't a dream. His room, a proper human</p>
+                    <div class="flex-item col3" id='info_transactions'>
+                    nessuna transazione visualizzata!!!
                     </div>
 
 
@@ -76,43 +74,33 @@ To change this license header, choose License Headers in Project Properties.
             </div>
 
         </div>
-        <footer class="flex">
+           <footer class="flex">
             <div class="flex-item">
-                <a href="#">link1 link1 </a>
+                <p style="text-align: left">Bank System S.p.a.<br>
+                    Registered office:<br>
+                    Via como, 5 - 20202 Brianzate (CO) - Italy<br>
+                    Tel: +39 0251 535353<br>
+                    P.IVA: 99956123334<br>
+
+            </div>
+            <div  class="flex-item">
+                <a href="chi_siamo.html">Chi Siamo </a>
                 <hr>
-                <a href="#">link1 link1</a>
-                <hr>
-                <a href="#">link1 link1 </a>
-                <hr>
-                <a href="#">link1 link1</a>
-                <hr>
-                <a href="#">link1 link1</a>
+                <a href="contatti">Contatti</a>
                 <hr>
             </div>
             <div  class="flex-item">
-                <a href="#">link1 link1 </a>
+                <a href="#">SOCIAL FACEBOOK</a>
                 <hr>
-                <a href="#">link1 link1</a>
+                <a href="#">SOCIAL TWITTER</a>
                 <hr>
+                <a href="#">SOCIAL INSTAGRAM</a>
             </div>
-            <div  class="flex-item">
-                <a href="#">link1 link1 </a>
-                <hr>
-                <a href="#">link1 link1</a>
-                <hr>
-                <a href="#">link1 link1 </a>
-                <hr>
-                <a href="#">link1 link1</a>
-                <hr>
-                <a href="#">link1 link1 </a>
-                <hr>
-                <a href="#">link1 link1</a>
-
-
+            <div class="full-row">
+                <p class="center" style="width:100%">BANK SYSTEM S.P.A.  © 2017 All Rights Reserved - Privacy Policy IUBENDA </p>
             </div>
-
         </footer>
-    </body>
+   </body>
 
 </html>
 
