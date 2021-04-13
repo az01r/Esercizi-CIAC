@@ -1,0 +1,62 @@
+/* 
+    Created on : 12 apr 2021, 13:57:11
+    Author     : Paolo
+*/
+
+.header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.header li {
+    float: left;
+}
+
+.header li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 24px 50px;
+    text-decoration: none;
+}
+
+.header li a:hover, .header .dropdown:hover .dropbtn {
+    background-color: black;
+}
+.header .dropbtn {
+    padding: 8px 20px; /*padding dell'icona*/
+    display: inline-block;
+}
+.header .dropbtn img {
+    height: 50px;
+    width: 50px;
+}
+.header li.dropdown {
+    display: inline-block;
+}
+
+.header .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.header .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
