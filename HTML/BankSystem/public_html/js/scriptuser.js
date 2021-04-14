@@ -13,8 +13,6 @@ function inituser() {
         window.location.href = "home.html";
     }
 
-
-
 }
 
 function getInfouser() {
@@ -120,3 +118,48 @@ function logout() {
 
 }
 
+function cancelTransaction() {
+    modal = document.getElementById('dtransaction');
+    modal.style.display = "none";
+    let allinput = document.querySelectorAll(".modal input");
+    for (i of allinput)
+        i.value = "";
+}
+
+function createTransaction() {
+    document.getElementById('dtransaction').style.display = 'block';
+    const form = document.querySelector('#ftransaction');
+    form.addEventListener('submit', doTransaction);
+}
+
+function doTransaction(event) {
+    console.log(" do transaction")
+    event.preventDefault();
+    const data = new FormData(event.target);
+    let formJSON = {"amount": data.get("amount"),
+        "type": data.get("rtype")
+    };
+    if (data.get("rtype") === "TRANSFER") {
+        formJSON.transfer = {
+            "id": data.get("toAccID")
+        };
+    }
+    console.log(formJSON);
+    let bodydata = JSON.stringify(formJSON);
+    let idacc = document.querySelector('#selidaccount').value;
+    let url = "https://pwbanksystem.tssdev.it/resources/accounts/"+idacc+"/transactions";
+    fetch(url , {
+        method: "post",
+        headers: {
+            'Authorization': "Bearer " + sessionStorage.getItem("token"),
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: bodydata
+    })
+            .then((response) => {
+                    alert(response.status + "\n" + response.statusText)
+                    
+                });
+    
+ }

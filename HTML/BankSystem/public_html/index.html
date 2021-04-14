@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+        To change this template file, choose Tools | Templates
+        and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Roboto|Trirong">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css" />
+    <script src="js/script.js"></script>
+    <script src="js/jwt-decode.js"></script>
+
+</head>
+
+<body class="home" onload="init()">
+    <div class="modal" id="fregister">
+        <div class="divcenter">
+            <span onclick="cancelRegister()" class="closeX" title="Close">&times;</span>
+            <form id="freg">
+                <h3>Form registrazione</h3>
+                <input type="text" name="fname" id="nome" required placeholder="ins.nome">
+                <input type="text" name="lname" id="cognome" required placeholder="ins.cognome">
+                <input type="email" name="email" id="mail" required placeholder="ins.mail">
+                <input type="tel" name="tel" id="tel" placeholder="ins tel">
+                <p>Iscrizione Newsletter</p>
+                <label for="news1">
+                    <input type="checkbox" value="news1" name="news" style="width:auto"> News1
+                </label>
+                <label for="news2">
+                    - <input type="checkbox" value="news2" name="news" style="width:auto"> News2
+                </label>
+                <label for="news3">
+                    - <input type="checkbox" value="news3" name="news" style="width:auto"> News3
+                </label>
+
+                <input type="text" name="usr" id="usr" required placeholder="ins username">
+                <input type="password" name="pwd" required id="pwd" placeholder="ins password">
+                <button type="submit">Registrati</button>
+                <label for="agree">
+                    <input type="checkbox" required checked id="agree" name="agree" style="width:auto"> Autorizzo i miei
+                    dati
+                </label>
+
+            </form>
+        </div>
+    </div>
+    <header>
+        <input type="checkbox" id="hamburger" />
+        <label class="menuicon" for="hamburger">
+            <span></span>
+        </label>
+        <div id="bar">
+            <div id="logo">
+                <a href="#"><img src="img/logobankW.png" alt="your logo" title="your logo" height="54"></a>
+            </div>
+            <!--/fine logo-->
+        </div>
+        <!--/fine bar-->
+        <nav class="menu-visibility">
+            <ul>
+                <li><a href="index.html" class="active">HOME</a></li>
+                <li><a class="submenu" href="#">SERVIZI</a>
+                    <ul>
+                        <li><a href="#">Servizio 1</a></li>
+                        <li><a href="#">Servizio 3</a></li>
+                    </ul>
+                </li>
+
+
+                <li><a href="chi_siamo.html">CHI SIAMO</a></li>
+                <li><a href="#">CONTATTI</a></li>
+                <li><a class="submenu login" onclick="showLogin()" href="#">AREA CLIENTI</a>
+                    <ul>
+                        <li>
+                            <form id="flogin" style="display: none">
+                                <label>Accesso BankSystem</label>
+                                <input type="text" required name="usr" id="usr" placeholder="ins username">
+                                <input type="password" required name="pwd" id="pwd" placeholder="ins password">
+                                <input type="button" onclick="login();" value="Login"><br>
+                                <span class="spregistrati" onclick="registrazione()">Registrati</span>
+
+                            </form>
+                        </li>
+                    </ul>
+
+                </li>
+
+
+            </ul>
+        </nav>
+    </header>
+    <div class="page">
+
+        <div class="full-row bkdark">
+            <h1 class="titolo">Titolo BANK SYSTEM</h1>
+            <h2>La banca per ogni esigenza</h2>
+            <div class="flex">
+                <div class="flex-item">
+                    <p class="item">!!!!One morning, when Gregor Samsa woke from troubled dreams, legs, pitifully thin
+                        compared with the size
+                        of the rest of him, waved about helplessly as he looked. <br>
+                        "What's happened to me?" he thought. It wasn't a dream. His room, a proper human</p>
+                </div>
+                <div class="flex-item">
+                    <p class="item">One morning, when Gregor Samsa woke from troubled dreams, legs, pitifully thin
+                        compared with the size
+                        of the rest of him, waved about helplessly as he looked. <br>
+                        "What's happened to me?" he thought. It wasn't a dream. His room, a proper human</p>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="inner-row ">
+            <hr class="spacerM">
+            <h2>La banca per ogni esigenza</h2>
+            <hr>
+            <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed
+                in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his
+                head a little he could see his brown belly, slightly domed and divided by arches into
+                stiff sections. The bedding was hardly able to cover it and seemed ready to slide off
+                any moment.<br> His many legs, pitifully thin compared with the size of the rest of him,
+                waved about helplessly as he looked. <br>
+                "What's happened to me?" he thought. It wasn't a dream. His room, a proper human</p>
+
+        </div>
+        <hr class="spacerL">
+        <div class="inner-row ">
+            <h2>I NOSTRI ESPERTI</h2>
+            <hr>
+        </div>
+
+        <div class="full-row flex" id="gallery">
+            <div class="flex-item ">
+                <div class="card">
+                    <img src="img/pr1.jpg">
+                    <h2>Andrei Marco</h2>
+                    <span class="legend">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, to</span>
+                </div>
+            </div>
+            <div class="flex-item ">
+                <div class="card">
+                    <img src="img/pr2.jpg">
+                    <h2>Rossi Andrea</h2>
+                    <span class="legend">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, to</span>
+                </div>
+            </div>
+            <div class="flex-item ">
+                <div class="card">
+                    <img src="img/pr3.jpg">
+                    <h2>Katia Venis</h2>
+                    <span class="legend">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, to</span>
+                </div>
+            </div>
+            <div class="flex-item ">
+                <div class="card">
+                    <img src="img/pr4.jpg">
+                    <h2>Simone Bianchi</h2>
+                    <span class="legend">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, to</span>
+                </div>
+            </div>
+            <div class="flex-item ">
+                <div class="card">
+                    <img src="img/pr5.jpg">
+                    <h2>Elena Bellino</h2>
+                    <span class="legend">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, to</span>
+                </div>
+            </div>
+            <div class="flex-item ">
+                <div class="card">
+                    <img src="img/pr6.jpg">
+                    <h2>Sofia Lanzini</h2>
+                    <span class="legend">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                        doloremque laudantium, to</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="full-row" id="callaction">
+            <div class="callaction"><img class="none" src="img/ok.png">
+                <span class="legend">WELCOME TO BANK SYSTEM</span>
+            </div>
+
+        </div>
+        <div class="separator"></div>
+        <div class="inner-row grid">
+            <div>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into
+                a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his
+                brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to
+                cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size
+                of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't
+                a dream. His room, a proper human</div>
+            <div>Two One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed
+                into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see
+                his brown belly, slightly domed and divided by arches into stiff sections. The</div>
+            <div>Three Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, eaque ipsa quae ab</div>
+            <div>FourLi Europan lingues es membres del sam familie.<br>
+                Lor separat existentie es un myth. Por scientie, musica, sport etc, litot</div>
+            <div>Five Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+                sunt explicabo.
+
+                Nemo enim ipsam voluptatem</div>
+        </div>
+    </div>
+    <footer class="flex">
+        <div class="flex-item">
+            <p style="text-align: left">Bank System S.p.a.<br>
+                Registered office:<br>
+                Via como, 5 - 20202 Brianzate (CO) - Italy<br>
+                Tel: +39 0251 535353<br>
+                P.IVA: 99956123334<br>
+
+        </div>
+        <div class="flex-item">
+            <a href="chi_siamo.html">Chi Siamo </a>
+            <hr>
+            <a href="contatti">Contatti</a>
+            <hr>
+        </div>
+        <div class="flex-item">
+            <a href="#">SOCIAL FACEBOOK</a>
+            <hr>
+            <a href="#">SOCIAL TWITTER</a>
+            <hr>
+            <a href="#">SOCIAL INSTAGRAM</a>
+        </div>
+        <div class="full-row">
+            <p class="center" style="width:100%">BANK SYSTEM S.P.A. © 2017 All Rights Reserved - Privacy Policy IUBENDA
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

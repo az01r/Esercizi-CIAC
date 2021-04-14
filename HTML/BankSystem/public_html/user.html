@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-        To change this template file, choose Tools | Templates
-        and open the template in the editor.
+json post transaction
+{
+  "amount": 0,
+  "transfer": {
+    "id": 0
+  },
+  "type": "DEPOSIT"
+}
 -->
 <html>
     <head>
@@ -18,6 +23,22 @@ To change this license header, choose License Headers in Project Properties.
 
     </head>
     <body class="user" onload="inituser()">
+        <!-- form transaction -->
+        <div class="modal" id="dtransaction">
+            <div class="divcenter">
+                <span onclick="cancelTransaction()" class="closeX" title="Close">&times;</span>
+                <form id="ftransaction">
+                    <h3>Form transaction</h3>
+                    <input type="radio" value="WITHDRAWAL" name="rtype" style="width:auto"> Withdrawal
+                    <input type="radio" value="DEPOSIT" name="rtype" style="width:auto"> Deposit
+                    <input type="radio" value="TRANSFER" name="rtype" style="width:auto"> Transfer
+                    <input type="number" name="amount" id="amount" required placeholder="ins.amount">
+                    <input type="number" name="toAccID" id="toAccID" required placeholder="ins.toAccID">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <!-- fine form transaction -->
         <header>
             <input type="checkbox" id="hamburger"/>
             <label class="menuicon" for="hamburger">
@@ -30,8 +51,8 @@ To change this license header, choose License Headers in Project Properties.
             </div><!--/fine bar--> 
             <nav class="menu-visibility">
                 <ul>
-                    <li><a  href="home.html" class="active">HOME</a></li>
-                     <li><a class="logout" onclick="logout()" href="#" >LOGOUT</a>
+                    <li><a  href="index.html" class="active">HOME</a></li>
+                    <li><a class="logout" onclick="logout()" href="#" >LOGOUT</a>
 
                     </li>
 
@@ -49,32 +70,36 @@ To change this license header, choose License Headers in Project Properties.
                 <hr class="spacerS">
             </div>    
             <div class="inner-row">
-            
+
                 <div class="flex"> 
                     <div class="flex-item col1 " id='info_profile'>
-                        
+
                         <div id="info_user">
-                        
+
                         </div>
                         <hr>
                         <div id="info_account">
                             <h3>Seleziona il tuo conto</h3>
                             <select id="selidaccount" 
                                     onchange="getInfouserAccountTransaction()">
-                                
+
                             </select>
                         </div>
                     </div>
                     <div class="flex-item col3" id='info_transactions'>
-                    nessuna transazione visualizzata!!!
+                        nessuna transazione visualizzata!!!
                     </div>
 
 
                 </div>
             </div>
-
+            <div class="inner-row">
+                
+                    <button onclick="createTransaction()">Crea transazione</button>
+                
+            </div>
         </div>
-           <footer class="flex">
+        <footer class="flex">
             <div class="flex-item">
                 <p style="text-align: left">Bank System S.p.a.<br>
                     Registered office:<br>
@@ -100,7 +125,7 @@ To change this license header, choose License Headers in Project Properties.
                 <p class="center" style="width:100%">BANK SYSTEM S.P.A.  © 2017 All Rights Reserved - Privacy Policy IUBENDA </p>
             </div>
         </footer>
-   </body>
+    </body>
 
 </html>
 

@@ -1,0 +1,27 @@
+Modules:	http://es6-features.org/#ValueExportImport
+	permettono di organizzare meglio un'applicazione
+Classes:	http://es6-features.org/#ClassDefinition
+	permettono di definire i web component
+
+L'idea è quella di creare una sola pagina nella quale visualizzare diversi web component che 
+carico ogni volta che ne ho bisogno. Il vantaggio è che con una sola pagina si possono
+fare modifiche in modo più rapido.
+
+<body>
+	<main id="view">
+	<script src="index.js" type="module"></script>
+</body>
+
+in js
+
+export default class HomeView extends HTMLElement {
+	constructor(){
+		super();
+		console.log("constructor ok....");
+	}
+	
+	connectedCallback(){
+		console.log("callback ok....");
+		this.innerHTML `<h1>Home view</h1>`; //backtick 
+	}
+}
