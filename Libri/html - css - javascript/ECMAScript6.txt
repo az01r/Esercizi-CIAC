@@ -1,7 +1,48 @@
-Modules:	http://es6-features.org/#ValueExportImport
-	permettono di organizzare meglio un'applicazione
-Classes:	http://es6-features.org/#ClassDefinition
-	permettono di definire i web component
+------------------------------------------------------------------------------------------------
+			PROGETTO FRONT END CON ECMASCRIPT6
+------------------------------------------------------------------------------------------------
+
+TOOLS UTILIZZATI:
+- NODEJS	tool di google, run time di javascript, contiene npm
+- NPM		simile a Maven gestisce le dipendenze di css e js
+		(su w10 dare anche il comando Set-ExecutionPolicy remotesigned)
+- BROWSERSYNC	crea un application server e refresha automaticamente il browser dopo aver modificato i sorgenti di un progetto
+- WEBCOMPONENTS	gestiscono componenti grafici:
+		- CUSTOM ELEMENTS: un set di APIs di JavaScript per realizzare 
+				   componenti grafici personalizzati da usare in un'interfaccia
+		- SHADOW DOM: un set di APIs di JavaScript per incapsulare un albero 
+			      nascosto con le regole per renderizzare il Custom Element
+		- HTML TEMPLATES
+(- frameworks	purecss, Bulma)
+
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+PASSAGGI:
+npm init (-y) 			// crea package.json per gestire le dipendenze del progetto
+npm install bulma --save	// bulma è un framework, --save se voglio che aggiunga la dipendenza nel file json, se voglio una dipendenza solo per lo sviluppatore --save-dev
+npm install lit-html --save	// libreria di google che permette di passare un paramentri a funzioni in modo ottimizzato
+npm install rollup --save-dev	// usiamo rollup per convertire le dipendenze non standard ECMAScript
+				// NB necessita di un file rollup.config.js poi dare il comando rollup -c per fargli eseguire il config
+npm install -g browser-sync
+browser-sync -s src/ -f src/ -b 'google-chrome' /* dare questo comando dalla cartella principale del progetto 
+						 * poi noi abbiamo creato una sottocartella src per le risorse quindi
+						 * -s src/ ovvero start da src/
+						 * -f src/ ovvero controlla dentro src/ se ho fatto modifiche ai file per refreshare la pagina sul browser
+						 * -b indica il browser
+						 */
+$ npm install --save @vaadin/router	// gestisce gli url dell'applicazione, seguire la guida https://vaadin.com/router
+
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+MODULES:	http://es6-features.org/#ValueExportImport
+		in file .js aggiungo 
+		export function nome_funzione 			a una funzione che voglio usare su altri file e 
+		import * as nome from "lib/nome_funzione"	nel file .js in cui mi serve la funzione
+
+CLASSES:	http://es6-features.org/#ClassDefinition
+		permettono di definire i web component
 
 L'idea è quella di creare una sola pagina nella quale visualizzare diversi web component che 
 carico ogni volta che ne ho bisogno. Il vantaggio è che con una sola pagina si possono
@@ -25,3 +66,11 @@ export default class HomeView extends HTMLElement {
 		this.innerHTML `<h1>Home view</h1>`; //backtick 
 	}
 }
+
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+Altro:
+in JavaScript `` permette di creare stringhe multilinea senza doverle concatenare
+
+connectedCallback
