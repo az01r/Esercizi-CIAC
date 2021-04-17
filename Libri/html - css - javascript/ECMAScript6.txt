@@ -22,8 +22,6 @@ PASSAGGI:
 npm init (-y) 			// crea package.json per gestire le dipendenze del progetto
 npm install bulma --save	// bulma è un framework, --save se voglio che aggiunga la dipendenza nel file json, se voglio una dipendenza solo per lo sviluppatore --save-dev
 npm install lit-html --save	// libreria di google che permette di passare un paramentri a funzioni in modo ottimizzato
-npm install rollup --save-dev	// usiamo rollup per convertire le dipendenze non standard ECMAScript
-				// NB necessita di un file rollup.config.js poi dare il comando rollup -c per fargli eseguire il config
 npm install -g browser-sync
 browser-sync -s src/ -f src/ -b 'google-chrome' /* dare questo comando dalla cartella principale del progetto 
 						 * poi noi abbiamo creato una sottocartella src per le risorse quindi
@@ -32,7 +30,10 @@ browser-sync -s src/ -f src/ -b 'google-chrome' /* dare questo comando dalla car
 						 * -b indica il browser
 						 */
 $ npm install --save @vaadin/router	// gestisce gli url dell'applicazione, seguire la guida https://vaadin.com/router
-
+npm install rollup --save-dev	// usiamo rollup per convertire le dipendenze non standard ECMAScript
+npm install @rollup/plugin-node-resolve --save-dev
+// NB rollup necessita di un file rollup.config.js poi dare il comando 
+rollup -c 		per fargli eseguire il config
 ------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------
 
