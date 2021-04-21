@@ -1,0 +1,24 @@
+-classpath
+'/home/tss/.m2/repository/org/mongodb/mongo-java-driver/3.9.1/mongo-java-driver-3.9.1.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/home/tss/Scaricati/TSSMongo/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2021. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/tss/Scaricati/TSSMongo/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'TSSMongo 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' '/home/tss/Scaricati/TSSMongo/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'TSSMongo 1.0-SNAPSHOT API'

@@ -1,0 +1,22 @@
+mongo
+comandi da shell mongo (Javascript)
+db
+show dbs
+show collections                                mostra le collections (tabelle)
+use "demo"                                      entra in un db
+db.animals.insert({name: "delfino",color:"grigio",oceans:["atlantico","pacifico","indiano"]})
+db.animals.find("id")
+db.animals.find()
+db.animals.find().pretty()                      rende l'output più leggibile
+db.animal.findOne({"name"="pantera"})           trova il primo risultato con name = pantera
+var p = db.animal.findOne({"name"="pantera"})   trova il primo risultato con name = pantera     salvo il risultato in una variabile
+p.legs = 4                                      setta o se non esiste crea il campo legs
+db.animals.save(p)                              salva l'oggetto p, essendo che era già presente nel db, lo aggiorna
+db.animal.save                                  ritorna info save
+help                                            lista comandi
+show                                            mostra le liste
+
+
+SCARICARE 
+MONGODB PLUGIN PER NETBEANS
+mongo java driver jar   https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver/3.9.1
