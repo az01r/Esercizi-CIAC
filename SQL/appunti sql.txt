@@ -1,3 +1,16 @@
+DDL - Date Definition Language
+create	drop	alter
+
+DML - Data Manipulation Language
+select	insert	update	delete
+
+DCL - Data Control Language
+grant	revoke
+
+TCL - Transaction Control Language
+commit	rollback	savepoint
+
+
 consiglio: 	aggiungere una sede standard "anonima" con id 0
 		in corsi settare il default di id_corsi a 0
 Per collegare due tabelle:	creare una foreign key
