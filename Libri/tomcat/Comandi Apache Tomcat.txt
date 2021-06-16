@@ -1,0 +1,5 @@
+START
+E:\Programmi\apache-tomcat-10.0.5\bin\startup.bat
+
+SHOTDOWN
+E:\Programmi\apache-tomcat-10.0.5\bin\shutdown.bat
