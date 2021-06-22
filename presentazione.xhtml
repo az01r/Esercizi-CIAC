@@ -13,31 +13,21 @@ and open the template in the editor.
     <body>
         <div>
             <p>
-                In parallelo a questo progetto, con Estia abbiamo intrapreso un percorso di formazione interno,
-                seguiti da un programmatore senior. Il progetto che ho realizzato è simile a quello fatto per 
-                Corvallis, tuttavia abbiamo utilizzato esclusivamente tecnologie open source.
-                Siamo partiti con l'idea di creare l'applicazione usando Spring-boot e JSF, in modo da iniziare a prendere dimestichezza con
-                il progetto del cliente. L'applicazione consiste nella gestione degli impiegati di diverse aziende. 
-                Ci è stato riservato uno schema su un database di Estia, questa volta MySQL, dove, tramite Spring-boot, ho
-                creato 3 tabelle: anagrafica, aziende e dipendenti. Ho poi aggiunto una parte di codice per fare le CRUD con Postman, ovvero crare, 
-                modificare o eliminare dei record senza passare da MySQLWorkbench.
-                Per fa partire l'applicazione, Spring-boot possiede un application server interno, Tomcat. Il tutor, per completezza, ci ha chiesto di 
-                provare a farla partire usando un Tomcat esterno. Per farlo, ho aggiunto la dipendenza di Tomcat e cambiato un'impostazione nel pom.xml, 
-                per costruire un war invece di un jar.
-                Dopo questa parte iniziale, il tutor ci ha chiesto di aggiungere la parte di frontend usando JSF e Primefaces. Qui sono nati
-                i primi problemi in quanto i managed beans di Spring-boot, non sono rappresentabili direttamente con pagine JSF. Ho quindi aggiunto
-                delle classi intermedie, ovvero i beans gestiti da CDI, e con questi sono riuscito a passare i dati alle pagine jsf.
-                Altra difficoltà che ho avuto è stata la gestione delle dipendenze da parte di Joinfaces, progetto non più portato avanti dagli sviluppatori e che è rimasto
-                a una versione vecchia di Primefaces. Per aggiungere le crud alla pagina di frontend ho quindi usato, come anche nel progetto di Corvallis, sempre per ragioni simili,
-                un DataTabel edit, ovvero dando la possibilità di modificare un record semplicemente cliccandoci sopra. Ho quindi aggiunto "manualmente" i tasti
-                "NEW" e "DELETE" per permettere di creare o di cancellare i record e ho poi collegato la pagina con il backend per salvare i dati nel db.
-                
-                
+          
                 Per sostituire application server (per microservizi ad esempio) usare run-time piccoli, leggeri e veloci
                 Quarkus, Helidon, Micronaut
                 oppure usare application servers configurabili prendendo solo le parti che servono
                 
                 Kubernetes è un sw che gestisce diverse istanze di uno stesso container su più server
+                
+                JaspeReport per report
+                
+                
+                
+                X PROGETTO
+                - AGGIUNGERE DIPENDENZE MOJARA O MYFACES
+                - CAMBIARE DA H COMMANDBUTTON A P COMMANDBUTTON IN PAGINA XHTML
+                
             </p>
         </div>
     </body>
